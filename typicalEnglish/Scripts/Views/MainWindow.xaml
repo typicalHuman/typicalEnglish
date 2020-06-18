@@ -1,0 +1,84 @@
+﻿<Window x:Class="typicalEnglish.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:typicalEnglish"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        Title="typicalEnglish" MinHeight="450" MinWidth="450"
+        DataContext="{x:Static local:App.MainVM}"
+        WindowState="{Binding WindowState}"
+        ResizeMode="{Binding ResizeMode}" WindowStyle="None" MouseDown="Window_MouseDown"
+        BorderBrush="#686868" BorderThickness="{Binding BorderThickness}" AllowsTransparency="True">
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+        CaptionHeight="0"
+        ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--#region Window Manipulation Buttons-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <!--Margin between buttons-->
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}" >
+                    <Setter Property="Margin" Value="0,0,10,0"/>
+                </Style>
+               <!--ToolTip style-->
+                <Style TargetType="ToolTip" BasedOn="{StaticResource {x:Type ToolTip}}">
+                    <Setter Property="FontSize" Value="13"/>
+                </Style>
+            </StackPanel.Resources> 
+            <!--#region Maximize Button-->
+            <Button Background="#01c74c" Template="{StaticResource CircularButton}" BorderBrush="#15b329"
+                >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding MaximizeCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=WindowState}"
+                                         Value="Normal">
+                                <Setter Property="ToolTip" Value="Maximize"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=WindowState}"
+                                         Value="Maximized">
+                                <Setter Property="ToolTip" Value="Restore Down"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <!--#endregion-->           
+            <!--#region Minimize Button-->
+            <Button Background="#febf34" Template="{StaticResource CircularButton}" BorderBrush="#e8a61c"
+                    ToolTip="Hide">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding MinimizeCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <!--#endregion-->            
+            <!--#region Close Button-->
+            <Button Background="#f35f5d" Template="{StaticResource CircularButton}" BorderBrush="#ec4c45"
+                    ToolTip="Close">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CloseCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <!--#endregion-->
+        </StackPanel>
+        <!--#endregion-->
+    </Grid>
+</Window>
