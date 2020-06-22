@@ -28,3 +28,4 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\Microsoft.
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\System.Windows.Interactivity.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\Microsoft.Expression.Interactions.xml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\System.Windows.Interactivity.xml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\ButtonStyle.baml

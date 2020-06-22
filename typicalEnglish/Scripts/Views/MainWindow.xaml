@@ -9,25 +9,39 @@
         Title="typicalEnglish" MinHeight="450" MinWidth="450"
         DataContext="{x:Static local:App.MainVM}"
         WindowState="{Binding WindowState}"
-        ResizeMode="{Binding ResizeMode}" WindowStyle="None" MouseDown="Window_MouseDown"
-        BorderBrush="#686868" BorderThickness="{Binding BorderThickness}" AllowsTransparency="True">
+        ResizeMode="{Binding ResizeMode, UpdateSourceTrigger=PropertyChanged}" WindowStyle="None" 
+        BorderBrush="#686868" BorderThickness="{Binding WindowBorderThickness, UpdateSourceTrigger=PropertyChanged}" AllowsTransparency="True"
+        MouseLeftButtonDown="OnMouseLeftButtonDown" MouseLeftButtonUp="OnMouseLeftButtonUp"
+        StateChanged="Window_StateChanged"
+        MouseMove="OnMouseMove" FontFamily="Candara Light">
     <WindowChrome.WindowChrome>
         <WindowChrome 
         CaptionHeight="0"
         ResizeBorderThickness="5" />
     </WindowChrome.WindowChrome>
     <Grid>
+        <!--#region Definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        
+
         <!--#region Window Manipulation Buttons-->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="5" Background="#051e3e">
             <StackPanel.Resources>
                 <!--Margin between buttons-->
                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}" >
-                    <Setter Property="Margin" Value="0,0,10,0"/>
+                    <Setter Property="Margin" Value="3,0,7,0"/>
                 </Style>
                <!--ToolTip style-->
                 <Style TargetType="ToolTip" BasedOn="{StaticResource {x:Type ToolTip}}">
@@ -35,8 +49,7 @@
                 </Style>
             </StackPanel.Resources> 
             <!--#region Maximize Button-->
-            <Button Background="#01c74c" Template="{StaticResource CircularButton}" BorderBrush="#15b329"
-                >
+            <Button Background="#01c74c" Template="{StaticResource CircularButton}" BorderBrush="#15b329" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding MaximizeCommand}"/>
@@ -79,6 +92,35 @@
             </Button>
             <!--#endregion-->
         </StackPanel>
+        <!--#endregion-->
+        
+        <!--#region Page Buttons-->
+    
+            <!--#region Deck Button-->
+        <Button Content="Decks" FontWeight="Bold" Background="#a8e6cf " Grid.Row="1" VerticalAlignment="Top"
+                 FontSize="17" HorizontalAlignment="Stretch"  Height="40">
+            </Button>
+            <!--#endregion-->
+            
+            <!--#region Translator Button-->
+        <Button  Content="Translator" FontWeight="Bold" Grid.Column="1" Background="#dcedc1" Grid.Row="1" VerticalAlignment="Top"
+                 FontSize="17" HorizontalAlignment="Stretch"  Height="40">
+            </Button>
+            <!--#endregion-->
+            <!--#region Reverso Button-->
+        <Button  Content="Reverso" FontWeight="Bold" Grid.Column="2" Background="#ffd3b6 " Grid.Row="1" VerticalAlignment="Top"
+                 FontSize="17"  HorizontalAlignment="Stretch" Height="40">
+            </Button>
+            <!--#endregion-->
+
+        <!--#region Options Button-->
+        <Button Content="Options" FontWeight="Bold" Grid.Column="3" Background="#ffaaa5" Grid.Row="1" VerticalAlignment="Top"
+                 FontSize="17" HorizontalAlignment="Stretch" Height="40">
+        </Button>
+        <!--#endregion-->
+
+
+
         <!--#endregion-->
     </Grid>
 </Window>

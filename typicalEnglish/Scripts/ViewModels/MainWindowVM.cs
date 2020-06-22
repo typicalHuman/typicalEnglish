@@ -34,6 +34,11 @@ namespace typicalEnglish.Scripts.ViewModels
             get => windowState;
             set
             {
+                if(value == WindowState.Normal)
+                {
+                    WindowBorderThickness = new Thickness(1);
+                    ResizeMode = ResizeMode.CanResizeWithGrip;
+                }
                 windowState = value;
                 OnPropertyChanged("WindowState");
             }
@@ -43,7 +48,7 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region WindowBorderThickness
 
-        private Thickness windowBorderThickess;
+        private Thickness windowBorderThickess =new Thickness(1);
         public Thickness WindowBorderThickness
         {
             get => windowBorderThickess;
@@ -74,25 +79,13 @@ namespace typicalEnglish.Scripts.ViewModels
         #endregion
 
         #region MaximizeCommand
+
         private RelayCommand maximizeCommand;
         public RelayCommand MaximizeCommand
         {
             get => maximizeCommand ?? (maximizeCommand = new RelayCommand(obj =>
             {
-                if (WindowState == WindowState.Normal)
-                {
-                    //setting border no style
-                    WindowBorderThickness = new Thickness(0);
-                    ResizeMode = ResizeMode.NoResize;
-                    WindowState = WindowState.Maximized;
-                }
-                else
-                {
-                    //setting border to resize with grip
-                    WindowBorderThickness = new Thickness(1);
-                    ResizeMode = ResizeMode.CanResizeWithGrip;
-                    WindowState = WindowState.Normal;
-                }
+                WindowState = WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
             }));
         }
         #endregion
