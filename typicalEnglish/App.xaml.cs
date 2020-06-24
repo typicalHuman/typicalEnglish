@@ -16,9 +16,11 @@ namespace typicalEnglish
     public partial class App : Application
     {
         public static MainWindowVM MainVM { get; set; }
+        public static DeckPageVM DeckVM { get; set; }
         public App()
         {
             MainVM = new MainWindowVM();
+            DeckVM = new DeckPageVM();
         }
 
     }

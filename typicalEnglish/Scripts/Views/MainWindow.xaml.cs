@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish
 {
@@ -23,6 +25,7 @@ namespace typicalEnglish
         public MainWindow()
         {
             InitializeComponent();
+            NavigationSetup();
             App.MainVM.CloseAction = Close;
         }
 
@@ -94,6 +97,14 @@ namespace typicalEnglish
             }
         }
         #endregion
+
+        private void NavigationSetup()
+        {
+            Messenger.Default.Register<NavigateArgs>(this, (x) =>
+            {
+                Frame1.Navigate(new Uri(x.Url, UriKind.Relative));
+            });
+        }
 
     }
 }

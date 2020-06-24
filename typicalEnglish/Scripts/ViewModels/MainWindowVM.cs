@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -48,13 +49,13 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region WindowBorderThickness
 
-        private Thickness windowBorderThickess =new Thickness(1);
+        private Thickness windowBorderThickness = new Thickness(1);
         public Thickness WindowBorderThickness
         {
-            get => windowBorderThickess;
+            get => windowBorderThickness;
             set
             {
-                windowBorderThickess = value;
+                windowBorderThickness = value;
                 OnPropertyChanged("WindowBorderThickness");
             }
         }
@@ -86,6 +87,11 @@ namespace typicalEnglish.Scripts.ViewModels
             get => maximizeCommand ?? (maximizeCommand = new RelayCommand(obj =>
             {
                 WindowState = WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+                if(WindowState == WindowState.Maximized)
+                {
+                    ResizeMode = ResizeMode.NoResize;
+                    WindowBorderThickness = new Thickness(0);
+                }
             }));
         }
         #endregion
@@ -98,6 +104,30 @@ namespace typicalEnglish.Scripts.ViewModels
             {
                 WindowState = WindowState.Minimized;
             }));
+        }
+        #endregion
+
+        #region NavigateCommands
+
+        public string lastPage { get; set; } = "Scripts/Views/DecksPage.xaml";
+
+        public void Navigate(string url)
+        {
+            Messenger.Default.Send<NavigateArgs>(new NavigateArgs(url));
+        }
+
+        private RelayCommand pageNavigateCommand;
+        public RelayCommand PageNavigateCommand
+        {
+            get
+            {
+                return pageNavigateCommand ?? (pageNavigateCommand = new RelayCommand(obj =>
+                {
+                    if (!obj.ToString().Contains("Title"))
+                        lastPage = obj.ToString();
+                    Navigate(obj.ToString());
+                }));
+            }
         }
         #endregion
 

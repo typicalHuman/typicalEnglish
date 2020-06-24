@@ -23,6 +23,7 @@
         <!--#region Definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -34,22 +35,48 @@
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
-        
+        <!--#region Title-->
+        <TextBlock Text="typicalEnglish" Foreground="White" Panel.ZIndex="1"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   FontSize="20" Margin="5 0"/>
+        <!--#endregion-->
 
         <!--#region Window Manipulation Buttons-->
-        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="5" Background="#051e3e">
-            <StackPanel.Resources>
+        <DockPanel Grid.ColumnSpan="5" Background="#051e3e">
+            <DockPanel.Resources>
                 <!--Margin between buttons-->
                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}" >
                     <Setter Property="Margin" Value="3,0,7,0"/>
+                    <Setter Property="DockPanel.Dock" Value="Right"/>
                 </Style>
                <!--ToolTip style-->
                 <Style TargetType="ToolTip" BasedOn="{StaticResource {x:Type ToolTip}}">
                     <Setter Property="FontSize" Value="13"/>
                 </Style>
-            </StackPanel.Resources> 
+            </DockPanel.Resources>
+            <!--#region Close Button-->
+            <Button Background="#f35f5d" Template="{StaticResource CircularButton}" BorderBrush="#ec4c45"
+                    ToolTip="Close">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CloseCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <!--#endregion-->
+            <!--#region Minimize Button-->
+            <Button Background="#febf34" Template="{StaticResource CircularButton}" BorderBrush="#e8a61c"
+                    ToolTip="Hide">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding MinimizeCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <!--#endregion-->
             <!--#region Maximize Button-->
-            <Button Background="#01c74c" Template="{StaticResource CircularButton}" BorderBrush="#15b329" >
+            <Button Background="#01c74c" Template="{StaticResource CircularButton}" BorderBrush="#15b329" 
+                    HorizontalAlignment="Right">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding MaximizeCommand}"/>
@@ -70,57 +97,66 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <!--#endregion-->           
-            <!--#region Minimize Button-->
-            <Button Background="#febf34" Template="{StaticResource CircularButton}" BorderBrush="#e8a61c"
-                    ToolTip="Hide">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding MinimizeCommand}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            <!--#endregion-->            
-            <!--#region Close Button-->
-            <Button Background="#f35f5d" Template="{StaticResource CircularButton}" BorderBrush="#ec4c45"
-                    ToolTip="Close">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding CloseCommand}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
             <!--#endregion-->
-        </StackPanel>
+        </DockPanel>
         <!--#endregion-->
         
         <!--#region Page Buttons-->
-    
-            <!--#region Deck Button-->
+
+        <!--#region Deck Button-->
         <Button Content="Decks" FontWeight="Bold" Background="#a8e6cf " Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17" HorizontalAlignment="Stretch"  Height="40">
-            </Button>
-            <!--#endregion-->
-            
-            <!--#region Translator Button-->
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
+                                                       CommandParameter="Scripts/Views/DecksPage.xaml"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <!--#endregion-->
+        <!--#region Translator Button-->
         <Button  Content="Translator" FontWeight="Bold" Grid.Column="1" Background="#dcedc1" Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17" HorizontalAlignment="Stretch"  Height="40">
-            </Button>
-            <!--#endregion-->
-            <!--#region Reverso Button-->
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
+                                                       CommandParameter="Scripts/Views/TranslatorPage.xaml"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <!--#endregion-->
+        <!--#region Reverso Button-->
         <Button  Content="Reverso" FontWeight="Bold" Grid.Column="2" Background="#ffd3b6 " Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17"  HorizontalAlignment="Stretch" Height="40">
-            </Button>
-            <!--#endregion-->
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
+                                                       CommandParameter="Scripts/Views/ReversoPage.xaml"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <!--#endregion-->
 
         <!--#region Options Button-->
         <Button Content="Options" FontWeight="Bold" Grid.Column="3" Background="#ffaaa5" Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17" HorizontalAlignment="Stretch" Height="40">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
+                                                       CommandParameter="Scripts/Views/OptionsPage.xaml"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </Button>
         <!--#endregion-->
 
 
 
+        <!--#endregion-->
+
+        <!--#region NavigationControl-->
+        <Frame NavigationUIVisibility="Hidden" x:Name="Frame1" 
+               Source="DecksPage.xaml" 
+               Grid.Row="2" Grid.ColumnSpan="4"></Frame>
         <!--#endregion-->
     </Grid>
 </Window>
