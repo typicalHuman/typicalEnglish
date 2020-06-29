@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:typicalEnglish"
-      xmlns:hn="https://handyorg.github.io/handycontrol"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d"  
       xmlns:dd="urn:gong-wpf-dragdrop"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -15,21 +15,50 @@
             <Button HorizontalAlignment="Center" VerticalAlignment="Top"
                 Height="70" Width="70" Template="{StaticResource CircularButton}"
                 Content="{md:PackIcon Kind=BookAdd, Size=40}" ToolTip="Add deck"
-                    Foreground="White" Background="#00adc1" BorderThickness="0" BorderBrush="Transparent">
-                
+                    Foreground="White" BorderThickness="0" BorderBrush="Transparent">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding AddCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
             <ListBox dd:DragDrop.IsDragSource="True" Margin="0 70"
-         dd:DragDrop.IsDropTarget="True" VerticalAlignment="Top">
+         dd:DragDrop.IsDropTarget="True" VerticalAlignment="Top" ItemsSource="{Binding Decks}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" IsItemsHost="True">
                         </WrapPanel>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
-                <ListBoxItem Content="First" Height="100" Width="200"/>
-                <ListBoxItem Content="Second" Height="100" Width="500"/>
-                <ListBoxItem Content="First" Height="100" Width="500"/>
-                <ListBoxItem Content="Second" Height="100" Width="500"/>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button Background="Transparent" Height="150" Width="110">
+                            <StackPanel VerticalAlignment="Top">
+                                <Ellipse Width="50" Height="50" VerticalAlignment="Top" Margin="0 10">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="C:\Users\HP\Desktop\so.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock Text="{Binding StringFormat=Words: {0}, Path=WordsCount}"
+                                           Margin="0 10" HorizontalAlignment="Center"/>
+                                <TextBox Text="{Binding Name}" MinWidth="20" FontSize="15"
+                                        CaretBrush="#03a9f4" VerticalAlignment="Bottom" md:HintAssist.Hint="Name"/>
+                            </StackPanel>
+                            <Button.ContextMenu>
+                                <ContextMenu Height="Auto">
+                                    <MenuItem Header="Options"></MenuItem>
+                                    <MenuItem Header="Delete" Background="#f35f5d">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding DeleteCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
 
         </Grid>
