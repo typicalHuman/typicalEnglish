@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\App.xaml
-71549728476
+81432579446
 
 181219601480
-742057906150
-Resources\ButtonStyle.xaml;Scripts\Views\DecksPage.xaml;Scripts\Views\MainWindow.xaml;Resources\CircularButtonTemplate.xaml;Scripts\Views\OptionsPage.xaml;Scripts\Views\ReversoPage.xaml;Scripts\Views\TranslatorPage.xaml;
+751841407021
+Resources\ButtonStyle.xaml;Resources\OneColorToolTipStyle.xaml;Scripts\Views\DecksPage.xaml;Scripts\Views\MainWindow.xaml;Resources\CircularButtonTemplate.xaml;Scripts\Views\OptionsPage.xaml;Scripts\Views\ReversoPage.xaml;Scripts\Views\TranslatorPage.xaml;
 
-True
+False
 
