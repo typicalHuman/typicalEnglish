@@ -87,6 +87,10 @@
     <Compile Include="Scripts\Models\Deck.cs" />
     <Compile Include="Scripts\Models\Word.cs" />
     <Compile Include="Scripts\ViewModels\DeckPageVM.cs" />
+    <Compile Include="Scripts\ViewModels\DecksPageVM.cs" />
+    <Compile Include="Scripts\Views\DeckPage.xaml.cs">
+      <DependentUpon>DeckPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scripts\Views\OptionsPage.xaml.cs">
       <DependentUpon>OptionsPage.xaml</DependentUpon>
     </Compile>
@@ -101,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\OneColorToolTipStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scripts\Views\DeckPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish
@@ -16,11 +10,12 @@ namespace typicalEnglish
     public partial class App : Application
     {
         public static MainWindowVM MainVM { get; set; }
+        public static DecksPageVM DecksVM { get; set; }
         public static DeckPageVM DeckVM { get; set; }
         public App()
         {
             MainVM = new MainWindowVM();
-            DeckVM = new DeckPageVM();
+            DecksVM = new DecksPageVM();
         }
 
     }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
@@ -17,7 +18,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region ImageSource
 
-        private string imageSource;
+        private string imageSource = @"C:\Users\HP\Desktop\so.png";
         public string ImageSource
         {
             get => imageSource;
@@ -59,22 +60,41 @@ namespace typicalEnglish.Scripts.Models
         }
 
         #endregion
+
+        #region Background
+
+        private Brush background;
+        public Brush Background
+        {
+            get => background;
+            set
+            {
+                background = value;
+                OnPropertyChanged("Background");
+            }
+        }
+
+        #endregion
+
+        #region BorderBrush
+
+        private Brush borderBrush = (Brush)new BrushConverter().ConvertFrom("#03a9f4");
+        public Brush BorderBrush
+        {
+            get => borderBrush;
+            set
+            {
+                borderBrush = value;
+                OnPropertyChanged("BorderBrush");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Commands
 
-        #region DeleteCommand
-
-        private RelayCommand deleteCommand;
-        public RelayCommand DeleteCommand
-        {
-            get => deleteCommand ?? (deleteCommand = new RelayCommand(obj =>
-            {
-                App.DeckVM.Decks.Remove(this);
-            }));
-        }
-
-        #endregion
 
         #endregion
 

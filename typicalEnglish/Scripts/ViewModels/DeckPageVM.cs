@@ -12,39 +12,44 @@ namespace typicalEnglish.Scripts.ViewModels
 {
     public class DeckPageVM: INotifyPropertyChanged
     {
-        #region Properties
 
-        public ObservableCollection<Deck> Decks { get; set; } = new ObservableCollection<Deck>()
+        public DeckPageVM(ObservableCollection<Word> words)
         {
-            new Deck(){Name = "CEEEEEEC"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "CEEEEEEC"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "CEEEEEEC"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "FUUUUUU"}
-        };
-
-        #endregion
+            Words = words;
+        }
 
         #region Commands
 
-        #region AddCommand
-        private RelayCommand addCommand;
-        public RelayCommand AddCommand
+        #region BackCommand
+        private RelayCommand backCommand;
+        public RelayCommand BackCommand
         {
-            get => addCommand ?? (addCommand = new RelayCommand(obj =>
+            get => backCommand ?? (backCommand = new RelayCommand(obj =>
             {
-                Decks.Insert(0, new Deck());
+                App.MainVM.Navigate("Scripts/Views/DecksPage.xaml");
             }));
         }
         #endregion
 
+        #region AddWordCommand
+        private RelayCommand addWordCommand;
+        public RelayCommand AddWordCommand
+        {
+            get => addWordCommand ?? (addWordCommand = new RelayCommand(obj =>
+            {
+                Words.Insert(0, new Word());
+            }));
+        }
+        #endregion
 
         #endregion
+
+        #region Properties
+        public ObservableCollection<Word> Words { get; set; }
+        #endregion
+
+
+
 
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
