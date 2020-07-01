@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
@@ -42,10 +43,37 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
+
+        #region ShowInfoCommand
+        private RelayCommand showInfoCommand;
+        public RelayCommand ShowInfoCommand
+        {
+            get => showInfoCommand ?? (showInfoCommand = new RelayCommand(obj =>
+            {
+                MoreVisibility = MoreVisibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+            }));
+        }
+        #endregion
+
         #endregion
 
         #region Properties
         public ObservableCollection<Word> Words { get; set; }
+
+        #region MoreVisibility
+
+        private Visibility moreVisibility = Visibility.Collapsed;
+        public Visibility MoreVisibility
+        {
+            get => moreVisibility;
+            set
+            {
+                moreVisibility = value;
+                OnPropertyChanged("MoreVisibility");
+            }
+        }
+        #endregion
+
         #endregion
 
 

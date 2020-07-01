@@ -49,3 +49,4 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\typicalEng
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\OneColorToolTipStyle.baml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DeckPage.g.cs
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DeckPage.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\InvisibleButtonBorderStyle.baml

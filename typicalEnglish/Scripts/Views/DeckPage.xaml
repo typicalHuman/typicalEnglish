@@ -35,9 +35,9 @@
 
         <!--#region Add Deck Button-->
         <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
-                Height="70" Width="70" 
-                Content="{md:PackIcon Kind=TabAdd, Size=40}" ToolTip="Add word"
-                    BorderThickness="0" BorderBrush="Transparent">
+                Height="70" Width="150" FontSize="25"
+                Content="New word"
+                    BorderBrush="Black" Style="{StaticResource InvisButton}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding AddWordCommand}"/>
@@ -47,30 +47,72 @@
 
         <!--#endregion-->
 
-        <ListBox Grid.Row="1" dd:DragDrop.IsDropTarget="True" ItemsSource="{Binding Words}"
+        <ItemsControl Grid.Row="1" dd:DragDrop.IsDropTarget="True" ItemsSource="{Binding Words}"
                  HorizontalAlignment="Stretch">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+            <ItemsControl.Resources>
+                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}"
+                       x:Key="NoneBorder">
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="IsReadOnly" Value="True"/>
+                    <Setter Property="md:TextFieldAssist.UnderlineBrush" Value="Transparent"/>
                 </Style>
-            </ListBox.ItemContainerStyle>
-            <ListBox.ItemTemplate>
+            </ItemsControl.Resources>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel VerticalAlignment="Stretch">
                         <Grid>
                             <StackPanel HorizontalAlignment="Center">
-                                <TextBlock Text="{Binding Spelling}" FontStyle="Italic"
-                                       FontSize="30" />
-                                <TextBlock Text="{Binding  StringFormat=[{0}], Path=Transcription}"
-                                           FontSize="15" HorizontalAlignment="Center"/>
+                                <TextBox Text="{Binding Spelling}" FontStyle="Italic"
+                                       FontSize="30" Style="{StaticResource NoneBorder}"/>
+                                <TextBox Text="{Binding  StringFormat=[{0}], Path=Transcription}"
+                                           FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}"/>
                             </StackPanel>
                             <Button Content="{md:PackIcon Kind=Edit}" HorizontalAlignment="Right"
                                 BorderBrush="Transparent" BorderThickness="0" Background="Transparent"/>
+                            <Button Content="{md:PackIcon Kind=More}" HorizontalAlignment="Left"
+                                BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
+                                     Path=DataContext.ShowInfoCommand}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </Grid>
+                        <Grid Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
+                                     Path=DataContext.MoreVisibility}"
+                              Name="MoreGrid">
+                            <StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text=" Translations:" FontSize="25"/>
+                                    <ItemsControl ItemsSource="{Binding Translations}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBox Text="{Binding Path=.,StringFormat=' {0}  '}" Style="{StaticResource NoneBorder}"
+                                                         FontSize="20"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" IsItemsHost="True">
+                                                </WrapPanel>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </StackPanel>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
     </Grid>
 </Page>

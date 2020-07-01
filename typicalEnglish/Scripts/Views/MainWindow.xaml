@@ -103,7 +103,7 @@
         <!--#region Page Buttons-->
 
         <!--#region Deck Button-->
-        <Button Content="Decks" FontWeight="Bold" Background="#a8e6cf " Grid.Row="1" VerticalAlignment="Top"
+        <Button Content="Decks" FontWeight="Bold" Background="#a8e6cf" Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17" HorizontalAlignment="Stretch"  Height="40" BorderBrush="Transparent" 
                 BorderThickness="0">
             <i:Interaction.Triggers>

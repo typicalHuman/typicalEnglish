@@ -18,7 +18,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region ImageSource
 
-        private string imageSource = @"C:\Users\HP\Desktop\so.png";
+        private string imageSource = @"pack://application:,,,/Resources/Images/typography.png";
         public string ImageSource
         {
             get => imageSource;
