@@ -18,7 +18,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             new Deck(){Name = "CEEEEEEC", Words = new ObservableCollection<Word>()
             {
-                new Word(){Spelling = "Fuck"}
+                new Word(){Spelling = "Fuck", Transcription="fʌk"}
             } },
             new Deck(){Name = "FUUUUUU"},
             new Deck(){Name = "FUUUUUU"},

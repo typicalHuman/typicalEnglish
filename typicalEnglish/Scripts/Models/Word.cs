@@ -30,7 +30,7 @@ namespace typicalEnglish.Scripts.Models
         #region Transcription
 
         private string transcription;
-        public string Transcirption
+        public string Transcription
         {
             get => transcription;
             set

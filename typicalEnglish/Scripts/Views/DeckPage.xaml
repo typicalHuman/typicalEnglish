@@ -34,10 +34,10 @@
         <!--#endregion-->
 
         <!--#region Add Deck Button-->
-        <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="#01c74c"
-                Height="70" Width="70" Template="{StaticResource CircularButton}"
+        <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
+                Height="70" Width="70" 
                 Content="{md:PackIcon Kind=TabAdd, Size=40}" ToolTip="Add word"
-                    Foreground="White" BorderThickness="0" BorderBrush="Transparent">
+                    BorderThickness="0" BorderBrush="Transparent">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding AddWordCommand}"/>
@@ -47,17 +47,27 @@
 
         <!--#endregion-->
 
-        <ListBox Grid.Row="1" dd:DragDrop.IsDropTarget="True" ItemsSource="{Binding Words}">
+        <ListBox Grid.Row="1" dd:DragDrop.IsDropTarget="True" ItemsSource="{Binding Words}"
+                 HorizontalAlignment="Stretch">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel >
-                        <Grid DockPanel.Dock="Right">
-                            <TextBlock Text="{Binding Spelling}" FontStyle="Italic"
-                                       FontSize="30" HorizontalAlignment="Center"/>
-                            <Button Content="{md:PackIcon Kind=Edit}" HorizontalAlignment="Right"/>
+                    <StackPanel>
+                        <Grid>
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Spelling}" FontStyle="Italic"
+                                       FontSize="30" />
+                                <TextBlock Text="{Binding  StringFormat=[{0}], Path=Transcription}"
+                                           FontSize="15" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <Button Content="{md:PackIcon Kind=Edit}" HorizontalAlignment="Right"
+                                BorderBrush="Transparent" BorderThickness="0" Background="Transparent"/>
                         </Grid>
-                      
-                    </DockPanel>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

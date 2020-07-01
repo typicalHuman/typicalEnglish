@@ -161,5 +161,6 @@
                Source="DecksPage.xaml" 
                Grid.Row="2" Grid.ColumnSpan="4"></Frame>
         <!--#endregion-->
+
     </Grid>
 </Window>
