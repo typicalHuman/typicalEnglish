@@ -55,6 +55,17 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
+
+        #region LoadedCommand
+        private RelayCommand loadedCommand;
+        public RelayCommand LoadedCommand
+        {
+            get => loadedCommand ?? (loadedCommand = new RelayCommand(obj =>
+            {
+                
+            }));
+        }
+        #endregion
         #endregion
 
         #region Properties

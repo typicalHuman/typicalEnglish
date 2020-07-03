@@ -50,3 +50,6 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DeckPage.g.cs
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DeckPage.baml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\InvisibleButtonBorderStyle.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\ICSharpCode.AvalonEdit.xml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\GeneratedInternalTypeHelper.g.cs

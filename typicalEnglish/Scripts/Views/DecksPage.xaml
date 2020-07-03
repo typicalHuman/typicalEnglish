@@ -23,7 +23,6 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
-
             <!--#endregion-->
             <!--#region Decks-->
             <ListBox dd:DragDrop.IsDragSource="True" Margin="0 70 0 0"

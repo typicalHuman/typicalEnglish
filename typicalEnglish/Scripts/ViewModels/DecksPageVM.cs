@@ -19,10 +19,15 @@ namespace typicalEnglish.Scripts.ViewModels
             new Deck(){Name = "CEEEEEEC", Words = new ObservableCollection<Word>()
             {
                 new Word()
-                { Spelling = "Fuck", Transcription="fʌk", Translations = new ObservableCollection<string>()
-                {
-                    "Блядь", "Ебать"
-                }
+                { Spelling = "Fuck", Transcription="fʌk",
+                    Translations = new ObservableCollection<string>()
+                    {
+                        "Блядь", "Ебать"
+                    },
+                    Examples = new ObservableCollection<string>()
+                    {
+                        "Do what the fuck you like.", "They Fuck everyday in her trailer at lunch."
+                    }
                 }
             } },
             new Deck(){Name = "FUUUUUU"},

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICSharpCode.AvalonEdit.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -6,12 +7,27 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
     public class Word: INotifyPropertyChanged
     {
         #region Properties
+
+        #region Colorizing
+
+        private DocumentColorizingTransformer colorizing;
+        public DocumentColorizingTransformer Colorizing
+        {
+            get => colorizing = new WordColorizing(Spelling);
+            set
+            {
+                colorizing = value;
+                OnPropertyChanged("Colorizing");
+            }
+        }
+        #endregion
 
         #region Spelling
 

@@ -52,6 +52,9 @@
     <Reference Include="GongSolutions.WPF.DragDrop, Version=2.0.0.0, Culture=neutral, PublicKeyToken=91f1945125b7a587, processorArchitecture=MSIL">
       <HintPath>..\packages\gong-wpf-dragdrop.2.2.0\lib\net46\GongSolutions.WPF.DragDrop.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=6.0.1.278, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.6.0.1\lib\net45\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.6.1513, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.6\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -63,6 +66,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -86,8 +90,10 @@
     </ApplicationDefinition>
     <Compile Include="Scripts\Models\Deck.cs" />
     <Compile Include="Scripts\Models\Word.cs" />
+    <Compile Include="Scripts\Models\WordColorizing.cs" />
     <Compile Include="Scripts\ViewModels\DeckPageVM.cs" />
     <Compile Include="Scripts\ViewModels\DecksPageVM.cs" />
+    <Compile Include="Scripts\ViewModels\MvvmTextEditor.cs" />
     <Compile Include="Scripts\Views\DeckPage.xaml.cs">
       <DependentUpon>DeckPage.xaml</DependentUpon>
     </Compile>
