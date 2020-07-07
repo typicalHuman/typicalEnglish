@@ -52,6 +52,7 @@
                     <Setter Property="Height" Value="25"/>
                     <Setter Property="Width" Value="25"/>
                 </Style>
+                <Style TargetType="ToolTip" BasedOn="{StaticResource OneColorTT}"/>
             </DockPanel.Resources>
             <!--#region Close Button-->
             <Button Background="#f35f5d" Template="{StaticResource CircularButton}"
@@ -114,20 +115,10 @@
             </i:Interaction.Triggers>
         </Button>
         <!--#endregion-->
-        <!--#region Translator Button-->
-        <Button  Content="Translator" FontWeight="Bold" Grid.Column="1" Background="#dcedc1" Grid.Row="1" VerticalAlignment="Top"
-                 FontSize="17" HorizontalAlignment="Stretch"  Height="40" BorderBrush="Transparent" 
-                BorderThickness="0">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
-                                                       CommandParameter="Scripts/Views/TranslatorPage.xaml"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-        <!--#endregion-->
+
+
         <!--#region Reverso Button-->
-        <Button  Content="Reverso" FontWeight="Bold" Grid.Column="2" Background="#ffd3b6 " Grid.Row="1" VerticalAlignment="Top"
+        <Button  Content="Reverso" FontWeight="Bold" Grid.Column="1" Background="#dcedc1" Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17"  HorizontalAlignment="Stretch" Height="40" BorderBrush="Transparent" 
                 BorderThickness="0">
             <i:Interaction.Triggers>
@@ -138,6 +129,14 @@
             </i:Interaction.Triggers>
         </Button>
         <!--#endregion-->
+
+        <!--#region Test Button-->
+        <Button  Content="Test" FontWeight="Bold" Grid.Column="2" Background="#ffd3b6 "  Grid.Row="1" VerticalAlignment="Top"
+                 FontSize="17" HorizontalAlignment="Stretch"  Height="40" BorderBrush="Transparent" 
+                BorderThickness="0">
+        </Button>
+        <!--#endregion-->
+
 
         <!--#region Options Button-->
         <Button Content="Options" FontWeight="Bold" Grid.Column="3" Background="#ffaaa5" Grid.Row="1" VerticalAlignment="Top"

@@ -13,6 +13,16 @@ namespace typicalEnglish.Scripts.Models
 {
     public class Word: INotifyPropertyChanged
     {
+
+        #region Methods
+
+        public void SpeakAuto()
+        {
+
+        }
+
+        #endregion
+
         #region Properties
 
         #region Colorizing
@@ -63,7 +73,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region PronunciationSource
 
-        private string pronunciationSource;
+        private string pronunciationSource = "Auto";
         public string PronunciationSource
         {
             get => pronunciationSource;

@@ -34,12 +34,11 @@
             </i:Interaction.Triggers>
         </Button>
         <!--#endregion-->
-
         <!--#region Add Deck Button-->
         <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
                 Height="70" Width="150" FontSize="25"
                 Content="New word"
-                    BorderBrush="Black" Style="{StaticResource InvisButton}">
+                BorderBrush="Black" Style="{StaticResource InvisButton}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding AddWordCommand}"/>
@@ -95,8 +94,24 @@
                         <Grid Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
                                      Path=DataContext.MoreVisibility}"
                               Name="MoreGrid">
-
                             <StackPanel>
+                                <!--#region Pronunciation-->
+                                <Button HorizontalAlignment="Center" Style="{StaticResource InvisButton}"
+                                        Background="Transparent" Content="{md:PackIcon Kind=Speakerphone,Size=23}">
+                                    <Button.ToolTip>
+                                        <ToolTip Background="White" Foreground="Black" Content="Pronunciation" FontSize="14"
+                                                 FontFamily="Candara"/>
+                                    </Button.ToolTip>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
+                                     Path=DataContext.SpeakCommand}" CommandParameter="{Binding}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                                <!--#endregion-->
+                                
                                 <!--#region Translations-->
                                 <TextBlock Text=" Translations:" FontSize="25"/>
                                 <ItemsControl ItemsSource="{Binding Translations}">

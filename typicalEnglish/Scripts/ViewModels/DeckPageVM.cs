@@ -55,17 +55,27 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
+        #region SpeakCommand
 
-        #region LoadedCommand
-        private RelayCommand loadedCommand;
-        public RelayCommand LoadedCommand
+        private RelayCommand speakCommand;
+        public RelayCommand SpeakCommand
         {
-            get => loadedCommand ?? (loadedCommand = new RelayCommand(obj =>
+            get => speakCommand ?? (speakCommand = new RelayCommand(obj =>
             {
-                
+                Word word = obj as Word;
+                if(word != null)
+                {
+                    if(word.PronunciationSource == "Auto")
+                    {
+                        App.DecksVM.Synthesizer.SpeakAsync(word.Spelling);
+                    }
+                }
             }));
         }
+
         #endregion
+
+
         #endregion
 
         #region Properties
