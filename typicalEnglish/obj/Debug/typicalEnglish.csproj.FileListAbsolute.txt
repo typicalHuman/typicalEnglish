@@ -53,3 +53,5 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\ICSharpCod
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\Newtonsoft.Json.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\Newtonsoft.Json.xml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\NAudio.dll
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\NAudio.xml

@@ -38,7 +38,8 @@ namespace typicalEnglish.Scripts.ViewModels
                     Examples = new ObservableCollection<string>()
                     {
                         "Do what the fuck you like.", "They Fuck everyday in her trailer at lunch."
-                    }
+                    },
+                    PronunciationSource="https://dictionary.cambridge.org/media/english/us_pron/f/fuc/fuck_/fuck.mp3"
                 }
             } },
             new Deck(){Name = "FUUUUUU"},
