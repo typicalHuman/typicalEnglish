@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
 using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
@@ -14,13 +9,11 @@ namespace typicalEnglish.Scripts.ViewModels
     public class DecksPageVM: INotifyPropertyChanged
     {
         #region Constructor
-
         public DecksPageVM()
         {
             synthesizer = new SpeechSynthesizer();
             synthesizer.SelectVoice("Microsoft Zira Desktop");
         }
-
         #endregion
 
         #region Properties
@@ -53,8 +46,6 @@ namespace typicalEnglish.Scripts.ViewModels
             new Deck(){Name = "FUUUUUU"}
         };
 
-        #endregion
-
         #region Synthersizer
 
         private SpeechSynthesizer synthesizer;
@@ -67,6 +58,8 @@ namespace typicalEnglish.Scripts.ViewModels
                 OnPropertyChanged("Synthesizer");
             }
         }
+
+        #endregion
 
         #endregion
 

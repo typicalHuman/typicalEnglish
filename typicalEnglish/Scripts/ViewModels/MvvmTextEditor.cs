@@ -4,24 +4,23 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
     public class MvvmTextEditor : TextEditor, INotifyPropertyChanged
     {
-        #region Dependency Properties
+        #region Properties
 
+        #region Dependency Properties
         public static DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(MvvmTextEditor),
-            new PropertyMetadata((obj, args) =>
-            {
-                MvvmTextEditor target = (MvvmTextEditor)obj;
-                target.Text = (string)args.NewValue;
-            })
-        );
+           DependencyProperty.Register("Text", typeof(string), typeof(MvvmTextEditor),
+           new PropertyMetadata((obj, args) =>
+           {
+               MvvmTextEditor target = (MvvmTextEditor)obj;
+               target.Text = (string)args.NewValue;
+           })
+       );
 
         public new string Text
         {
@@ -46,19 +45,23 @@ namespace typicalEnglish.Scripts.ViewModels
             get { return colorizing; }
             set { colorizing = value; }
         }
+        #endregion
+
+        public int Length { get { return base.Text.Length; } }
 
         #endregion
 
+        #region Events
 
-        public int Length { get { return base.Text.Length; } }
 
         protected override void OnTextChanged(EventArgs e)
         {
             base.OnTextChanged(e);
         }
+
+        #endregion
+
         #region PropertyChanged
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void RaisePropertyChanged(string info)
         {

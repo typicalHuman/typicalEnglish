@@ -1,12 +1,8 @@
 ﻿using ICSharpCode.AvalonEdit.Rendering;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
@@ -16,9 +12,9 @@ namespace typicalEnglish.Scripts.Models
 
         #region Methods
 
-        public void SpeakAuto()
+        public void PlaySound()
         {
-
+            WordSoundPlayer.PlaySound(this);
         }
 
         #endregion
@@ -86,6 +82,35 @@ namespace typicalEnglish.Scripts.Models
 
         #endregion
 
+        #region MoreVisibility
+
+        private Visibility moreVisibility = Visibility.Collapsed;
+        public Visibility MoreVisibility
+        {
+            get => moreVisibility;
+            set
+            {
+                moreVisibility = value;
+                OnPropertyChanged("MoreVisibility");
+            }
+        }
+        #endregion
+
+        #region IsEditing
+
+        private bool isEditing = true;
+        public bool IsEditing
+        {
+            get => isEditing;
+            set
+            {
+                isEditing = value;
+                OnPropertyChanged("IsEditing");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region PropertyChanged
@@ -94,6 +119,48 @@ namespace typicalEnglish.Scripts.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+        #endregion
+
+        #region Commands
+
+        #region ShowInfoCommand
+        private RelayCommand showInfoCommand;
+        public RelayCommand ShowInfoCommand
+        {
+            get => showInfoCommand ?? (showInfoCommand = new RelayCommand(obj =>
+            {
+                MoreVisibility = MoreVisibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+            }));
+        }
+        #endregion
+
+        #region SpeakCommand
+        private RelayCommand speakCommand;
+        public RelayCommand SpeakCommand
+        {
+            get => speakCommand ?? (speakCommand = new RelayCommand(obj =>
+            {
+                Word word = obj as Word;
+                if (word != null)
+                {
+                    word.PlaySound();
+                }
+            }));
+        }
+
+        #endregion
+
+        #region EditCommand
+        private RelayCommand editCommand;
+        public RelayCommand EditCommand
+        {
+            get => editCommand ?? (editCommand = new RelayCommand(obj =>
+            {
+                IsEditing = !IsEditing;
+            }));
+        }
+        #endregion
+
         #endregion
     }
 }

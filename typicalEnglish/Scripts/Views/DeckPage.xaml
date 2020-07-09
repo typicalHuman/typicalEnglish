@@ -34,6 +34,7 @@
             </i:Interaction.Triggers>
         </Button>
         <!--#endregion-->
+        
         <!--#region Add Deck Button-->
         <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
                 Height="70" Width="150" FontSize="25"
@@ -56,7 +57,7 @@
                        x:Key="NoneBorder">
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="IsReadOnly" Value="True"/>
+                    <Setter Property="IsReadOnly" Value="{Binding IsEditing, UpdateSourceTrigger=PropertyChanged}"/>
                     <Setter Property="md:TextFieldAssist.UnderlineBrush" Value="Transparent"/>
                 </Style>
             </ItemsControl.Resources>
@@ -67,32 +68,43 @@
             </ItemsControl.ItemContainerStyle>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel VerticalAlignment="Stretch">
-                        <!--#region English Word-->
+                    <StackPanel VerticalAlignment="Stretch" >
+                        <!--#region Word-->
                         <Grid>
+                            <!--#region Title-->
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBox Text="{Binding Spelling}" FontStyle="Italic"
                                        FontSize="30" Style="{StaticResource NoneBorder}"/>
                                 <TextBox Text="{Binding  StringFormat=[{0}], Path=Transcription}"
                                            FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}"/>
                             </StackPanel>
+                            <!--#endregion-->
+                            <!--#region Edit Button-->
                             <Button Content="{md:PackIcon Kind=Edit}" HorizontalAlignment="Right"
-                                BorderBrush="Transparent" BorderThickness="0" Background="Transparent"/>
+                                BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction
+                                            Command="{Binding EditCommand}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <!--#endregion-->
+                            <!--#region More Information Button-->
                             <Button Content="{md:PackIcon Kind=More}" HorizontalAlignment="Left"
                                 BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction
-                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
-                                     Path=DataContext.ShowInfoCommand}"/>
+                                            Command="{Binding ShowInfoCommand}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
+                            <!--#endregion-->
                         </Grid>
                         <!--#endregion-->
                         <!--#region MoreInformation-->
-                        <Grid Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
-                                     Path=DataContext.MoreVisibility}"
+                        <Grid Visibility="{Binding MoreVisibility}"
                               Name="MoreGrid">
                             <StackPanel>
                                 <!--#region Pronunciation-->
@@ -105,8 +117,7 @@
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction
-                                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
-                                     Path=DataContext.SpeakCommand}" CommandParameter="{Binding}" />
+                                            Command="{Binding SpeakCommand}" CommandParameter="{Binding}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </Button>
@@ -140,14 +151,6 @@
                                                                Background="Transparent" IsReadOnly="True"
                                                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                                                ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                                <i:Interaction.Triggers>
-                                                    <i:EventTrigger EventName="Loaded">
-                                                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}, AncestorLevel=2},
-                                                            Path=DataContext.LoadedCommand}" 
-                                                                               CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
-                                                            Path=DataContext}"/>
-                                                    </i:EventTrigger>
-                                                </i:Interaction.Triggers>
                                             </vm:MvvmTextEditor>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
@@ -156,7 +159,6 @@
                             </StackPanel>
                         </Grid>
                         <!--#endregion-->
-                     
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
