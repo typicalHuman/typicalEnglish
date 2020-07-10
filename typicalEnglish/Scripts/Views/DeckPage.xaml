@@ -12,7 +12,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DeckPage" DataContext="{x:Static local:App.DeckVM}"
       FontFamily="Candara Light">
-
+    <Page.Resources>
+        <vm:InverseBooleanConverter x:Key="BooleanInverse"></vm:InverseBooleanConverter>
+    </Page.Resources>
     <Grid>
         <!--#region Row Definitions-->
 
@@ -55,10 +57,31 @@
             <ItemsControl.Resources>
                 <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}"
                        x:Key="NoneBorder">
-                    <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="IsReadOnly" Value="{Binding IsEditing, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Setter Property="md:TextFieldAssist.UnderlineBrush" Value="Transparent"/>
+                    <Setter Property="IsReadOnly" Value="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.IsEditing, 
+                        Converter={StaticResource BooleanInverse}}"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.IsEditing}"
+                                     Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="md:TextFieldAssist.UnderlineBrush" Value="#03a9f4"/>
+                                <Setter Property="BorderBrush" Value="#03a9f4"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.IsEditing}"
+                                     Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="md:TextFieldAssist.UnderlineBrush" Value="Transparent"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                   
                 </Style>
             </ItemsControl.Resources>
             <ItemsControl.ItemContainerStyle>
@@ -80,7 +103,7 @@
                             </StackPanel>
                             <!--#endregion-->
                             <!--#region Edit Button-->
-                            <Button Content="{md:PackIcon Kind=Edit}" HorizontalAlignment="Right"
+                            <Button HorizontalAlignment="Right"
                                 BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -88,6 +111,18 @@
                                             Command="{Binding EditCommand}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEditing, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                <Setter Property="Content" Value="{md:PackIcon Kind=Close}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsEditing, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                                <Setter Property="Content" Value="{md:PackIcon Kind=Edit}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
                             </Button>
                             <!--#endregion-->
                             <!--#region More Information Button-->
@@ -124,12 +159,16 @@
                                 <!--#endregion-->
                                 
                                 <!--#region Translations-->
-                                <TextBlock Text=" Translations:" FontSize="25"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text=" Translations:" FontSize="25"/>
+                                    <Button Content="Add Translation" Background="Transparent" Style="{StaticResource InvisButton}"/>
+                                </StackPanel>
+
                                 <ItemsControl ItemsSource="{Binding Translations}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBox Text="{Binding Path=.,StringFormat=' {0}'}" Style="{StaticResource NoneBorder}"
-                                                         FontSize="20"/>
+                                            <TextBox Text="{Binding Path=.,StringFormat=' {0}'}"
+                                                         FontSize="20" Style="{StaticResource NoneBorder}" Margin="5 0"/>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                     <ItemsControl.ItemsPanel>
@@ -148,9 +187,25 @@
                                         <DataTemplate>
                                             <vm:MvvmTextEditor Margin="5 0" Text="{Binding}" Colorizing="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
                                                             Path=DataContext.Colorizing}" FontSize="23"
-                                                               Background="Transparent" IsReadOnly="True"
+                                                               Background="Transparent" IsReadOnly="{Binding RelativeSource={RelativeSource AncestorType=Grid},
+                                                Path=DataContext.IsEditing, Converter={StaticResource BooleanInverse}}"
                                                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                                               ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                                               ScrollViewer.VerticalScrollBarVisibility="Disabled" FontStyle="Italic">
+                                                <vm:MvvmTextEditor.Style>
+                                                    <Style TargetType="Control">
+                                                        <Style.Triggers>
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=Grid},
+                                                Path=DataContext.IsEditing, Converter={StaticResource BooleanInverse}}" Value="False"/>
+                                                                </MultiDataTrigger.Conditions>
+                                                                <MultiDataTrigger.Setters>
+                                                                    <Setter Property="FontFamily" Value="Candara"/>
+                                                                </MultiDataTrigger.Setters>
+                                                            </MultiDataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </vm:MvvmTextEditor.Style>
                                             </vm:MvvmTextEditor>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>

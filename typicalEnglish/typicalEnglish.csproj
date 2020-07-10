@@ -101,6 +101,7 @@
     <Compile Include="Scripts\Models\WordSoundPlayer.cs" />
     <Compile Include="Scripts\ViewModels\DeckPageVM.cs" />
     <Compile Include="Scripts\ViewModels\DecksPageVM.cs" />
+    <Compile Include="Scripts\ViewModels\InverseBooleanConverter.cs" />
     <Compile Include="Scripts\ViewModels\MvvmTextEditor.cs" />
     <Compile Include="Scripts\Views\DeckPage.xaml.cs">
       <DependentUpon>DeckPage.xaml</DependentUpon>

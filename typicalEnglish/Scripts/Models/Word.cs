@@ -98,7 +98,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region IsEditing
 
-        private bool isEditing = true;
+        private bool isEditing = false;
         public bool IsEditing
         {
             get => isEditing;
