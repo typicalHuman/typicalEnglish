@@ -1,12 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -73,6 +70,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => closeCommand ?? (closeCommand = new RelayCommand(obj =>
             {
+                JSONData.Save(App.DecksVM.Decks);
                 CloseAction();
             }));
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
@@ -43,6 +44,7 @@ namespace typicalEnglish.Scripts.Models
         #region WordsCount
 
         private int wordsCount;
+        [JsonIgnore]
         public int WordsCount
         {
             get => Words.Count;

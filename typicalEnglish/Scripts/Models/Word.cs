@@ -1,4 +1,5 @@
 ﻿using ICSharpCode.AvalonEdit.Rendering;
+using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -23,8 +24,8 @@ namespace typicalEnglish.Scripts.Models
         #region Properties
 
         #region Colorizing
-
         private DocumentColorizingTransformer colorizing;
+        [JsonIgnore]
         public DocumentColorizingTransformer Colorizing
         {
             get => colorizing = new WordColorizing(Spelling);
@@ -86,6 +87,7 @@ namespace typicalEnglish.Scripts.Models
         #region MoreVisibility
 
         private Visibility moreVisibility = Visibility.Collapsed;
+
         public Visibility MoreVisibility
         {
             get => moreVisibility;
@@ -100,6 +102,7 @@ namespace typicalEnglish.Scripts.Models
         #region IsEditing
 
         private bool isEditing = false;
+        [JsonIgnore]
         public bool IsEditing
         {
             get => isEditing;
@@ -137,6 +140,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region SpeakCommand
         private RelayCommand speakCommand;
+        [JsonIgnore]
         public RelayCommand SpeakCommand
         {
             get => speakCommand ?? (speakCommand = new RelayCommand(obj =>
@@ -149,6 +153,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region EditCommand
         private RelayCommand editCommand;
+        [JsonIgnore]
         public RelayCommand EditCommand
         {
             get => editCommand ?? (editCommand = new RelayCommand(obj =>
@@ -160,6 +165,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region AddTranslationCommand
         private RelayCommand addTranslationCommand;
+        [JsonIgnore]
         public RelayCommand AddTranslationCommand
         {
             get => addTranslationCommand ?? (addTranslationCommand = new RelayCommand(obj =>
@@ -171,6 +177,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region DeleteTranslationCommand
         private RelayCommand deleteTranslationCommand;
+        [JsonIgnore]
         public RelayCommand DeleteTranslationCommand
         {
             get => deleteTranslationCommand ?? (deleteTranslationCommand = new RelayCommand(obj =>
@@ -182,6 +189,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region AddExampleCommand
         private RelayCommand addExampleCommand;
+        [JsonIgnore]
         public RelayCommand AddExampleCommand
         {
             get => addExampleCommand ?? (addExampleCommand = new RelayCommand(obj =>
@@ -193,6 +201,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region DeleteExampleCommand
         private RelayCommand deleteExampleCommand;
+        [JsonIgnore]
         public RelayCommand DeleteExampleCommand
         {
             get => deleteExampleCommand ?? (deleteExampleCommand = new RelayCommand(obj =>
@@ -205,6 +214,7 @@ namespace typicalEnglish.Scripts.Models
         #region ChangeSoundFileCommand
 
         private RelayCommand changeSoundFileCommand;
+        [JsonIgnore]
         public RelayCommand ChangeSoundFileCommand
         {
             get => changeSoundFileCommand ?? (changeSoundFileCommand = new RelayCommand(obj =>

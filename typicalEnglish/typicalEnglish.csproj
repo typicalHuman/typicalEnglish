@@ -96,6 +96,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Scripts\Models\Deck.cs" />
+    <Compile Include="Scripts\Models\JSONData.cs" />
     <Compile Include="Scripts\Models\Word.cs" />
     <Compile Include="Scripts\Models\WordColorizing.cs" />
     <Compile Include="Scripts\Models\WordSoundPlayer.cs" />

@@ -50,10 +50,11 @@
         </Button>
 
         <!--#endregion-->
-
-
+        
+        <!--#region Words-->
         <ItemsControl Grid.Row="1" dd:DragDrop.IsDropTarget="True" ItemsSource="{Binding Words}"
                  HorizontalAlignment="Stretch">
+            <!--#region Words Resources-->
             <ItemsControl.Resources>
                 <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}"
                        x:Key="NoneBorder">
@@ -81,14 +82,17 @@
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
                     </Style.Triggers>
-                   
                 </Style>
             </ItemsControl.Resources>
+            <!--#endregion-->
+            <!--#region Container Style-->
             <ItemsControl.ItemContainerStyle>
                 <Style TargetType="ContentPresenter">
                     <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                 </Style>
             </ItemsControl.ItemContainerStyle>
+            <!--#endregion-->
+            <!--#region Template-->
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Stretch" >
@@ -141,6 +145,7 @@
                         <!--#region MoreInformation-->
                         <Grid Visibility="{Binding MoreVisibility}" >
                             <Grid.Resources>
+                                <!--#region addButton Style-->
                                 <Style TargetType="Button" BasedOn="{StaticResource InvisButton}"
                                        x:Key="addButton">
                                     <Style.Triggers>
@@ -152,6 +157,16 @@
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
+                                <!--#endregion-->
+                                <!--#region Menu Style-->
+                                <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}"> 
+                                    <Setter Property="BorderBrush" Value="Black"/>
+                                    <Setter Property="BorderThickness" Value="0.5"/>
+                                </Style>
+                                <Style TargetType="ContextMenu" BasedOn="{StaticResource {x:Type ContextMenu}}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Style>
+                                <!--#endregion-->
                             </Grid.Resources>
                             <StackPanel>
                                 <!--#region Pronunciation-->
@@ -169,7 +184,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                     <Button.ContextMenu>
-                                        <ContextMenu Height="Auto">
+                                        <ContextMenu Height="Auto" >
                                             <MenuItem>
                                                 <MenuItem.Header>
                                                     <StackPanel Orientation="Horizontal">
@@ -306,7 +321,9 @@
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
+            <!--#endregion-->
         </ItemsControl>
+        <!--#endregion-->
 
     </Grid>
 </Page>
