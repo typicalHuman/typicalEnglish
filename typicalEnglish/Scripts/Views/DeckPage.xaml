@@ -156,7 +156,8 @@
                             <StackPanel>
                                 <!--#region Pronunciation-->
                                 <Button HorizontalAlignment="Center" Style="{StaticResource InvisButton}"
-                                        Background="Transparent" Content="{md:PackIcon Kind=Speakerphone,Size=23}">
+                                        Background="Transparent" Content="{md:PackIcon Kind=Speakerphone,Size=23}"
+                                        x:Name="speakBtn">
                                     <Button.ToolTip>
                                         <ToolTip Background="White" Foreground="Black" Content="Pronunciation" FontSize="14"
                                                  FontFamily="Candara"/>
@@ -167,6 +168,24 @@
                                             Command="{Binding SpeakCommand}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
+                                    <Button.ContextMenu>
+                                        <ContextMenu Height="Auto">
+                                            <MenuItem>
+                                                <MenuItem.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <md:PackIcon Kind="FileEdit"/>
+                                                        <TextBlock Text="Change sound" Margin="4 0 0 0"/>
+                                                    </StackPanel>
+                                                </MenuItem.Header>
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <i:InvokeCommandAction
+                                            Command="{Binding ChangeSoundFileCommand}"/>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
                                 </Button>
                                 <!--#endregion-->
                                 <!--#region Translations-->

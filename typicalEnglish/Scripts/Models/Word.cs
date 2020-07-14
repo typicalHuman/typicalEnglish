@@ -1,4 +1,5 @@
 ﻿using ICSharpCode.AvalonEdit.Rendering;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -199,6 +200,26 @@ namespace typicalEnglish.Scripts.Models
                 Examples.Remove(obj.ToString());
             }));
         }
+        #endregion
+
+        #region ChangeSoundFileCommand
+
+        private RelayCommand changeSoundFileCommand;
+        public RelayCommand ChangeSoundFileCommand
+        {
+            get => changeSoundFileCommand ?? (changeSoundFileCommand = new RelayCommand(obj =>
+            {
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+                dlg.Filter = "Audio files (*.mp3,*.wav)|*.mp3;*.wav";
+                Nullable<bool> result = dlg.ShowDialog();
+                if (result == true)
+                {
+                    string filename = dlg.FileName;
+                    PronunciationSource = filename;
+                }
+            }));
+        }
+
         #endregion
 
         #endregion
