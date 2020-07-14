@@ -140,11 +140,7 @@ namespace typicalEnglish.Scripts.Models
         {
             get => speakCommand ?? (speakCommand = new RelayCommand(obj =>
             {
-                Word word = obj as Word;
-                if (word != null)
-                {
-                    word.PlaySound();
-                }
+                PlaySound();
             }));
         }
 
@@ -157,6 +153,50 @@ namespace typicalEnglish.Scripts.Models
             get => editCommand ?? (editCommand = new RelayCommand(obj =>
             {
                 IsEditing = !IsEditing;
+            }));
+        }
+        #endregion
+
+        #region AddTranslationCommand
+        private RelayCommand addTranslationCommand;
+        public RelayCommand AddTranslationCommand
+        {
+            get => addTranslationCommand ?? (addTranslationCommand = new RelayCommand(obj =>
+            {
+                Translations.Add("");
+            }));
+        }
+        #endregion
+
+        #region DeleteTranslationCommand
+        private RelayCommand deleteTranslationCommand;
+        public RelayCommand DeleteTranslationCommand
+        {
+            get => deleteTranslationCommand ?? (deleteTranslationCommand = new RelayCommand(obj =>
+            {
+                Translations.Remove(obj.ToString());
+            }));
+        }
+        #endregion
+
+        #region AddExampleCommand
+        private RelayCommand addExampleCommand;
+        public RelayCommand AddExampleCommand
+        {
+            get => addExampleCommand ?? (addExampleCommand = new RelayCommand(obj =>
+            {
+                Examples.Add(spelling);
+            }));
+        }
+        #endregion
+
+        #region DeleteExampleCommand
+        private RelayCommand deleteExampleCommand;
+        public RelayCommand DeleteExampleCommand
+        {
+            get => deleteExampleCommand ?? (deleteExampleCommand = new RelayCommand(obj =>
+            {
+                Examples.Remove(obj.ToString());
             }));
         }
         #endregion

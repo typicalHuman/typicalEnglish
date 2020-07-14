@@ -1,8 +1,10 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,9 +26,14 @@ namespace typicalEnglish
     {
         public MainWindow()
         {
+            CultureInfo ci = new CultureInfo("en-EN");
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
             InitializeComponent();
             NavigationSetup();
             App.MainVM.CloseAction = Close;
+
+
         }
 
 

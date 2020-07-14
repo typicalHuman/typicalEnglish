@@ -139,8 +139,20 @@
                         </Grid>
                         <!--#endregion-->
                         <!--#region MoreInformation-->
-                        <Grid Visibility="{Binding MoreVisibility}"
-                              Name="MoreGrid">
+                        <Grid Visibility="{Binding MoreVisibility}" >
+                            <Grid.Resources>
+                                <Style TargetType="Button" BasedOn="{StaticResource InvisButton}"
+                                       x:Key="addButton">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.IsEditing}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.IsEditing}" Value="False">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Resources>
                             <StackPanel>
                                 <!--#region Pronunciation-->
                                 <Button HorizontalAlignment="Center" Style="{StaticResource InvisButton}"
@@ -152,23 +164,52 @@
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction
-                                            Command="{Binding SpeakCommand}" CommandParameter="{Binding}" />
+                                            Command="{Binding SpeakCommand}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </Button>
                                 <!--#endregion-->
-                                
                                 <!--#region Translations-->
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text=" Translations:" FontSize="25"/>
-                                    <Button Content="Add Translation" Background="Transparent" Style="{StaticResource InvisButton}"/>
+                                    <Button Content="Add Translation" Background="Transparent" Style="{StaticResource addButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction
+                                            Command="{Binding AddTranslationCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
                                 </StackPanel>
 
-                                <ItemsControl ItemsSource="{Binding Translations}">
+                                <ItemsControl ItemsSource="{Binding Translations}"
+                                              x:Name="translations">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBox Text="{Binding Path=.,StringFormat=' {0}'}"
-                                                         FontSize="20" Style="{StaticResource NoneBorder}" Margin="5 0"/>
+                                            <TextBox Text="{Binding Path=.}"
+                                                         FontSize="20" Style="{StaticResource NoneBorder}" Margin="5 0"
+                                                     md:HintAssist.Hint="Word">
+                                                <TextBox.ContextMenu>
+                                                    <ContextMenu Height="Auto"
+                                                               >
+                                                        <MenuItem Background="#f35f5d">
+                                                            <MenuItem.Header>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <md:PackIcon Kind="Delete"/>
+                                                                    <TextBlock Text="Delete" Margin="4 0 0 0"/>
+                                                                </StackPanel>
+                                                            </MenuItem.Header>
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Click">
+                                                                    <i:InvokeCommandAction 
+                                                                        Command="{Binding Source={x:Reference translations}, Path=DataContext.DeleteTranslationCommand}"
+                                                       CommandParameter="{Binding}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </MenuItem>
+                                                    </ContextMenu>
+                                                </TextBox.ContextMenu>
+                                            </TextBox>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                     <ItemsControl.ItemsPanel>
@@ -179,10 +220,19 @@
                                     </ItemsControl.ItemsPanel>
                                 </ItemsControl>
                                 <!--#endregion-->
-
                                 <!--#region Examples-->
-                                <TextBlock Text=" Examples:" FontSize="25"/>
-                                <ItemsControl ItemsSource="{Binding Examples}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text=" Examples:" FontSize="25"/>
+                                    <Button Content="Add Example" Background="Transparent" Style="{StaticResource addButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction
+                                            Command="{Binding AddExampleCommand}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </StackPanel>
+                                <ItemsControl ItemsSource="{Binding Examples}" x:Name="examples">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <vm:MvvmTextEditor Margin="5 0" Text="{Binding}" Colorizing="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
@@ -190,7 +240,8 @@
                                                                Background="Transparent" IsReadOnly="{Binding RelativeSource={RelativeSource AncestorType=Grid},
                                                 Path=DataContext.IsEditing, Converter={StaticResource BooleanInverse}}"
                                                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                                               ScrollViewer.VerticalScrollBarVisibility="Disabled" FontStyle="Italic">
+                                                               ScrollViewer.VerticalScrollBarVisibility="Disabled" FontStyle="Italic"
+                                                               md:HintAssist.Hint="Example">
                                                 <vm:MvvmTextEditor.Style>
                                                     <Style TargetType="Control">
                                                         <Style.Triggers>
@@ -206,6 +257,25 @@
                                                         </Style.Triggers>
                                                     </Style>
                                                 </vm:MvvmTextEditor.Style>
+                                                <vm:MvvmTextEditor.ContextMenu>
+                                                    <ContextMenu Height="Auto">
+                                                        <MenuItem Background="#f35f5d">
+                                                            <MenuItem.Header>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <md:PackIcon Kind="Delete"/>
+                                                                    <TextBlock Text="Delete" Margin="4 0 0 0"/>
+                                                                </StackPanel>
+                                                            </MenuItem.Header>
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Click">
+                                                                    <i:InvokeCommandAction 
+                                                                        Command="{Binding Source={x:Reference examples}, Path=DataContext.DeleteExampleCommand}"
+                                                       CommandParameter="{Binding}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </MenuItem>
+                                                    </ContextMenu>
+                                                </vm:MvvmTextEditor.ContextMenu>
                                             </vm:MvvmTextEditor>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
