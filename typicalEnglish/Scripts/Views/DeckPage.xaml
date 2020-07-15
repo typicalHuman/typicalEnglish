@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:typicalEnglish"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:av="http://icsharpcode.net/sharpdevelop/avalonedit"
       mc:Ignorable="d" 
        xmlns:dd="urn:gong-wpf-dragdrop"
       xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
@@ -101,7 +102,8 @@
                             <!--#region Title-->
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBox Text="{Binding Spelling}" FontStyle="Italic"
-                                       FontSize="30" Style="{StaticResource NoneBorder}"/>
+                                       FontSize="30" Style="{StaticResource NoneBorder}" HorizontalAlignment="Center"/>
+                                
                                 <TextBox Text="{Binding  StringFormat=[{0}], Path=Transcription}"
                                            FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}"/>
                             </StackPanel>
@@ -216,11 +218,11 @@
                                     </Button>
                                 </StackPanel>
 
-                                <ItemsControl ItemsSource="{Binding Translations}"
+                                <ItemsControl ItemsSource="{Binding Translations, UpdateSourceTrigger=PropertyChanged}"
                                               x:Name="translations">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBox Text="{Binding Path=.}"
+                                            <TextBox Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}"
                                                          FontSize="20" Style="{StaticResource NoneBorder}" Margin="5 0"
                                                      md:HintAssist.Hint="Word">
                                                 <TextBox.ContextMenu>
@@ -266,51 +268,67 @@
                                         </i:Interaction.Triggers>
                                     </Button>
                                 </StackPanel>
-                                <ItemsControl ItemsSource="{Binding Examples}" x:Name="examples">
+                                <ItemsControl ItemsSource="{Binding Examples, UpdateSourceTrigger=PropertyChanged}" x:Name="examples">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <vm:MvvmTextEditor Margin="5 0" Text="{Binding}" Colorizing="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
+                                            <StackPanel>
+                                                <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                                                         Visibility="Collapsed">
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="Loaded">
+                                                            <i:InvokeCommandAction 
+                                                                Command="{Binding RelativeSource={RelativeSource AncestorType=Grid}, 
+                                                                Path=DataContext.InitializeValueCommand}"/>
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+                                                </TextBox>
+                                                <vm:MvvmTextEditor Margin="5 0"  
+                                                                  Text="{Binding ElementName=tBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"
+                                                                   Colorizing="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
                                                             Path=DataContext.Colorizing}" FontSize="23"
                                                                Background="Transparent" IsReadOnly="{Binding RelativeSource={RelativeSource AncestorType=Grid},
                                                 Path=DataContext.IsEditing, Converter={StaticResource BooleanInverse}}"
                                                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                                               ScrollViewer.VerticalScrollBarVisibility="Disabled" FontStyle="Italic"
-                                                               md:HintAssist.Hint="Example">
-                                                <vm:MvvmTextEditor.Style>
-                                                    <Style TargetType="Control">
-                                                        <Style.Triggers>
-                                                            <MultiDataTrigger>
-                                                                <MultiDataTrigger.Conditions>
-                                                                    <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=Grid},
+                                                               ScrollViewer.VerticalScrollBarVisibility="Disabled" FontStyle="Italic">
+                                                    <i:Interaction.Behaviors>
+                                                        <vm:AvalonEditBehaviour GiveMeTheText="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                    </i:Interaction.Behaviors>
+                                                    <vm:MvvmTextEditor.Style>
+                                                        <Style TargetType="Control">
+                                                            <Style.Triggers>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=Grid},
                                                 Path=DataContext.IsEditing, Converter={StaticResource BooleanInverse}}" Value="False"/>
-                                                                </MultiDataTrigger.Conditions>
-                                                                <MultiDataTrigger.Setters>
-                                                                    <Setter Property="FontFamily" Value="Candara"/>
-                                                                </MultiDataTrigger.Setters>
-                                                            </MultiDataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </vm:MvvmTextEditor.Style>
-                                                <vm:MvvmTextEditor.ContextMenu>
-                                                    <ContextMenu Height="Auto">
-                                                        <MenuItem Background="#f35f5d">
-                                                            <MenuItem.Header>
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <md:PackIcon Kind="Delete"/>
-                                                                    <TextBlock Text="Delete" Margin="4 0 0 0"/>
-                                                                </StackPanel>
-                                                            </MenuItem.Header>
-                                                            <i:Interaction.Triggers>
-                                                                <i:EventTrigger EventName="Click">
-                                                                    <i:InvokeCommandAction 
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <MultiDataTrigger.Setters>
+                                                                        <Setter Property="FontFamily" Value="Candara"/>
+                                                                    </MultiDataTrigger.Setters>
+                                                                </MultiDataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </vm:MvvmTextEditor.Style>
+                                                    <vm:MvvmTextEditor.ContextMenu>
+                                                        <ContextMenu Height="Auto">
+                                                            <MenuItem Background="#f35f5d">
+                                                                <MenuItem.Header>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <md:PackIcon Kind="Delete"/>
+                                                                        <TextBlock Text="Delete" Margin="4 0 0 0"/>
+                                                                    </StackPanel>
+                                                                </MenuItem.Header>
+                                                                <i:Interaction.Triggers>
+                                                                    <i:EventTrigger EventName="Click">
+                                                                        <i:InvokeCommandAction 
                                                                         Command="{Binding Source={x:Reference examples}, Path=DataContext.DeleteExampleCommand}"
                                                        CommandParameter="{Binding}"/>
-                                                                </i:EventTrigger>
-                                                            </i:Interaction.Triggers>
-                                                        </MenuItem>
-                                                    </ContextMenu>
-                                                </vm:MvvmTextEditor.ContextMenu>
-                                            </vm:MvvmTextEditor>
+                                                                    </i:EventTrigger>
+                                                                </i:Interaction.Triggers>
+                                                            </MenuItem>
+                                                        </ContextMenu>
+                                                    </vm:MvvmTextEditor.ContextMenu>
+                                                </vm:MvvmTextEditor>
+                                            </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>

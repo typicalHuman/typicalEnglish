@@ -11,6 +11,7 @@ namespace typicalEnglish.Scripts.ViewModels
         #region Constructor
         public DecksPageVM()
         {
+            Decks = JSONData.GetSavedDecks();
             synthesizer = new SpeechSynthesizer();
             synthesizer.SelectVoice("Microsoft Zira Desktop");
         }
@@ -18,33 +19,34 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region Properties
 
-        public ObservableCollection<Deck> Decks { get; set; } = new ObservableCollection<Deck>()
-        {
-            new Deck(){Name = "CEEEEEEC", Words = new ObservableCollection<Word>()
-            {
-                new Word()
-                { Spelling = "Fuck", Transcription="fʌk",
-                    Translations = new ObservableCollection<string>()
-                    {
-                        "Блядь", "Ебать"
-                    },
-                    Examples = new ObservableCollection<string>()
-                    {
-                        "Do what the fuck you like.", "They Fuck everyday in her trailer at lunch."
-                    },
-                    PronunciationSource="https://dictionary.cambridge.org/media/english/us_pron/f/fuc/fuck_/fuck.mp3"
-                }
-            } },
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "CEEEEEEC"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "CEEEEEEC"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "FUUUUUU"},
-            new Deck(){Name = "FUUUUUU"}
-        };
+        public ObservableCollection<Deck> Decks { get; set; } 
+            //= new ObservableCollection<Deck>()
+        //{
+        //    new Deck(){Name = "CEEEEEEC", Words = new ObservableCollection<Word>()
+        //    {
+        //        new Word()
+        //        { Spelling = "Fuck", Transcription="fʌk",
+        //            Translations = new ObservableCollection<string>()
+        //            {
+        //                "Блядь", "Ебать"
+        //            },
+        //            Examples = new ObservableCollection<string>()
+        //            {
+        //                "Do what the fuck you like.", "They Fuck everyday in her trailer at lunch."
+        //            },
+        //            PronunciationSource="https://dictionary.cambridge.org/media/english/us_pron/f/fuc/fuck_/fuck.mp3"
+        //        }
+        //    } },
+        //    new Deck(){Name = "FUUUUUU"},
+        //    new Deck(){Name = "FUUUUUU"},
+        //    new Deck(){Name = "CEEEEEEC"},
+        //    new Deck(){Name = "FUUUUUU"},
+        //    new Deck(){Name = "FUUUUUU"},
+        //    new Deck(){Name = "CEEEEEEC"},
+        //    new Deck(){Name = "FUUUUUU"},
+        //    new Deck(){Name = "FUUUUUU"},
+        //    new Deck(){Name = "FUUUUUU"}
+        //};
 
         #region Synthersizer
 

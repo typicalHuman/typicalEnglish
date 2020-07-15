@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -13,19 +14,23 @@ namespace typicalEnglish.Scripts.ViewModels
         #region Properties
 
         #region Dependency Properties
+
         public static DependencyProperty TextProperty =
            DependencyProperty.Register("Text", typeof(string), typeof(MvvmTextEditor),
            new PropertyMetadata((obj, args) =>
            {
                MvvmTextEditor target = (MvvmTextEditor)obj;
-               target.Text = (string)args.NewValue;
            })
        );
 
         public new string Text
         {
-            get { return base.Text; }
-            set { base.Text = value; }
+            get => base.Text; 
+            set
+            {
+                base.Text = value;
+                OnPropertyChanged("Text");
+            }
         }
 
         public static DependencyProperty ColorizingProperty =
@@ -53,7 +58,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region Events
 
-
         protected override void OnTextChanged(EventArgs e)
         {
             base.OnTextChanged(e);
@@ -63,7 +67,7 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-        public void RaisePropertyChanged(string info)
+        public void OnPropertyChanged(string info)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
         }

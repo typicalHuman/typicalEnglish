@@ -1,6 +1,7 @@
 ﻿using ICSharpCode.AvalonEdit.Rendering;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -11,7 +12,6 @@ namespace typicalEnglish.Scripts.Models
 {
     public class Word: INotifyPropertyChanged
     {
-
         #region Methods
 
         public void PlaySound()
@@ -59,15 +59,15 @@ namespace typicalEnglish.Scripts.Models
             get => transcription;
             set
             {
-                transcription = value;
+                transcription = value.Replace("[", "").Replace("]", "");
                 OnPropertyChanged("Transcription");
             }
         }
         #endregion
 
-        public ObservableCollection<string> Translations { get; set; }
+        public ObservableCollection<MutableString> Translations { get; set; } = new ObservableCollection<MutableString>();
 
-        public ObservableCollection<string> Examples { get; set; }
+        public ObservableCollection<MutableString> Examples { get; set; } = new ObservableCollection<MutableString>();
 
         #region PronunciationSource
 
@@ -87,7 +87,7 @@ namespace typicalEnglish.Scripts.Models
         #region MoreVisibility
 
         private Visibility moreVisibility = Visibility.Collapsed;
-
+        [JsonIgnore]
         public Visibility MoreVisibility
         {
             get => moreVisibility;
@@ -182,7 +182,7 @@ namespace typicalEnglish.Scripts.Models
         {
             get => deleteTranslationCommand ?? (deleteTranslationCommand = new RelayCommand(obj =>
             {
-                Translations.Remove(obj.ToString());
+                Translations.Remove(obj as MutableString);
             }));
         }
         #endregion
@@ -206,7 +206,7 @@ namespace typicalEnglish.Scripts.Models
         {
             get => deleteExampleCommand ?? (deleteExampleCommand = new RelayCommand(obj =>
             {
-                Examples.Remove(obj.ToString());
+                Examples.Remove(obj as MutableString);
             }));
         }
         #endregion
@@ -226,6 +226,25 @@ namespace typicalEnglish.Scripts.Models
                 {
                     string filename = dlg.FileName;
                     PronunciationSource = filename;
+                }
+            }));
+        }
+
+        #endregion
+
+        #region initializeValueCommand
+
+        private RelayCommand initializeValueCommand;
+        [JsonIgnore]
+        public RelayCommand InitializeValueCommand
+        {
+            get => initializeValueCommand ?? (initializeValueCommand = new RelayCommand(obj =>
+            {
+                //a piece of shit
+                for (int i = 0; i < Examples.Count; i++)
+                {
+                    Examples[i] = Examples[i] + " ";
+                    Examples[i] = Examples[i].Value.Remove(Examples[i].Value.Length - 1);
                 }
             }));
         }
