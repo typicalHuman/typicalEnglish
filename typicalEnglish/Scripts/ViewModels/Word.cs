@@ -6,9 +6,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using typicalEnglish.Scripts.Models;
 using typicalEnglish.Scripts.ViewModels;
 
-namespace typicalEnglish.Scripts.Models
+namespace typicalEnglish.Scripts.ViewModels
 {
     public class Word: INotifyPropertyChanged
     {
@@ -59,7 +60,7 @@ namespace typicalEnglish.Scripts.Models
             get => transcription;
             set
             {
-                transcription = value.Replace("[", "").Replace("]", "");
+                transcription = value?.Replace("[", "").Replace("]", "");
                 OnPropertyChanged("Transcription");
             }
         }
@@ -159,6 +160,7 @@ namespace typicalEnglish.Scripts.Models
             get => editCommand ?? (editCommand = new RelayCommand(obj =>
             {
                 IsEditing = !IsEditing;
+                JSONData.Save(App.DecksVM.Decks);
             }));
         }
         #endregion
@@ -232,7 +234,7 @@ namespace typicalEnglish.Scripts.Models
 
         #endregion
 
-        #region initializeValueCommand
+        #region InitializeValueCommand
 
         private RelayCommand initializeValueCommand;
         [JsonIgnore]
@@ -240,7 +242,7 @@ namespace typicalEnglish.Scripts.Models
         {
             get => initializeValueCommand ?? (initializeValueCommand = new RelayCommand(obj =>
             {
-                //a piece of shit
+                //a piece of shit (needs for property changed event)
                 for (int i = 0; i < Examples.Count; i++)
                 {
                     Examples[i] = Examples[i] + " ";

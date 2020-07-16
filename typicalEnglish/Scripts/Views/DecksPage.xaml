@@ -26,7 +26,8 @@
             <!--#endregion-->
             <!--#region Decks-->
             <ListBox dd:DragDrop.IsDragSource="True" Margin="0 70 0 0"
-         dd:DragDrop.IsDropTarget="True" VerticalAlignment="Top" ItemsSource="{Binding Decks}">
+         dd:DragDrop.IsDropTarget="True" VerticalAlignment="Top" ItemsSource="{Binding Decks}"
+                     x:Name="decks">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" IsItemsHost="True">
@@ -38,6 +39,43 @@
                     <DataTemplate>
                         <Button Background="{Binding Background}" Height="150" Width="110"
                             BorderBrush="{Binding BorderBrush}">
+                          
+                            <!--#region Context Menu-->
+                            <Button.ContextMenu>
+                                <ContextMenu Height="Auto">
+                                    <MenuItem Background="White">
+                                        <MenuItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <md:PackIcon Kind="Paintbrush"/>
+                                                <TextBlock Text="Customization" Margin="4 0 0 0"/>
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding Source={x:Reference decks},
+                                     Path=DataContext.OpenDeckCustomizationCommand}"
+                                                       CommandParameter="{Binding}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </MenuItem>
+                                    <MenuItem Background="#f35f5d">
+                                        <MenuItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <md:PackIcon Kind="Delete"/>
+                                                <TextBlock Text="Delete" Margin="4 0 0 0"/>
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding Source={x:Reference decks},
+                                     Path=DataContext.DeleteCommand}"
+                                                       CommandParameter="{Binding}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                            <!--#endregion-->
                             <StackPanel VerticalAlignment="Top">
                                 <Ellipse Width="50" Height="50" VerticalAlignment="Top" Margin="0 10">
                                     <Ellipse.Fill>
@@ -49,40 +87,10 @@
                                 <TextBox Text="{Binding Name}" MinWidth="20" FontSize="15"
                                         CaretBrush="#03a9f4" VerticalAlignment="Bottom" md:HintAssist.Hint="Name"/>
                             </StackPanel>
-                            <!--#region Context Menu-->
-                            <Button.ContextMenu>
-                                <ContextMenu Height="Auto">
-                                    <MenuItem >
-                                        <MenuItem.Header>
-                                            <StackPanel Orientation="Horizontal">
-                                                <md:PackIcon Kind="Paintbrush"/>
-                                                <TextBlock Text="Customization" Margin="4 0 0 0"/>
-                                            </StackPanel>
-                                        </MenuItem.Header>
-                                    </MenuItem>
-                                    <MenuItem Background="#f35f5d">
-                                        <MenuItem.Header>
-                                            <StackPanel Orientation="Horizontal">
-                                                <md:PackIcon Kind="Delete"/>
-                                                <TextBlock Text="Delete" Margin="4 0 0 0"/>
-                                            </StackPanel>
-                                        </MenuItem.Header>
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBox}},
-                                     Path=DataContext.DeleteCommand}"
-                                                       CommandParameter="{Binding}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </MenuItem>
-                                </ContextMenu>
-                            </Button.ContextMenu>
-                            <!--#endregion-->
-
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseDoubleClick">
                                     <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBox}},
-                                     Path=DataContext.OpenCommand}"
+                                     Path=DataContext.OpenDeckCommand}"
                                                        CommandParameter="{Binding}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>

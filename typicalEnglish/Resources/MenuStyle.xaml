@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:typicalEnglish.Resources">
+    <!--#region Menu Style-->
+    <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
+    </Style>
+    <Style TargetType="ContextMenu" BasedOn="{StaticResource {x:Type ContextMenu}}">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <!--#endregion-->
+</ResourceDictionary>

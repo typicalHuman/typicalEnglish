@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\App.xaml
-9823641930
+11-817324830
 
-24-107961752
+261660493344
 802085053454
-Resources\ButtonStyle.xaml;Resources\InvisibleButtonBorderStyle.xaml;Resources\OneColorToolTipStyle.xaml;Scripts\Views\DeckPage.xaml;Scripts\Views\DecksPage.xaml;Scripts\Views\MainWindow.xaml;Resources\CircularButtonTemplate.xaml;Scripts\Views\OptionsPage.xaml;Scripts\Views\ReversoPage.xaml;
+Resources\ButtonStyle.xaml;Resources\InvisibleButtonBorderStyle.xaml;Resources\MenuStyle.xaml;Resources\OneColorToolTipStyle.xaml;Scripts\Views\DeckCustomizationPage.xaml;Scripts\Views\DeckPage.xaml;Scripts\Views\DecksPage.xaml;Scripts\Views\MainWindow.xaml;Resources\CircularButtonTemplate.xaml;Scripts\Views\OptionsPage.xaml;Scripts\Views\ReversoPage.xaml;
 
 False
 

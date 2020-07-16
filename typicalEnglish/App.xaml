@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="Resources/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="Resources/OneColorToolTipStyle.xaml"/>
                 <ResourceDictionary Source="Resources/InvisibleButtonBorderStyle.xaml"/>
+                <ResourceDictionary Source="Resources/MenuStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

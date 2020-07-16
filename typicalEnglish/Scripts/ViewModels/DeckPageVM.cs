@@ -43,6 +43,19 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
+        #region DeleteWordCommand
+
+        private RelayCommand deleteWordCommand;
+        public RelayCommand DeleteWordCommand
+        {
+            get => deleteWordCommand ?? (deleteWordCommand = new RelayCommand(obj =>
+            {
+                Words.Remove(obj as Word);
+            }));
+        }
+
+        #endregion
+
         #endregion
 
         #region Properties
