@@ -7,8 +7,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using typicalEnglish.Scripts.Models;
-using typicalEnglish.Scripts.ViewModels;
-
 namespace typicalEnglish.Scripts.ViewModels
 {
     public class Word: INotifyPropertyChanged

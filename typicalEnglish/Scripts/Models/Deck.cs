@@ -73,6 +73,21 @@ namespace typicalEnglish.Scripts.Models
 
         #endregion
 
+        #region Foreground
+
+        private Brush foreground;
+        public Brush Foreground
+        {
+            get => foreground;
+            set
+            {
+                foreground = value;
+                OnPropertyChanged("Foreground");
+            }
+        }
+
+        #endregion
+
         #region BorderBrush
 
         private Brush borderBrush = (Brush)new BrushConverter().ConvertFrom("#03a9f4");

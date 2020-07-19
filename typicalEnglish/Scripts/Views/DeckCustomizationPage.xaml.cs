@@ -24,5 +24,6 @@ namespace typicalEnglish.Scripts.Views
         {
             InitializeComponent();
         }
+
     }
 }
