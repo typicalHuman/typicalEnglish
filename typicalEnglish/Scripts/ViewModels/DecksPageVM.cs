@@ -2,7 +2,9 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Speech.Synthesis;
+using System.Windows;
 using typicalEnglish.Scripts.Models;
+using typicalEnglish.Scripts.Views;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -51,7 +53,6 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-
         #region DeleteCommand
 
         private RelayCommand deleteCommand;
@@ -59,7 +60,14 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => deleteCommand ?? (deleteCommand = new RelayCommand(obj =>
             {
-                Decks.Remove(obj as Deck);
+                var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                          "Are you sure?",
+                          "Confirm dialog",
+                          MessageBoxButton.YesNo,
+                          (Style)Application.Current.FindResource("ConfirmBoxStyle")
+                      );
+                if(res.ToString() == "Yes")
+                   Decks.Remove(obj as Deck);
             }));
         }
 

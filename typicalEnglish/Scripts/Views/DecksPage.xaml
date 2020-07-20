@@ -4,12 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:typicalEnglish"
+      xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d"  
       xmlns:dd="urn:gong-wpf-dragdrop"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="600" d:DesignWidth="800"
       Title="DecksPage" DataContext="{x:Static local:App.DecksVM}" FontFamily="Candara Light">
+    <Page.Resources>
+        <vm:ColorBrushConverter x:Key="ColorBrush"></vm:ColorBrushConverter>
+    </Page.Resources>
     <Grid>
         <Grid  Margin="0 10 0 0">
             <!--#region Add Deck Button-->
@@ -37,9 +41,18 @@
                 <!--#region Template-->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="{Binding Background}" Height="150" Width="110"
-                            BorderBrush="{Binding BorderBrush}">
-                          
+                        <Button Height="150" Width="110" Background="{Binding Background, UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource ColorBrush}}" 
+                            BorderBrush="{Binding BorderColor, UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource ColorBrush}}" 
+                                Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource ColorBrush}}">
+                            <Button.Resources>
+                                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                    <Setter Property="md:TextFieldAssist.UnderlineBrush" Value="{Binding UnderlineColor, UpdateSourceTrigger=PropertyChanged,
+                                        Converter={StaticResource ColorBrush}}"/>
+                                </Style>
+                            </Button.Resources>
                             <!--#region Context Menu-->
                             <Button.ContextMenu>
                                 <ContextMenu Height="Auto">

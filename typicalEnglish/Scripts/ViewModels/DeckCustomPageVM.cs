@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using typicalEnglish.Scripts.Models;
+using ImageSource = typicalEnglish.Scripts.Models.ImageSource;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -57,7 +58,30 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             "pack://application:,,,/Resources/Images/typography.png",
             "pack://application:,,,/Resources/Images/bolt.png",
-            "pack://application:,,,/Resources/Images/star.png"
+            "pack://application:,,,/Resources/Images/star.png",
+            "pack://application:,,,/Resources/Images/booklet.png",
+            "pack://application:,,,/Resources/Images/bookshelf.png",
+            "pack://application:,,,/Resources/Images/briefcase.png",
+            "pack://application:,,,/Resources/Images/caution.png",
+            "pack://application:,,,/Resources/Images/chat.png",
+            "pack://application:,,,/Resources/Images/check.png",
+            "pack://application:,,,/Resources/Images/clapboard.png",
+            "pack://application:,,,/Resources/Images/compose.png",
+            "pack://application:,,,/Resources/Images/genius.png",
+            "pack://application:,,,/Resources/Images/target.png",
+            "pack://application:,,,/Resources/Images/airport.png",
+            "pack://application:,,,/Resources/Images/beach.png",
+            "pack://application:,,,/Resources/Images/bookpencil.png",
+            "pack://application:,,,/Resources/Images/geography.png",
+            "pack://application:,,,/Resources/Images/glossary.png",
+            "pack://application:,,,/Resources/Images/knowledgetransfer.png",
+            "pack://application:,,,/Resources/Images/about.png",
+            "pack://application:,,,/Resources/Images/bookmark.png",
+            "pack://application:,,,/Resources/Images/female.png",
+            "pack://application:,,,/Resources/Images/male.png",
+            "pack://application:,,,/Resources/Images/music.png",
+            "pack://application:,,,/Resources/Images/news.png",
+            "pack://application:,,,/Resources/Images/learning.png"
         };
 
         #endregion
@@ -93,6 +117,17 @@ namespace typicalEnglish.Scripts.ViewModels
             }));
         }
 
+        #endregion
+
+        #region BackCommand
+        private RelayCommand backCommand;
+        public RelayCommand BackCommand
+        {
+            get => backCommand ?? (backCommand = new RelayCommand(obj =>
+            {
+                App.MainVM.Navigate("Scripts/Views/DecksPage.xaml");
+            }));
+        }
         #endregion
 
         #endregion

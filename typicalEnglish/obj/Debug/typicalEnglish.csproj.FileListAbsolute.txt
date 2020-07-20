@@ -74,3 +74,4 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\ro\Xceed.W
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\ConfirmBoxStyle.baml

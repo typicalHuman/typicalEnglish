@@ -58,10 +58,10 @@ namespace typicalEnglish.Scripts.Models
 
         #endregion
 
-        #region Background
+        #region Bacground
 
-        private Brush background;
-        public Brush Background
+        private Color background = Colors.White;
+        public Color Background
         {
             get => background;
             set
@@ -70,13 +70,13 @@ namespace typicalEnglish.Scripts.Models
                 OnPropertyChanged("Background");
             }
         }
-
         #endregion
+
 
         #region Foreground
 
-        private Brush foreground;
-        public Brush Foreground
+        private Color foreground = Colors.Black;
+        public Color Foreground
         {
             get => foreground;
             set
@@ -88,16 +88,29 @@ namespace typicalEnglish.Scripts.Models
 
         #endregion
 
-        #region BorderBrush
-
-        private Brush borderBrush = (Brush)new BrushConverter().ConvertFrom("#03a9f4");
-        public Brush BorderBrush
+        #region BorderColor
+        private Color borderColor = (Color)new ColorConverter().ConvertFrom("#03a9f4");
+        public Color BorderColor
         {
-            get => borderBrush;
+            get => borderColor;
             set
             {
-                borderBrush = value;
-                OnPropertyChanged("BorderBrush");
+                borderColor = value;
+                OnPropertyChanged("BorderColor");
+            }
+        }
+
+        #endregion
+
+        #region UnderlineColor
+        private Color underlineColor = (Color)new ColorConverter().ConvertFrom("#03a9f4");
+        public Color UnderlineColor
+        {
+            get => underlineColor;
+            set
+            {
+                underlineColor = value;
+                OnPropertyChanged("UnderlineColor");
             }
         }
 

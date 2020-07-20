@@ -126,7 +126,8 @@
                                 <!--#region Title-->
                                 <StackPanel HorizontalAlignment="Center">
                                     <TextBox Text="{Binding Spelling}" FontStyle="Italic"
-                                       FontSize="30" Style="{StaticResource NoneBorder}" HorizontalAlignment="Center"/>
+                                       FontSize="30" Style="{StaticResource NoneBorder}" HorizontalAlignment="Center"
+                                             MinWidth="20"/>
 
                                     <TextBox Text="{Binding  StringFormat=[{0}], Path=Transcription}"
                                            FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}"/>
