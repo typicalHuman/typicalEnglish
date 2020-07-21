@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Resources/InvisibleButtonBorderStyle.xaml"/>
                 <ResourceDictionary Source="Resources/MenuStyle.xaml"/>
                 <ResourceDictionary Source="Resources/ConfirmBoxStyle.xaml"/>
+                <ResourceDictionary Source="Resources/ListViewStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

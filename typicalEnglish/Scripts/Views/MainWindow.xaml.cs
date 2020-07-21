@@ -103,7 +103,8 @@ namespace typicalEnglish
         {
             Messenger.Default.Register<NavigateArgs>(this, (x) =>
             {
-                Frame1.Navigate(new Uri(x.Url, UriKind.Relative));
+                if(!x.Url.Contains("Select"))
+                   Frame1.Navigate(new Uri(x.Url, UriKind.Relative));
             });
         }
 

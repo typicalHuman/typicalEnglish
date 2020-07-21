@@ -14,6 +14,7 @@ namespace typicalEnglish
         public static DeckPageVM DeckVM { get; set; }
         public static DeckCustomPageVM DeckCustomVM { get; set; }
         public static TestPageVM TestPageVM { get; set; }
+        public static SelectWordsPageVM SelectWordVM { get; set; }
         public App()
         {
             MainVM = new MainWindowVM();

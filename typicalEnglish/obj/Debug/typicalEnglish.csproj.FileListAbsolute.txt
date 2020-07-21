@@ -75,3 +75,8 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\zh-Hans\Xc
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\ConfirmBoxStyle.baml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\TestPage.g.cs
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\TestPage.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\SelectDecksPage.g.cs
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\SelectDecksPage.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\SelectWordsPage.g.cs
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\SelectWordsPage.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\ListViewStyle.baml

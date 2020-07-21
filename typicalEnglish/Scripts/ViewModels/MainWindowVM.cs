@@ -106,8 +106,7 @@ namespace typicalEnglish.Scripts.ViewModels
         #endregion
 
         #region NavigateCommands
-
-        public string lastPage { get; set; } = "Scripts/Views/DecksPage.xaml";
+        private string lastPage { get; set; }
 
         public void Navigate(string url)
         {
