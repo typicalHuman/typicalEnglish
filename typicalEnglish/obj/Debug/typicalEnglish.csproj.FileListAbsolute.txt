@@ -32,9 +32,7 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\GalaSoft.M
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DecksPage.g.cs
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DecksPage.baml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\OptionsPage.g.cs
-C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\ReversoPage.g.cs
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\OptionsPage.baml
-C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\ReversoPage.baml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\GongSolutions.WPF.DragDrop.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\GongSolutions.WPF.DragDrop.pdb
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\GongSolutions.WPF.DragDrop.xml
@@ -75,3 +73,5 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\ru\Xceed.W
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\ConfirmBoxStyle.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\TestPage.g.cs
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\TestPage.baml

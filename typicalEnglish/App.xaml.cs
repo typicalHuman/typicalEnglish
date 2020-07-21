@@ -13,10 +13,12 @@ namespace typicalEnglish
         public static DecksPageVM DecksVM { get; set; }
         public static DeckPageVM DeckVM { get; set; }
         public static DeckCustomPageVM DeckCustomVM { get; set; }
+        public static TestPageVM TestPageVM { get; set; }
         public App()
         {
             MainVM = new MainWindowVM();
             DecksVM = new DecksPageVM();
+            TestPageVM = new TestPageVM();
         }
 
     }

@@ -32,7 +32,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
@@ -116,24 +115,16 @@
         </Button>
         <!--#endregion-->
 
-
-        <!--#region Reverso Button-->
-        <Button  Content="Reverso" FontWeight="Bold" Grid.Column="1" Background="#dcedc1" Grid.Row="1" VerticalAlignment="Top"
-                 FontSize="17"  HorizontalAlignment="Stretch" Height="40" BorderBrush="Transparent" 
+        <!--#region Test Button-->
+        <Button  Content="Test" FontWeight="Bold" Grid.Column="1" Background="#ffd3b6 "  Grid.Row="1" VerticalAlignment="Top"
+                 FontSize="17" HorizontalAlignment="Stretch"  Height="40" BorderBrush="Transparent" 
                 BorderThickness="0">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
-                                                       CommandParameter="Scripts/Views/ReversoPage.xaml"/>
+                                                       CommandParameter="Scripts/Views/TestPage.xaml"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </Button>
-        <!--#endregion-->
-
-        <!--#region Test Button-->
-        <Button  Content="Test" FontWeight="Bold" Grid.Column="2" Background="#ffd3b6 "  Grid.Row="1" VerticalAlignment="Top"
-                 FontSize="17" HorizontalAlignment="Stretch"  Height="40" BorderBrush="Transparent" 
-                BorderThickness="0">
         </Button>
         <!--#endregion-->
 

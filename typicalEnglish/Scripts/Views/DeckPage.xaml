@@ -16,7 +16,7 @@
     <Page.Resources>
         <vm:InverseBooleanConverter x:Key="BooleanInverse"></vm:InverseBooleanConverter>
     </Page.Resources>
-    <Grid>
+    <Grid Margin="0 10 0 0">
         <!--#region Row Definitions-->
 
         <Grid.RowDefinitions>
@@ -127,10 +127,10 @@
                                 <StackPanel HorizontalAlignment="Center">
                                     <TextBox Text="{Binding Spelling}" FontStyle="Italic"
                                        FontSize="30" Style="{StaticResource NoneBorder}" HorizontalAlignment="Center"
-                                             MinWidth="20"/>
+                                             MinWidth="20" MaxLength="60"/>
 
                                     <TextBox Text="{Binding  StringFormat=[{0}], Path=Transcription}"
-                                           FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}"/>
+                                           FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}" MaxLength="90"/>
                                 </StackPanel>
                                 <!--#endregion-->
                                 <!--#region Edit Button-->
@@ -241,6 +241,7 @@
                                             <DataTemplate>
                                                 <TextBox Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}"
                                                          FontSize="20" Style="{StaticResource NoneBorder}" Margin="5 0"
+                                                         MaxLength="70"
                                                      md:HintAssist.Hint="Word">
                                                     <TextBox.ContextMenu>
                                                         <ContextMenu Height="Auto"

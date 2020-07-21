@@ -116,6 +116,7 @@
     <Compile Include="Scripts\Models\MutableString.cs" />
     <Compile Include="Scripts\ViewModels\ColorBrushConverter.cs" />
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
+    <Compile Include="Scripts\ViewModels\TestPageVM.cs" />
     <Compile Include="Scripts\ViewModels\Word.cs" />
     <Compile Include="Scripts\Models\WordColorizing.cs" />
     <Compile Include="Scripts\Models\WordSoundPlayer.cs" />
@@ -134,8 +135,8 @@
     <Compile Include="Scripts\Views\OptionsPage.xaml.cs">
       <DependentUpon>OptionsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scripts\Views\ReversoPage.xaml.cs">
-      <DependentUpon>ReversoPage.xaml</DependentUpon>
+    <Compile Include="Scripts\Views\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\ButtonStyle.xaml">
       <SubType>Designer</SubType>
@@ -196,7 +197,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Scripts\Views\ReversoPage.xaml">
+    <Page Include="Scripts\Views\TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

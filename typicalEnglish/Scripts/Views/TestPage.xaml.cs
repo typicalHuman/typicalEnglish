@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,13 +17,18 @@ using System.Windows.Shapes;
 namespace typicalEnglish.Scripts.Views
 {
     /// <summary>
-    /// Interaction logic for ReversoPage.xaml
+    /// Interaction logic for TestPage.xaml
     /// </summary>
-    public partial class ReversoPage : Page
+    public partial class TestPage : Page
     {
-        public ReversoPage()
+        public TestPage()
         {
             InitializeComponent();
+        }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
