@@ -14,7 +14,7 @@
     <Page.Resources>
         <vm:ColorBrushConverter x:Key="ColorBrush"></vm:ColorBrushConverter>
     </Page.Resources>
-    <Grid Margin="0 10 0 0">
+    <Grid Margin="0 10 0 0" >
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition/>
@@ -53,16 +53,23 @@
 
         <!--#region Selection Options-->
 
-            <!--#region Select All-->
+        <!--#region Select All-->
 
         <Button Height="40" Width="50" HorizontalAlignment="Right" Margin="5 0"
-                Style="{StaticResource InvisButton}" Background="Transparent"
-                Content="{md:PackIcon Kind=SelectAll,Size=20}" ToolTip="Select all">
-            
+                Style="{StaticResource InvisButton}" Background="Transparent" 
+                Content="{md:PackIcon Kind=SelectAll,Size=20}">
+            <Button.ToolTip>
+                <ToolTip Content="Select All" Style="{StaticResource OneColorTT}" />
+            </Button.ToolTip>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding SelectAllCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </Button>
             <!--#endregion-->
 
-        <!--#region Select Last-->
+        <!--#region Select First-->
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"
                     Orientation="Horizontal" Margin="5 0">
             <!--#region MoreOption Button-->
@@ -80,16 +87,21 @@
                         Margin="10 0">
                 <Button Height="40" FontSize="20"
                 Style="{StaticResource InvisButton}" Background="Transparent"
-                Content="Select last" >
-
+                Content="Select first" >
+                    <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SelectFirstCommand}"
+                                               CommandParameter="{Binding ElementName=wordsNumber, Path=Text}"/>
+                    </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
                 <TextBox MinWidth="30" Margin="10 0" PreviewTextInput="NumberValidationTextBox"
-                         MaxLength="7"/>
+                         MaxLength="7" Name="wordsNumber"/>
+                <TextBlock Text="words" VerticalAlignment="Center" Margin="5 0"/>
             </StackPanel>
 
         </StackPanel>
         <!--#endregion-->
-
 
         <!--#endregion-->
 
@@ -108,17 +120,7 @@
                 <DataTemplate>
                     <StackPanel  Margin="10 10">
                         <CheckBox HorizontalAlignment="Center" Background="Green"
-                                  md:CheckBoxAssist.CheckBoxSize="25">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Checked">
-                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}},
-                                     Path=DataContext.CheckedDeckCommand}" CommandParameter="{Binding Path=.}"/>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="Unchecked">
-                                <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}},
-                                     Path=DataContext.UncheckedDeckCommand}" CommandParameter="{Binding Path=.}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                                  md:CheckBoxAssist.CheckBoxSize="25" IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
                         </CheckBox>
                         <Button Height="150" Width="110"
                                 Background="{Binding Background, UpdateSourceTrigger=PropertyChanged,

@@ -9,7 +9,7 @@ using System.Windows;
 using typicalEnglish.Scripts.Models;
 namespace typicalEnglish.Scripts.ViewModels
 {
-    public class Word: INotifyPropertyChanged
+    public class Word: TestValue, INotifyPropertyChanged
     {
         #region Methods
 
@@ -114,14 +114,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
 
         #region Commands

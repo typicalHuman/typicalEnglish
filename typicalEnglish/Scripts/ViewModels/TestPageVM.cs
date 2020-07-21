@@ -8,6 +8,7 @@ namespace typicalEnglish.Scripts.ViewModels
 {
     public class TestPageVM : INotifyPropertyChanged
     {
+
         #region Commands
 
         #region ChangeVisibilityCommand
@@ -21,24 +22,37 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-        #region CheckedDeckCommand
-        private RelayCommand checkedDeckCommand;
-        public RelayCommand CheckedDeckCommand
+        #region SelectAllCommand
+        private RelayCommand selectAllCommand;
+        public RelayCommand SelectAllCommand
         {
-            get => checkedDeckCommand ?? (checkedDeckCommand = new RelayCommand(obj =>
+            get => selectAllCommand ?? (selectAllCommand = new RelayCommand(obj =>
             {
-                SelectedDecks.Add(obj as Deck);
+                foreach (Deck deck in App.DecksVM.Decks)
+                    deck.IsSelected = true;
             }));
         }
         #endregion
 
-        #region UncheckedDeckCommand
-        private RelayCommand uncheckedDeckCommand;
-        public RelayCommand UncheckedDeckCommand
+        #region SelectFirstCommand
+        private RelayCommand selectFirstCommand;
+        public RelayCommand SelectFirstCommand
         {
-            get => uncheckedDeckCommand ?? (uncheckedDeckCommand = new RelayCommand(obj =>
+            get => selectFirstCommand ?? (selectFirstCommand = new RelayCommand(obj =>
             {
-                SelectedDecks.Remove(obj as Deck);
+                int wordsCount = 0; 
+                if(int.TryParse(obj.ToString(), out wordsCount))
+                {
+                    wordsCount = int.Parse(obj.ToString());
+                    for (int i = 0; i < App.DecksVM.Decks.Count; i++)
+                    {
+                        if (i < wordsCount)
+                            App.DecksVM.Decks[i].IsSelected = true;
+                        else
+                            App.DecksVM.Decks[i].IsSelected = false;
+                    }
+
+                }
             }));
         }
         #endregion
@@ -47,7 +61,7 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region Properties
 
-        public ObservableCollection<Deck> SelectedDecks { get; set; } = new ObservableCollection<Deck>();
+        public ObservableCollection<Deck> Decks { get; set; } = new ObservableCollection<Deck>();
 
         #region MoreVisibility
 

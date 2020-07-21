@@ -7,7 +7,7 @@ using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
-    public class Deck: INotifyPropertyChanged
+    public class Deck: TestValue, INotifyPropertyChanged
     {
         #region Properties
         public ObservableCollection<Word> Words { get; set; } = new ObservableCollection<Word>();
@@ -72,7 +72,6 @@ namespace typicalEnglish.Scripts.Models
         }
         #endregion
 
-
         #region Foreground
 
         private Color foreground = Colors.Black;
@@ -116,14 +115,6 @@ namespace typicalEnglish.Scripts.Models
 
         #endregion
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

@@ -114,6 +114,7 @@
     <Compile Include="Scripts\Models\ImageSource.cs" />
     <Compile Include="Scripts\Models\JSONData.cs" />
     <Compile Include="Scripts\Models\MutableString.cs" />
+    <Compile Include="Scripts\Models\TestValue.cs" />
     <Compile Include="Scripts\ViewModels\ColorBrushConverter.cs" />
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
     <Compile Include="Scripts\ViewModels\TestPageVM.cs" />
