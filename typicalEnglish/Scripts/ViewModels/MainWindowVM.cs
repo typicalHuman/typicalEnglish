@@ -110,7 +110,11 @@ namespace typicalEnglish.Scripts.ViewModels
 
         public void Navigate(string url)
         {
-            Messenger.Default.Send<NavigateArgs>(new NavigateArgs(url));
+            if (url != lastPage)
+            {
+                Messenger.Default.Send<NavigateArgs>(new NavigateArgs(url));
+                lastPage = url;
+            }
         }
 
         private RelayCommand pageNavigateCommand;
@@ -120,8 +124,6 @@ namespace typicalEnglish.Scripts.ViewModels
             {
                 return pageNavigateCommand ?? (pageNavigateCommand = new RelayCommand(obj =>
                 {
-                    if (!obj.ToString().Contains("Title"))
-                        lastPage = obj.ToString();
                     Navigate(obj.ToString());
                 }));
             }

@@ -28,7 +28,7 @@
             </StackPanel.Resources>
             <Grid>
                 <!--#region Back Button-->
-                <Button Background="White" Height="45" Width="65" BorderBrush="Transparent"
+                <Button Background="Transparent" Style="{StaticResource InvisButton}" Height="45" Width="65" BorderBrush="Transparent"
                 Content="{md:PackIcon Kind=ArrowBack,Size=30}" HorizontalAlignment="Left"
                 VerticalAlignment="Top" Margin="5">
                     <i:Interaction.Triggers>

@@ -6,9 +6,11 @@
       xmlns:local="clr-namespace:typicalEnglish"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SelectDecksPage" FontFamily="Candara Light" FontSize="20">
+      Title="SelectDecksPage" FontFamily="Candara Light" FontSize="20"
+      DataContext="{x:Static local:App.TestPageVM}">
     <Page.Resources>
         <vm:ColorBrushConverter x:Key="ColorBrush"></vm:ColorBrushConverter>
     </Page.Resources>
@@ -29,6 +31,16 @@
                     <StackPanel  Margin="10 10">
                         <CheckBox HorizontalAlignment="Center"
                                   md:CheckBoxAssist.CheckBoxSize="25" IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=Page},
+                                        Path=DataContext.CheckedChangeCommand}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, 
+                                        Path=DataContext.CheckedChangeCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </CheckBox>
                         <Button Height="150" Width="110"
                                 Background="{Binding Background, UpdateSourceTrigger=PropertyChanged,

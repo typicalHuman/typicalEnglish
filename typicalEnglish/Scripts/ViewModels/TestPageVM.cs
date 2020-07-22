@@ -10,8 +10,27 @@ namespace typicalEnglish.Scripts.ViewModels
 {
     public class TestPageVM : INotifyPropertyChanged
     {
+        public TestPageVM()
+        {
+            SetSelections();
+        }
 
         #region Methods
+
+        private void SetSelections()
+        {
+            foreach (Deck d in App.DecksVM.Decks)
+            {
+                if (!Decks.Contains(d) && d.IsSelected)
+                {
+                    Decks.Add(d);
+                }
+                else if(Decks.Contains(d) && !d.IsSelected)
+                {
+                    Decks.Remove(d);
+                }
+            }
+        }
 
         public void Navigate(string url)
         {
@@ -62,6 +81,7 @@ namespace typicalEnglish.Scripts.ViewModels
             {
                 foreach (Deck deck in App.DecksVM.Decks)
                     deck.IsSelected = true;
+                SetSelections();
             }));
         }
         #endregion
@@ -83,6 +103,7 @@ namespace typicalEnglish.Scripts.ViewModels
                         else
                             App.DecksVM.Decks[i].IsSelected = false;
                     }
+                    SetSelections();
 
                 }
             }));
@@ -98,11 +119,36 @@ namespace typicalEnglish.Scripts.ViewModels
                 if(IsDeckPage)
                 {
                     OpenSelectWordsPage();
+                    Source = "SelectWordsPage.xaml";
                 }
                 else
                 {
                     StartTest();
                 }
+            }));
+        }
+        #endregion
+
+        #region CheckedChangeCommand
+        private RelayCommand checkedChangeCommand;
+        public RelayCommand CheckedChangeCommand
+        {
+            get => checkedChangeCommand ?? (checkedChangeCommand = new RelayCommand(obj =>
+            {
+                SetSelections();
+            }));
+        }
+        #endregion
+
+        #region BackCommand
+        private RelayCommand backCommand;
+        public RelayCommand BackCommand
+        {
+            get => backCommand ?? (backCommand = new RelayCommand(obj =>
+            {
+                Source = "SelectDecksPage.xaml";
+                IsDeckPage = true;
+                Navigate("Scripts/Views/SelectDecksPage.xaml");
             }));
         }
         #endregion
@@ -137,6 +183,20 @@ namespace typicalEnglish.Scripts.ViewModels
             {
                 isDeckPage = value;
                 OnPropertyChanged("IsDeckPage");
+            }
+        }
+        #endregion
+
+        #region Source
+
+        private string source = "SelectDecksPage.xaml";
+        public string Source
+        {
+            get => source;
+            set
+            {
+                source = value;
+                OnPropertyChanged("Source");
             }
         }
         #endregion

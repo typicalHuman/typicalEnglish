@@ -21,7 +21,6 @@
         <!--#region Start Button-->
         <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
                 Height="70" Width="150" FontSize="25"
-     
                 BorderBrush="Black">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
@@ -39,7 +38,7 @@
                                      Value="False">
                             <Setter Property="Content" Value="Start"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding SelectedDecks.Count}"
+                        <DataTrigger Binding="{Binding Decks.Count, UpdateSourceTrigger=PropertyChanged}"
                                      Value="0">
                             <Setter Property="IsEnabled" Value="False"/>
                         </DataTrigger>
@@ -67,9 +66,33 @@
         </Button>
             <!--#endregion-->
 
-        <!--#region Select First-->
+       
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"
                     Orientation="Horizontal" Margin="5 0">
+
+            <!--#region Back Button-->
+            <Button Background="Transparent" Height="45" Width="65" BorderBrush="Black"
+                Content="{md:PackIcon Kind=ArrowBack,Size=30}" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Margin="5">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding BackCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource InvisButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Source, UpdateSourceTrigger=PropertyChanged}"
+                                         Value="SelectDecksPage.xaml">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <!--#endregion-->
+
+            <!--#region Select First-->
             <!--#region MoreOption Button-->
             <Button Height="40" Width="50" HorizontalAlignment="Right"
                 Style="{StaticResource InvisButton}" Background="Transparent"
@@ -95,19 +118,32 @@
                 </Button>
                 <TextBox MinWidth="30" Margin="10 0" PreviewTextInput="NumberValidationTextBox"
                          MaxLength="7" Name="wordsNumber"/>
-                <TextBlock Text="words" VerticalAlignment="Center" Margin="5 0"/>
+                <TextBlock VerticalAlignment="Center" Margin="5 0">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Source, UpdateSourceTrigger=PropertyChanged}"
+                                             Value="SelectDecksPage.xaml">
+                                    <Setter Property="Text" Value="decks"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Source, UpdateSourceTrigger=PropertyChanged}"
+                                             Value="SelectWordsPage.xaml">
+                                    <Setter Property="Text" Value="words"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </StackPanel>
-
+            <!--#endregion-->
         </StackPanel>
-        <!--#endregion-->
+
 
         <!--#endregion-->
-
-       
-
+        
         <!--#region NavigationControl-->
         <Frame NavigationUIVisibility="Hidden" x:Name="Frame2" 
-               Source="SelectDecksPage.xaml" Margin="0 5"
+               Source="{Binding Source, UpdateSourceTrigger=PropertyChanged}" Margin="0 5"
                Grid.Row="2"></Frame>
         <!--#endregion-->
         

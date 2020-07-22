@@ -11,31 +11,40 @@
       Title="SelectWordPage" FontFamily="Candara Light" FontSize="20"
       DataContext="{x:Static local:App.SelectWordVM}">
     <Grid>
-
-        <ListView ItemsSource="{Binding Words}" HorizontalAlignment="Center"
-                  Width="Auto" Style="{StaticResource ListViewStyle}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
+            <ListView ItemsSource="{Binding Words}" 
+                  Width="Auto" Style="{StaticResource ListViewStyle}"
+                   Margin="0 0" HorizontalAlignment="Center">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
                                     <TextBox IsReadOnly="True" md:TextFieldAssist.UnderlineBrush="Transparent"
                                  BorderBrush="Transparent" Text="{Binding Spelling}"
                                  HorizontalAlignment="Center" FontSize="23"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox HorizontalAlignment="Right" VerticalAlignment="Center"
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <!--<GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox HorizontalAlignment="Right" VerticalAlignment="Center"
                                           IsChecked="{Binding IsSelected}" md:CheckBoxAssist.CheckBoxSize="25"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                  
-                </GridView>
-            </ListView.View>
-        </ListView>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>-->
+                    </GridView>
+                </ListView.View>
+                <ListView.Template>
+                    <ControlTemplate>
+                        <ScrollViewer>
+                            <ItemsPresenter></ItemsPresenter>
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ListView.Template>
+            </ListView>
+       
+
+      
     </Grid>
 </Page>

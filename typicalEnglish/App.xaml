@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Resources/MenuStyle.xaml"/>
                 <ResourceDictionary Source="Resources/ConfirmBoxStyle.xaml"/>
                 <ResourceDictionary Source="Resources/ListViewStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/ScrollViewer.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
