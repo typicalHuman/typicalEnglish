@@ -19,20 +19,22 @@
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
+                                <Grid Background="Transparent">
                                     <TextBox IsReadOnly="True" md:TextFieldAssist.UnderlineBrush="Transparent"
                                  BorderBrush="Transparent" Text="{Binding Spelling}"
                                  HorizontalAlignment="Center" FontSize="23"/>
+                                </Grid>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <!--<GridViewColumn>
+                        <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox HorizontalAlignment="Right" VerticalAlignment="Center"
-                                          IsChecked="{Binding IsSelected}" md:CheckBoxAssist.CheckBoxSize="25"/>
+                                          IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" md:CheckBoxAssist.CheckBoxSize="25"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
-                        </GridViewColumn>-->
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
                 <ListView.Template>

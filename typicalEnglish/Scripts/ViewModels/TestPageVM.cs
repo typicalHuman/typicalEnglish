@@ -5,6 +5,8 @@ using System.Windows;
 using typicalEnglish.Scripts.Models;
 using System.Collections.Generic;
 using GalaSoft.MvvmLight.Messaging;
+using System;
+using System.Linq;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -12,12 +14,15 @@ namespace typicalEnglish.Scripts.ViewModels
     {
         public TestPageVM()
         {
-            SetSelections();
+            SetDecksSelections();
         }
 
         #region Methods
 
-        private void SetSelections()
+        #region SetSelections
+
+
+        private void SetDecksSelections()
         {
             foreach (Deck d in App.DecksVM.Decks)
             {
@@ -25,17 +30,14 @@ namespace typicalEnglish.Scripts.ViewModels
                 {
                     Decks.Add(d);
                 }
-                else if(Decks.Contains(d) && !d.IsSelected)
+                else if (Decks.Contains(d) && !d.IsSelected)
                 {
                     Decks.Remove(d);
                 }
             }
         }
+        #endregion
 
-        public void Navigate(string url)
-        {
-            Messenger.Default.Send<NavigateArgs>(new NavigateArgs(url));
-        }
 
         private ObservableCollection<Word> GetWordsFromDecks()
         {
@@ -45,6 +47,14 @@ namespace typicalEnglish.Scripts.ViewModels
                     words.AddRange(deck.Words);
             return new ObservableCollection<Word>(words);
         }
+
+        #region Navigation
+
+        public void Navigate(string url)
+        {
+            Messenger.Default.Send<NavigateArgs>(new NavigateArgs(url));
+        }
+
 
         private void OpenSelectWordsPage()
         {
@@ -57,6 +67,62 @@ namespace typicalEnglish.Scripts.ViewModels
         {
 
         }
+
+
+        #endregion
+
+        #region SetAll
+
+        private void SetAllDecks()
+        {
+            SetAllValues(App.DecksVM.Decks.Cast<TestValue>().ToList(), SetDecksSelections);
+        }
+
+        private void SetAllWords()
+        {
+            SetAllValues(App.SelectWordVM.Words.Cast<TestValue>().ToList(), () => { });
+        }
+
+        private void SetAllValues(List<TestValue> values, Action setSelections)
+        {
+            foreach (TestValue v in values)
+                v.IsSelected = true;
+            setSelections();
+        }
+
+        #endregion
+
+        #region SetFirst
+
+        private void SetFirstDecks(object obj)
+        {
+            SetFirst(obj, App.DecksVM.Decks.Cast<TestValue>().ToList(), SetDecksSelections);
+        }
+
+        private void SetFirstWords(object obj)
+        {
+            SetFirst(obj, App.SelectWordVM.Words.Cast<TestValue>().ToList(), () => { });
+        }
+
+        private void SetFirst(object obj, List<TestValue> values, Action setSelections)
+        {
+            int valuesCount = 0;
+            if (int.TryParse(obj.ToString(), out valuesCount))
+            {
+                valuesCount = int.Parse(obj.ToString());
+                for (int i = 0; i < values.Count; i++)
+                {
+                    if (i < valuesCount)
+                         values[i].IsSelected = true;
+                    else
+                        values[i].IsSelected = false;
+                }
+                setSelections();
+            }
+        }
+
+
+        #endregion
 
         #endregion
 
@@ -79,9 +145,14 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => selectAllCommand ?? (selectAllCommand = new RelayCommand(obj =>
             {
-                foreach (Deck deck in App.DecksVM.Decks)
-                    deck.IsSelected = true;
-                SetSelections();
+                if (IsDeckPage)
+                {
+                    SetAllDecks();
+                }
+                else
+                {
+                    SetAllWords();
+                }
             }));
         }
         #endregion
@@ -92,19 +163,13 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => selectFirstCommand ?? (selectFirstCommand = new RelayCommand(obj =>
             {
-                int decksCount = 0; 
-                if(int.TryParse(obj.ToString(), out decksCount))
+                if(IsDeckPage)
                 {
-                    decksCount = int.Parse(obj.ToString());
-                    for (int i = 0; i < App.DecksVM.Decks.Count; i++)
-                    {
-                        if (i < decksCount)
-                            App.DecksVM.Decks[i].IsSelected = true;
-                        else
-                            App.DecksVM.Decks[i].IsSelected = false;
-                    }
-                    SetSelections();
-
+                    SetFirstDecks(obj);
+                }
+                else
+                {
+                    SetFirstWords(obj);
                 }
             }));
         }
@@ -135,7 +200,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => checkedChangeCommand ?? (checkedChangeCommand = new RelayCommand(obj =>
             {
-                SetSelections();
+                SetDecksSelections();
             }));
         }
         #endregion

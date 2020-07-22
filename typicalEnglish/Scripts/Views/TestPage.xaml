@@ -117,7 +117,7 @@
                     </i:Interaction.Triggers>
                 </Button>
                 <TextBox MinWidth="30" Margin="10 0" PreviewTextInput="NumberValidationTextBox"
-                         MaxLength="7" Name="wordsNumber"/>
+                         MaxLength="7" Name="wordsNumber" Height="Auto" VerticalAlignment="Center"/>
                 <TextBlock VerticalAlignment="Center" Margin="5 0">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
