@@ -61,10 +61,10 @@
         </Setter>
     </Style>
     <Style x:Key="{x:Type ListViewItem}"
-       TargetType="ListViewItem">
+       TargetType="ListViewItem" BasedOn="{StaticResource {x:Type ListViewItem}}">
         <Style.Triggers>
-            <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                <Setter Property="IsSelected" Value="True"/>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
         </Style.Triggers>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -73,7 +73,7 @@
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="SnapsToDevicePixels"
           Value="true" />
-
+        <Setter Property="IsSelected" Value="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"/>
         <Setter Property="OverridesDefaultStyle"
           Value="true" />
         <Setter Property="Template">
@@ -97,7 +97,7 @@
                                                 Storyboard.TargetProperty="(Panel.Background).
                     (SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                         Value="Transparent" />
+                                         Value="#e9ebec" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -107,7 +107,7 @@
                                                 Storyboard.TargetProperty="(Panel.Background).
                     (SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                         Value="#252625" />
+                                         Value="#e9ebec" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

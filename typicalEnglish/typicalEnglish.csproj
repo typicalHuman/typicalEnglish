@@ -120,6 +120,7 @@
     <Compile Include="Scripts\Models\TestValue.cs" />
     <Compile Include="Scripts\ViewModels\ColorBrushConverter.cs" />
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
+    <Compile Include="Scripts\ViewModels\MultiSelectionBehavior.cs" />
     <Compile Include="Scripts\ViewModels\SelectWordsPageVM.cs" />
     <Compile Include="Scripts\ViewModels\TestPageVM.cs" />
     <Compile Include="Scripts\ViewModels\Word.cs" />
