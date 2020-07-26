@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace typicalEnglish.Scripts.Models
@@ -7,6 +8,7 @@ namespace typicalEnglish.Scripts.Models
     {
         #region IsSelected
         private bool isSelected = false;
+        [JsonIgnore]
         public bool IsSelected
         {
             get => isSelected;

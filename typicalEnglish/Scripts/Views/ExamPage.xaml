@@ -1,0 +1,106 @@
+﻿<Page x:Class="typicalEnglish.Scripts.Views.ExamPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:typicalEnglish"
+      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ExamPage" DataContext="{x:Static local:App.ExamPageVM}"
+      FontSize="20" FontFamily="Candara Light">
+    <Grid Margin="0 10 0 0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <!--#region Close Button-->
+        <Button Height="50" Width="70" HorizontalAlignment="Left" Margin="5" 
+                Style="{StaticResource InvisButton}" Background="Transparent"
+                Content="{md:PackIcon Kind=Close,Size=35}" Foreground="#ec4c45"
+                HorizontalContentAlignment="Center">
+            <Button.ToolTip>
+                <ToolTip Style="{StaticResource OneColorTT}" Content="Close test"/>
+            </Button.ToolTip>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding CloseTestCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <!--#endregion-->
+        
+        <!--#region  Word-->
+        <TextBlock Text="{Binding CurrentQuestion.Word.Spelling}" HorizontalAlignment="Center"
+                   FontSize="30" VerticalAlignment="Center"/>
+        <!--#endregion-->
+        
+        <!--#region Input Box-->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <TextBox md:HintAssist.Hint="Enter translation" x:Name="answerBox"
+                 FontSize="30" Text="{Binding CurrentQuestion.Answer}" Margin="0 20"/>
+            <Button Margin="0 0" Height="40" Background="#2cc366" Width="210"
+                    Content="{md:PackIcon Kind=Check,Size=30}" Foreground="White">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Source={x:Reference answerBox}, Path=Text.Length, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CheckAnswerCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </StackPanel>
+        
+        <!--#endregion-->
+        
+        
+        
+        <ToggleButton Visibility="Collapsed" IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}">
+            <ToggleButton.Triggers>
+                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                    <BeginStoryboard>
+                        <Storyboard >
+                            <DoubleAnimation Storyboard.TargetName="pnlLeftMenu" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="pnlLeftMenu" Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ToggleButton.Triggers>
+        </ToggleButton>
+
+        <Grid  Name="pnlLeftMenu" Opacity="0"
+                     Grid.Row="3">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding CurrentQuestion.IsCorrect, UpdateSourceTrigger=PropertyChanged}"
+                             Value="False">
+                            <Setter Property="Background" Value="#ff5252"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding CurrentQuestion.IsCorrect, UpdateSourceTrigger=PropertyChanged}"
+                             Value="True">
+                            <Setter Property="Background" Value="#78c800"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+           
+        </Grid>
+    </Grid>
+</Page>

@@ -38,7 +38,6 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-
         private ObservableCollection<Word> GetWordsFromDecks()
         {
             List<Word> words = new List<Word>();
@@ -65,9 +64,11 @@ namespace typicalEnglish.Scripts.ViewModels
 
         private void StartTest()
         {
-
+            App.ExamPageVM = new ExamPageVM(App.SelectWordVM.GetSelectedWords());
+            App.MainVM.Navigate("Scripts/Views/ExamPage.xaml");
         }
 
+      
 
         #endregion
 
@@ -250,6 +251,20 @@ namespace typicalEnglish.Scripts.ViewModels
                 OnPropertyChanged("IsDeckPage");
             }
         }
+        #endregion
+
+        #region IsEmpty
+        private bool isEmpty = true;
+        public bool IsEmpty
+        {
+            get => isEmpty;
+            set
+            {
+                isEmpty = value;
+                OnPropertyChanged("IsEmpty");
+            }
+        }
+
         #endregion
 
         #region Source

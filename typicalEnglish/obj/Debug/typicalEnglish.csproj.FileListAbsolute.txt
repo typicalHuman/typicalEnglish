@@ -88,3 +88,5 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\fr\HandyCo
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\ko-KR\HandyControl.resources.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\ru\HandyControl.resources.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\tr\HandyControl.resources.dll
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\ExamPage.g.cs
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\ExamPage.baml

@@ -17,6 +17,11 @@
                       SelectionMode="Multiple"
                      Style="{StaticResource ListViewStyle}" 
                       vm:MultiSelectionBehavior.ClickSelection="True">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ListView.View>
                     <GridView>
                         <GridViewColumn>

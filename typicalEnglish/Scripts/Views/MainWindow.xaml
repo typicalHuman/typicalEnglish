@@ -148,7 +148,7 @@
 
         <!--#region NavigationControl-->
         <Frame NavigationUIVisibility="Hidden" x:Name="Frame1" 
-               Source="DecksPage.xaml" Margin="0 5"
+               Source="DecksPage.xaml" Margin="0 5 0 0"
                Grid.Row="2" Grid.ColumnSpan="4"></Frame>
         <!--#endregion-->
 

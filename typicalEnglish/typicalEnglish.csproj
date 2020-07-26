@@ -117,9 +117,11 @@
     <Compile Include="Scripts\Models\ImageSource.cs" />
     <Compile Include="Scripts\Models\JSONData.cs" />
     <Compile Include="Scripts\Models\MutableString.cs" />
+    <Compile Include="Scripts\Models\Question.cs" />
     <Compile Include="Scripts\Models\TestValue.cs" />
     <Compile Include="Scripts\ViewModels\ColorBrushConverter.cs" />
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
+    <Compile Include="Scripts\ViewModels\ExamPageVM.cs" />
     <Compile Include="Scripts\ViewModels\MultiSelectionBehavior.cs" />
     <Compile Include="Scripts\ViewModels\SelectWordsPageVM.cs" />
     <Compile Include="Scripts\ViewModels\TestPageVM.cs" />
@@ -137,6 +139,9 @@
     </Compile>
     <Compile Include="Scripts\Views\DeckPage.xaml.cs">
       <DependentUpon>DeckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\Views\ExamPage.xaml.cs">
+      <DependentUpon>ExamPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Views\OptionsPage.xaml.cs">
       <DependentUpon>OptionsPage.xaml</DependentUpon>
@@ -183,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scripts\Views\DecksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scripts\Views\ExamPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

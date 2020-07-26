@@ -66,6 +66,12 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
+            
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0.2"/>
+            </Trigger>
+            
         </Style.Triggers>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -80,7 +86,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
                     <Border x:Name="Border"
-                Padding="2"
+                Padding="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
                 SnapsToDevicePixels="true"
                 Background="Transparent">
                         <VisualStateManager.VisualStateGroups>
