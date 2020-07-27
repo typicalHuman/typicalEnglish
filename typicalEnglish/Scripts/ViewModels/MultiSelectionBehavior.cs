@@ -22,8 +22,7 @@ namespace typicalEnglish.Scripts.ViewModels
         private static void OnClickSelectionChanged(DependencyObject dpo,
                                                                  DependencyPropertyChangedEventArgs e)
         {
-            ListView listView = dpo as ListView;
-            if (listView != null)
+            if (dpo is ListView listView)
             {
                 if ((bool)e.NewValue == true)
                 {

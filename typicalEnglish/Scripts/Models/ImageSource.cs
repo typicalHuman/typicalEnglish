@@ -52,7 +52,6 @@ namespace typicalEnglish.Scripts.Models
 
         #endregion
 
-
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")

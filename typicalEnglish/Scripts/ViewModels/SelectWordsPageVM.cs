@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -44,7 +38,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region SelectionChangedCommand
 
-
         private RelayCommand selectionChangedCommand;
         public RelayCommand SelectionChangedCommand
         {
@@ -56,7 +49,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
 
         #endregion
-
 
         #endregion
 

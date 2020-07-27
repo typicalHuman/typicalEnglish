@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
         <!--#region Close Button-->
@@ -41,7 +41,8 @@
         <!--#region Input Box-->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
             <TextBox md:HintAssist.Hint="Enter translation" x:Name="answerBox"
-                 FontSize="30" Text="{Binding CurrentQuestion.Answer}" Margin="0 20"/>
+                 FontSize="30" Text="{Binding CurrentQuestion.Answer}" Margin="0 20"
+                     IsReadOnly="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Margin="0 0" Height="40" Background="#2cc366" Width="210"
                     Content="{md:PackIcon Kind=Check,Size=30}" Foreground="White">
                 <Button.Style>
@@ -49,6 +50,9 @@
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Source={x:Reference answerBox}, Path=Text.Length, UpdateSourceTrigger=PropertyChanged}" Value="0">
                                 <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

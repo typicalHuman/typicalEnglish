@@ -15,7 +15,7 @@ namespace typicalEnglish.Scripts.ViewModels
 
         public void PlaySound()
         {
-            WordSoundPlayer.PlaySound(this);
+            WordSoundPlayer.PlayWordSpelling(this);
         }
 
         #endregion

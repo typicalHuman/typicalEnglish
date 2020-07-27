@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using typicalEnglish.Scripts.Models;
@@ -37,6 +36,14 @@ namespace typicalEnglish.Scripts.ViewModels
             Deck.ImageSource = source;
             SetSelectedValue();
         }
+        #endregion
+
+        #region Constants
+
+        private const string IMAGE_FILTER = "Image files (*.png,*.jpg,*jpeg)|*.png;*.jpg;*jpeg";
+
+        private const string DECK_PAGE_PATH = "Scripts/Views/DecksPage.xaml";
+
         #endregion
 
         #region Properties
@@ -106,9 +113,11 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => openImageCommand ?? (openImageCommand = new RelayCommand(obj =>
             {
-                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-                dlg.Filter = "Image files (*.png,*.jpg,*jpeg)|*.png;*.jpg;*jpeg" ;
-                Nullable<bool> result = dlg.ShowDialog();
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
+                {
+                    Filter = IMAGE_FILTER
+                };
+                bool? result = dlg.ShowDialog();
                 if (result == true)
                 {
                     string filename = dlg.FileName;
@@ -125,7 +134,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => backCommand ?? (backCommand = new RelayCommand(obj =>
             {
-                App.MainVM.Navigate("Scripts/Views/DecksPage.xaml");
+                App.MainVM.Navigate(DECK_PAGE_PATH);
             }));
         }
         #endregion

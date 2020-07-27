@@ -12,30 +12,39 @@ namespace typicalEnglish.Scripts.ViewModels
 {
     public class TestPageVM : INotifyPropertyChanged
     {
+        #region Constructor
         public TestPageVM()
         {
             SetDecksSelections();
         }
+        #endregion
+
+        #region Constants
+
+        private readonly Action EMPTY_ACT = () => { };
+
+        private const string SELECT_WORDS_PAGE_PATH = "Scripts/Views/SelectWordsPage.xaml";
+        private const string EXAM_PAGE_PATH = "Scripts/Views/ExamPage.xaml";
+
+        private const string SELECT_WORDS_SOURCE = "SelectWordsPage.xaml";
+
+        #endregion
 
         #region Methods
 
         #region SetSelections
-
 
         private void SetDecksSelections()
         {
             foreach (Deck d in App.DecksVM.Decks)
             {
                 if (!Decks.Contains(d) && d.IsSelected)
-                {
                     Decks.Add(d);
-                }
                 else if (Decks.Contains(d) && !d.IsSelected)
-                {
                     Decks.Remove(d);
-                }
             }
         }
+
         #endregion
 
         private ObservableCollection<Word> GetWordsFromDecks()
@@ -51,24 +60,22 @@ namespace typicalEnglish.Scripts.ViewModels
 
         public void Navigate(string url)
         {
-            Messenger.Default.Send<NavigateArgs>(new NavigateArgs(url));
+            Messenger.Default.Send(new NavigateArgs(url));
         }
-
 
         private void OpenSelectWordsPage()
         {
             App.SelectWordVM = new SelectWordsPageVM(GetWordsFromDecks());
             IsDeckPage = false;
-            Navigate("Scripts/Views/SelectWordsPage.xaml");
+            Navigate(SELECT_WORDS_PAGE_PATH);
         }
 
         private void StartTest()
         {
             App.ExamPageVM = new ExamPageVM(App.SelectWordVM.GetSelectedWords());
-            App.MainVM.Navigate("Scripts/Views/ExamPage.xaml");
+            App.MainVM.Navigate(EXAM_PAGE_PATH);
         }
 
-      
 
         #endregion
 
@@ -81,7 +88,7 @@ namespace typicalEnglish.Scripts.ViewModels
 
         private void SetAllWords()
         {
-            SetAllValues(App.SelectWordVM.Words.Cast<TestValue>().ToList(), () => { });
+            SetAllValues(App.SelectWordVM.Words.Cast<TestValue>().ToList(), EMPTY_ACT);
         }
 
         private void SetAllValues(List<TestValue> values, Action setSelections)
@@ -102,23 +109,22 @@ namespace typicalEnglish.Scripts.ViewModels
 
         private void SetFirstWords(object obj)
         {
-            SetFirst(obj, App.SelectWordVM.Words.Cast<TestValue>().ToList(), () => { });
+            SetFirst(obj, App.SelectWordVM.Words.Cast<TestValue>().ToList(), EMPTY_ACT);
         }
 
-        private void SetFirst(object obj, List<TestValue> values, Action setSelections)
+        private void SetFirst(object obj, List<TestValue> values, Action SetSelections)
         {
-            int valuesCount = 0;
-            if (int.TryParse(obj.ToString(), out valuesCount))
+            if (int.TryParse(obj.ToString(), out int valuesCount))
             {
                 valuesCount = int.Parse(obj.ToString());
                 for (int i = 0; i < values.Count; i++)
                 {
                     if (i < valuesCount)
-                         values[i].IsSelected = true;
+                        values[i].IsSelected = true;
                     else
                         values[i].IsSelected = false;
                 }
-                setSelections();
+                SetSelections();
             }
         }
 
@@ -147,13 +153,9 @@ namespace typicalEnglish.Scripts.ViewModels
             get => selectAllCommand ?? (selectAllCommand = new RelayCommand(obj =>
             {
                 if (IsDeckPage)
-                {
                     SetAllDecks();
-                }
                 else
-                {
                     SetAllWords();
-                }
             }));
         }
         #endregion
@@ -165,13 +167,9 @@ namespace typicalEnglish.Scripts.ViewModels
             get => selectFirstCommand ?? (selectFirstCommand = new RelayCommand(obj =>
             {
                 if(IsDeckPage)
-                {
                     SetFirstDecks(obj);
-                }
                 else
-                {
                     SetFirstWords(obj);
-                }
             }));
         }
         #endregion
@@ -185,7 +183,7 @@ namespace typicalEnglish.Scripts.ViewModels
                 if(IsDeckPage)
                 {
                     OpenSelectWordsPage();
-                    Source = "SelectWordsPage.xaml";
+                    Source = SELECT_WORDS_SOURCE;
                 }
                 else
                 {

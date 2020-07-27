@@ -6,14 +6,18 @@ namespace typicalEnglish.Scripts.ViewModels
 {
     public class DeckPageVM: INotifyPropertyChanged
     {
-
         #region Constructor
-
 
         public DeckPageVM(ObservableCollection<Word> words)
         {
             Words = words;
         }
+
+        #endregion
+
+        #region Constants
+
+        private const string DECK_PAGE_PATH = "Scripts/Views/DecksPage.xaml";
 
         #endregion
 
@@ -25,7 +29,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => backCommand ?? (backCommand = new RelayCommand(obj =>
             {
-                App.MainVM.Navigate("Scripts/Views/DecksPage.xaml");
+                App.MainVM.Navigate(DECK_PAGE_PATH);
             }));
         }
         #endregion
@@ -55,7 +59,6 @@ namespace typicalEnglish.Scripts.ViewModels
         #endregion
 
         #endregion
-
 
         #region Properties
 

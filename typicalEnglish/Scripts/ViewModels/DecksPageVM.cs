@@ -1,10 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Speech.Synthesis;
 using System.Windows;
 using typicalEnglish.Scripts.Models;
-using typicalEnglish.Scripts.Views;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -14,29 +12,19 @@ namespace typicalEnglish.Scripts.ViewModels
         public DecksPageVM()
         {
             Decks = JSONData.GetSavedDecks();
-            synthesizer = new SpeechSynthesizer();
-            synthesizer.SelectVoice("Microsoft Zira Desktop");
         }
         #endregion
 
         #region Properties
 
-        public ObservableCollection<Deck> Decks { get; set; } 
-
-        #region Synthersizer
-
-        private SpeechSynthesizer synthesizer;
-        public SpeechSynthesizer Synthesizer
-        {
-            get => synthesizer;
-            set
-            {
-                synthesizer = value;
-                OnPropertyChanged("Synthesizer");
-            }
-        }
+        public ObservableCollection<Deck> Decks { get; set; }
 
         #endregion
+
+        #region Constants
+
+        private const string DECK_PAGE_PATH = "Scripts/Views/DeckPage.xaml";
+        private const string DECK_CUSTOMIZATION_PATH = "Scripts/Views/DeckCustomizationPage.xaml";
 
         #endregion
 
@@ -60,13 +48,13 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => deleteCommand ?? (deleteCommand = new RelayCommand(obj =>
             {
-                var res = Xceed.Wpf.Toolkit.MessageBox.Show(
+                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show(
                           "Are you sure?",
                           "Confirm dialog",
                           MessageBoxButton.YesNo,
                           (Style)Application.Current.FindResource("ConfirmBoxStyle")
                       );
-                if(res.ToString() == "Yes")
+                if(result.ToString() == "Yes")
                    Decks.Remove(obj as Deck);
             }));
         }
@@ -83,7 +71,7 @@ namespace typicalEnglish.Scripts.ViewModels
                 if (deck != null)
                 {
                     App.DeckVM = new DeckPageVM(deck.Words);
-                    App.MainVM.Navigate("Scripts/Views/DeckPage.xaml");
+                    App.MainVM.Navigate(DECK_PAGE_PATH);
                 }
             }));
         }
@@ -99,7 +87,7 @@ namespace typicalEnglish.Scripts.ViewModels
                 if (deck != null)
                 {
                     App.DeckCustomVM = new DeckCustomPageVM(deck);
-                    App.MainVM.Navigate("Scripts/Views/DeckCustomizationPage.xaml");
+                    App.MainVM.Navigate(DECK_CUSTOMIZATION_PATH);
                 }
             }));
         }

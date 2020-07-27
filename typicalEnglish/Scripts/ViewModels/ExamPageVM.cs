@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
+using System.IO;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
@@ -32,17 +29,22 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
+        #region Constructor
+        /// <summary>
+        /// Initialize exam
+        /// </summary>
+        /// <param name="selectedWords">words that will be in the test</param>
         public ExamPageVM(ObservableCollection<Word> selectedWords)
         {
             foreach (Word w in selectedWords)
                 Questions.Add(w);
             Shuffle(Questions);
-            if (Questions.Count > 0)
-                CurrentQuestion = Questions[0];
+            CurrentQuestion = Questions[0];
         }
 
-        #region Properties
+        #endregion
 
+        #region Properties
         private ObservableCollection<Question> Questions { get; set; } = new ObservableCollection<Question>();
 
         #region CurrentQuestion
@@ -75,6 +77,43 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
+        #region Constants
+
+        private readonly Stream CORRECT_SOUND_STREAM = new MemoryStream(Properties.Resources.correct);
+        private readonly Stream WRONG_SOUND_STREAM = new MemoryStream(Properties.Resources.wrong);
+
+        #endregion
+
+        #region Methods
+
+        #region AnswerActions
+
+        private void CorrectAnswerAction()
+        {
+            WordSoundPlayer.PlayAudio(CORRECT_SOUND_STREAM);
+        }
+
+        private void WrongAnswerAction()
+        {
+            WordSoundPlayer.PlayAudio(WRONG_SOUND_STREAM);
+        }
+
+        #endregion
+
+        private void CorrectnessCheck()
+        {
+            foreach (string translation in CurrentQuestion.Word.Translations)
+            {
+                if (translation.ToLower() == CurrentQuestion.Answer.ToLower())
+                {
+                    CurrentQuestion.IsCorrect = true;
+                    break;
+                }
+            }
+        }
+
+        #endregion
+
         #region Commands
 
         #region CloseTestCommand
@@ -97,12 +136,11 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => checkAnswerCommand ?? (checkAnswerCommand = new RelayCommand(obj =>
             {
-                foreach(string translation in CurrentQuestion.Word.Translations)
-                    if(translation.ToLower() == CurrentQuestion.Answer.ToLower())
-                    {
-                        CurrentQuestion.IsCorrect = true;
-                        break;
-                    }
+                CorrectnessCheck();
+                if (CurrentQuestion.IsCorrect)
+                    CorrectAnswerAction();
+                else
+                    WrongAnswerAction();
                 IsChecked = true;
             }));
         }
