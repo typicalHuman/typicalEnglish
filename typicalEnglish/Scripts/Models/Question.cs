@@ -1,16 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
     public class Question: INotifyPropertyChanged
     {
+        #region Methods
+
+
+        private void SetCorrectAnswer()
+        {
+            if (Word.Translations.Count > 0)
+                CorrectAnswer = Word.Translations[0];
+            else
+                CorrectAnswer = "isn't specified";
+        }
+
+        #endregion
+
         #region Properties
 
         #region IsCorrect
@@ -42,7 +50,6 @@ namespace typicalEnglish.Scripts.Models
         #endregion
 
         #region Word
-
         private Word word;
         public Word Word
         {
@@ -50,7 +57,21 @@ namespace typicalEnglish.Scripts.Models
             set
             {
                 word = value;
+                SetCorrectAnswer();
                 OnPropertyChanged("Word");
+            }
+        }
+        #endregion
+
+        #region CorrectAnswer
+        private string correctAnswer;
+        public string CorrectAnswer
+        {
+            get => correctAnswer;
+            set
+            {
+                correctAnswer = value;
+                OnPropertyChanged("CorrectAnswer");
             }
         }
         #endregion

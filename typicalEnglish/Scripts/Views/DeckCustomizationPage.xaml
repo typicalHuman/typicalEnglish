@@ -42,7 +42,7 @@
                 <!--#region Image Customization-->
                 <StackPanel>
                     <TextBlock Text="Image" HorizontalAlignment="Center"/>
-                    <Image Source="{Binding Deck.ImageSource}" Height="65" Width="65"/>
+                    <Image Source="{Binding Deck.ImageSource}" Height="65" Width="65" RenderOptions.BitmapScalingMode="HighQuality"/>
                     <ItemsControl ItemsSource="{Binding ImageSources}" Margin="0 5" HorizontalAlignment="Center">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>

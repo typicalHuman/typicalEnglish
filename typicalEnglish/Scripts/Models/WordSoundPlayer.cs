@@ -71,10 +71,13 @@ namespace typicalEnglish.Scripts.Models
             });
         }
 
-        private static void Play(IWaveProvider reader)
+        private async static void Play(IWaveProvider reader)
         {
-            waveOut.Init(reader);
-            waveOut.Play();
+            await Task.Run(() =>
+            {
+                waveOut.Init(reader);
+                waveOut.Play();
+            });
         }
         #endregion
     }

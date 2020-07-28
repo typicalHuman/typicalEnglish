@@ -45,7 +45,7 @@ namespace typicalEnglish.Scripts.ViewModels
         #endregion
 
         #region Properties
-        private ObservableCollection<Question> Questions { get; set; } = new ObservableCollection<Question>();
+        public ObservableCollection<Question> Questions { get; set; } = new ObservableCollection<Question>();
 
         #region CurrentQuestion
         private Question currentQuestion;
@@ -73,6 +73,20 @@ namespace typicalEnglish.Scripts.ViewModels
             }
         }
 
+        #endregion
+
+        #region QuestionNumber
+
+        private int questionNumber = 1;
+        public int QuestionNumber
+        {
+            get => questionNumber;
+            set
+            {
+                questionNumber = value;
+                OnPropertyChanged("QuestionNumber");
+            }
+        }
         #endregion
 
         #endregion
@@ -146,7 +160,6 @@ namespace typicalEnglish.Scripts.ViewModels
         }
 
         #endregion
-
 
         #endregion
 
