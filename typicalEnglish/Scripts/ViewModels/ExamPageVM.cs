@@ -40,6 +40,7 @@ namespace typicalEnglish.Scripts.ViewModels
                 Questions.Add(w);
             Shuffle(Questions);
             CurrentQuestion = Questions[0];
+            IsLastWord = Questions.Count == 1;
         }
 
         #endregion
@@ -89,12 +90,30 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
+        #region IsLastWord
+
+        private bool isLastWord;
+        public bool IsLastWord
+        {
+            get => isLastWord;
+            set
+            {
+                isLastWord = value;
+                OnPropertyChanged("IsLastWord");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Constants
 
         private readonly Stream CORRECT_SOUND_STREAM = new MemoryStream(Properties.Resources.correct);
         private readonly Stream WRONG_SOUND_STREAM = new MemoryStream(Properties.Resources.wrong);
+
+        private const string RESULT_PAGE_PATH = "Scripts/Views/ResultPage.xaml";
+        private const string SELECT_DECKS_PAGE_PATH = "SelectDecksPage.xaml";
 
         #endregion
 
@@ -126,6 +145,30 @@ namespace typicalEnglish.Scripts.ViewModels
             }
         }
 
+        private void UpdateTestPage()
+        {
+            App.TestPageVM.IsDeckPage = true;
+            App.TestPageVM.Source = SELECT_DECKS_PAGE_PATH;
+        }
+
+        private void SelectNextWord()
+        {
+            if (QuestionNumber < Questions.Count)
+            {
+                IsChecked = false;
+                CurrentQuestion = Questions[QuestionNumber];
+                QuestionNumber++;
+            }
+            else
+            {
+                UpdateTestPage();
+                App.ResultPageVM = new ResultPageVM(Questions);
+                App.MainVM.Navigate(RESULT_PAGE_PATH);
+            }
+            if(QuestionNumber == Questions.Count)
+                IsLastWord = true;
+        }
+
         #endregion
 
         #region Commands
@@ -150,12 +193,35 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => checkAnswerCommand ?? (checkAnswerCommand = new RelayCommand(obj =>
             {
-                CorrectnessCheck();
-                if (CurrentQuestion.IsCorrect)
-                    CorrectAnswerAction();
-                else
-                    WrongAnswerAction();
-                IsChecked = true;
+                if (CurrentQuestion.Answer.Length > 0)
+                {
+                    if (!IsChecked)
+                    {
+                        CorrectnessCheck();
+                        if (CurrentQuestion.IsCorrect)
+                            CorrectAnswerAction();
+                        else
+                            WrongAnswerAction();
+                        IsChecked = true;
+                    }
+                    else
+                    {
+                        SelectNextWord();
+                    }
+                }
+            }));
+        }
+
+        #endregion
+
+        #region NextWordCommand
+
+        private RelayCommand nextWordCommand;
+        public RelayCommand NextWordCommand
+        {
+            get => nextWordCommand ?? (nextWordCommand = new RelayCommand(obj =>
+            {
+                SelectNextWord();
             }));
         }
 

@@ -92,6 +92,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.0\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -123,6 +126,7 @@
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
     <Compile Include="Scripts\ViewModels\ExamPageVM.cs" />
     <Compile Include="Scripts\ViewModels\MultiSelectionBehavior.cs" />
+    <Compile Include="Scripts\ViewModels\ResultPageVM.cs" />
     <Compile Include="Scripts\ViewModels\SelectWordsPageVM.cs" />
     <Compile Include="Scripts\ViewModels\TestPageVM.cs" />
     <Compile Include="Scripts\ViewModels\Word.cs" />
@@ -145,6 +149,9 @@
     </Compile>
     <Compile Include="Scripts\Views\OptionsPage.xaml.cs">
       <DependentUpon>OptionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\Views\ResultPage.xaml.cs">
+      <DependentUpon>ResultPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Views\SelectDecksPage.xaml.cs">
       <DependentUpon>SelectDecksPage.xaml</DependentUpon>
@@ -219,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scripts\Views\OptionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scripts\Views\ResultPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

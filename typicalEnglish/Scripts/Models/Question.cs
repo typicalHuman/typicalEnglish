@@ -8,7 +8,6 @@ namespace typicalEnglish.Scripts.Models
     {
         #region Methods
 
-
         private void SetCorrectAnswer()
         {
             if (Word.Translations.Count > 0)

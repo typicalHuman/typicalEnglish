@@ -18,9 +18,10 @@
         </Grid.RowDefinitions>
 
         <!--#region Close Button-->
-        <Button Height="50" Width="70" HorizontalAlignment="Left" Margin="5" 
+        <Button Height="50" Width="80" HorizontalAlignment="Left" Margin="5" 
                 Style="{StaticResource InvisButton}" Background="Transparent"
-                Content="{md:PackIcon Kind=Close,Size=35}" Foreground="#ec4c45"
+                Content="{md:PackIcon Kind=Close,Size=45}" Foreground="#ec4c45"
+             
                 HorizontalContentAlignment="Center">
             <Button.ToolTip>
                 <ToolTip Style="{StaticResource OneColorTT}" Content="Close test"/>
@@ -111,16 +112,15 @@
                 <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="pnlLeftMenu" Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.1"/>
+                            <DoubleAnimation Storyboard.TargetName="pnlLeftMenu" Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
             </ToggleButton.Triggers>
         </ToggleButton>
-
         <Grid  Name="pnlLeftMenu" Opacity="0"
                      Grid.Row="3">
-            <StackPanel Orientation="Horizontal" Margin="100 0 100 0">
+            <DockPanel Margin="100 0 100 0">
                 <!--#region Title-->
                 <!--#region Correctness Image-->
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Fill"
@@ -144,7 +144,7 @@
                 <!--#region Correctness words-->
                 <StackPanel Margin="10 10">
                     <!--#region Wrong/Correct word-->
-                    <TextBlock FontFamily="Candara"  FontWeight="Bold"
+                    <TextBlock FontFamily="Candara"  FontWeight="Bold" Name="titleWord"
                            FontSize="35" VerticalAlignment="Center" Margin="10 0 0 0">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
@@ -185,8 +185,30 @@
                     <!--#endregion-->
                 </StackPanel>
                 <!--#endregion-->
-            </StackPanel>
-            
+                <!--#region Next Button-->
+                <Button HorizontalAlignment="Right" VerticalAlignment="Center" 
+                            Background="Transparent"
+                        Foreground="{Binding ElementName=titleWord, Path=Foreground}" Height="60">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding NextWordCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource InvisButton}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsLastWord, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                    <Setter Property="Content" Value="{md:PackIcon Kind=Flag,Size=50}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsLastWord, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                    <Setter Property="Content" Value="{md:PackIcon Kind=NavigateNext, Size=50}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <!--#endregion-->
+            </DockPanel>
             <Grid.Style>
                 <Style TargetType="Grid">
                     <Style.Triggers>

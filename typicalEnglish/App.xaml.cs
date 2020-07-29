@@ -16,6 +16,7 @@ namespace typicalEnglish
         public static TestPageVM TestPageVM { get; set; }
         public static SelectWordsPageVM SelectWordVM { get; set; }
         public static ExamPageVM ExamPageVM { get; set; }
+        public static ResultPageVM ResultPageVM { get; set; }
         public App()
         {
             MainVM = new MainWindowVM();

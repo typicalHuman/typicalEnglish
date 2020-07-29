@@ -93,9 +93,25 @@ namespace typicalEnglish.Scripts.ViewModels
 
         private void SetAllValues(List<TestValue> values, Action setSelections)
         {
-            foreach (TestValue v in values)
-                v.IsSelected = true;
+            if (IsAllSelected(values))
+            {
+                foreach (TestValue v in values)
+                    v.IsSelected = false;
+            }
+            else
+            {
+                foreach (TestValue v in values)
+                    v.IsSelected = true;
+            }
             setSelections();
+        }
+
+        private bool IsAllSelected(List<TestValue> values)
+        {
+            foreach (TestValue value in values)
+                if (!value.IsSelected)
+                    return false;
+            return true;
         }
 
         #endregion
