@@ -17,7 +17,7 @@ namespace typicalEnglish.Scripts.ViewModels
         public void Shuffle<T>(IList<T> list)
         {
             int n = list.Count;
-            while (n > 1)
+            while (n > 0)
             {
                 n--;
                 int k = rng.Next(n + 1);
@@ -137,7 +137,9 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             foreach (string translation in CurrentQuestion.Word.Translations)
             {
-                if (translation.ToLower() == CurrentQuestion.Answer.ToLower())
+                string trans = StringEditor.RemoveExcessSymbols(translation);
+                string answer = StringEditor.RemoveExcessSymbols(CurrentQuestion.Answer);
+                if (trans == answer)
                 {
                     CurrentQuestion.IsCorrect = true;
                     break;
@@ -145,6 +147,7 @@ namespace typicalEnglish.Scripts.ViewModels
             }
         }
 
+        
         private void UpdateTestPage()
         {
             App.TestPageVM.IsDeckPage = true;

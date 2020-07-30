@@ -24,6 +24,7 @@
                     <Setter Property="Width" Value="100"/>
                     <Setter Property="ShowRecentColors" Value="True"/>
                     <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="ShowStandardColors" Value="False"/>
                 </Style>
             </StackPanel.Resources>
             <Grid>
