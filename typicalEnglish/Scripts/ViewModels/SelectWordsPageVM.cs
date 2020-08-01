@@ -2,10 +2,17 @@
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// View model for SelectWordsPage
+    /// </summary>
     public class SelectWordsPageVM: BaseViewModel
     {
         #region Constructor
 
+        /// <summary>
+        /// Initializing words.
+        /// </summary>
+        /// <param name="words">Words for exam.</param>
         public SelectWordsPageVM(ObservableCollection<Word> words)
         {
             Words = words;
@@ -37,6 +44,10 @@ namespace typicalEnglish.Scripts.ViewModels
         #region SelectionChangedCommand
 
         private RelayCommand selectionChangedCommand;
+        /// <summary>
+        /// Word selection changed.
+        /// It needs for excluding empty value of <see cref="Words"./>
+        /// </summary>
         public RelayCommand SelectionChangedCommand
         {
             get => selectionChangedCommand ?? (selectionChangedCommand = new RelayCommand(obj =>

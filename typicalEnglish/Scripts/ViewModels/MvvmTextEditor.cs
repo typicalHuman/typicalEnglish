@@ -5,16 +5,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// Updated avalon editor with colorizing binding.
+    /// </summary>
     public class MvvmTextEditor : TextEditor, INotifyPropertyChanged
     {
         #region Properties
 
         #region Dependency Properties
 
+        /// <summary>
+        /// Dependency property of text.
+        /// </summary>
         public static DependencyProperty TextProperty =
            DependencyProperty.Register("Text", typeof(string), typeof(MvvmTextEditor),
            new PropertyMetadata((obj, args) =>
@@ -23,6 +28,9 @@ namespace typicalEnglish.Scripts.ViewModels
            })
        );
 
+        /// <summary>
+        /// Property of text.
+        /// </summary>
         public new string Text
         {
             get => base.Text; 
@@ -33,6 +41,9 @@ namespace typicalEnglish.Scripts.ViewModels
             }
         }
 
+        /// <summary>
+        /// Dependency property of colorizing.
+        /// </summary>
         public static DependencyProperty ColorizingProperty =
             DependencyProperty.Register("Colorizing", typeof(DocumentColorizingTransformer), typeof(MvvmTextEditor),
             new PropertyMetadata((obj, args) =>
@@ -44,14 +55,15 @@ namespace typicalEnglish.Scripts.ViewModels
                 transformers.Add(tr);
             }));
 
-        private DocumentColorizingTransformer colorizing;
-        public DocumentColorizingTransformer Colorizing
-        {
-            get { return colorizing; }
-            set { colorizing = value; }
-        }
+        /// <summary>
+        /// Property of colorizing.
+        /// </summary>
+        public DocumentColorizingTransformer Colorizing { get; set; }
         #endregion
 
+        /// <summary>
+        /// Text length.
+        /// </summary>
         public int Length { get { return base.Text.Length; } }
 
         #endregion

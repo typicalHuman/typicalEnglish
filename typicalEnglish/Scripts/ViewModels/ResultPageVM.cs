@@ -3,10 +3,17 @@ using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// View model for ResultPage.
+    /// </summary>
     public class ResultPageVM: BaseViewModel
     {
         #region Constructor
-
+        
+        /// <summary>
+        /// Initializing questions.
+        /// </summary>
+        /// <param name="questions">Questions that were in the exam.</param>
         public ResultPageVM(ObservableCollection<Question> questions)
         {
             Questions = questions;
@@ -96,8 +103,6 @@ namespace typicalEnglish.Scripts.ViewModels
         #region Commands
 
         #region FinishExamCommand
-
-
         private RelayCommand finishExamCommand;
         public RelayCommand FinishExamCommand
         {
@@ -110,6 +115,5 @@ namespace typicalEnglish.Scripts.ViewModels
         #endregion
 
         #endregion
-
     }
 }

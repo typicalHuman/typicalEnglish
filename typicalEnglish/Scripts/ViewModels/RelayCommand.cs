@@ -3,6 +3,9 @@ using System.Windows.Input;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// Command base.
+    /// </summary>
     public class RelayCommand : ICommand
     {
         private Action<object> execute;

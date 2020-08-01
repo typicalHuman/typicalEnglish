@@ -3,6 +3,10 @@ using System.Windows.Controls;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// Class for listview behavior.
+    /// Selecting items by single click.
+    /// </summary>
     public static class MultiSelectionBehavior
     {
         public static readonly DependencyProperty ClickSelectionProperty =
@@ -24,15 +28,8 @@ namespace typicalEnglish.Scripts.ViewModels
             if (dpo is ListView listView)
             {
                 if ((bool)e.NewValue == true)
-                {
-                    listView.SelectionChanged += OnSelectionChanged;
-                }
-                else
-                {
-                    listView.SelectionChanged -= OnSelectionChanged;
-                }
+                    listView.SelectionChanged += (sender, args) => { };
             }
         }
-        static void OnSelectionChanged(object sender, SelectionChangedEventArgs e) { }
     }
 }

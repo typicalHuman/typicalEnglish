@@ -1,6 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using typicalEnglish.Scripts.Models;
 using System.Collections.Generic;
@@ -10,9 +8,15 @@ using System.Linq;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// View model for test tab.
+    /// </summary>
     public class TestPageVM : BaseViewModel
     {
         #region Constructor
+        /// <summary>
+        /// Update decks selections.
+        /// </summary>
         public TestPageVM()
         {
             SetDecksSelections();
@@ -242,6 +246,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region MoreVisibility
 
         private Visibility moreVisibility = Visibility.Collapsed;
+        /// <summary>
+        /// <see cref="MoreVisibility"/> needs to set visibility of panel with select first N items.
+        /// </summary>
         public Visibility MoreVisibility
         {
             get => moreVisibility;
@@ -256,6 +263,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region IsDeckPage
 
         private bool isDeckPage = true;
+        /// <summary>
+        /// There's frame in TestPage and here's indicator of frame sorce: decks selections or words selections.
+        /// </summary>
         public bool IsDeckPage
         {
             get => isDeckPage;
@@ -269,6 +279,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region IsEmpty
         private bool isEmpty = true;
+        /// <summary>
+        /// Indicator of emptiness decks selections.
+        /// </summary>
         public bool IsEmpty
         {
             get => isEmpty;
@@ -284,6 +297,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region Source
 
         private string source = "SelectDecksPage.xaml";
+        /// <summary>
+        /// Source of frame which consists of: SelectDecksPage and SelectWordsPage.
+        /// </summary>
         public string Source
         {
             get => source;

@@ -7,10 +7,16 @@ using System.Windows;
 using typicalEnglish.Scripts.Models;
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// View model for word abstraction.
+    /// </summary>
     public class Word: TestValue, INotifyPropertyChanged
     {
         #region Methods
 
+        /// <summary>
+        /// Play word spelling by its source.
+        /// </summary>
         public void PlaySound()
         {
             WordSoundPlayer.PlayWordSpelling(this);
@@ -22,6 +28,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region Colorizing
         private DocumentColorizingTransformer colorizing;
+        /// <summary>
+        /// Colorizing property for <see cref="MvvmTextEditor"/>.
+        /// </summary>
         [JsonIgnore]
         public DocumentColorizingTransformer Colorizing
         {
@@ -69,6 +78,10 @@ namespace typicalEnglish.Scripts.ViewModels
         #region PronunciationSource
 
         private string pronunciationSource = "Auto";
+        /// <summary>
+        /// Source of file which will play in <see cref="PlaySound"/> method.
+        /// If value equals Auto, then synthesizer will play windows standard voice.
+        /// </summary>
         public string PronunciationSource
         {
             get => pronunciationSource;
@@ -84,6 +97,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region MoreVisibility
 
         private Visibility moreVisibility = Visibility.Collapsed;
+        /// <summary>
+        /// Visibility for more word editing. 
+        /// </summary>
         [JsonIgnore]
         public Visibility MoreVisibility
         {
@@ -99,6 +115,10 @@ namespace typicalEnglish.Scripts.ViewModels
         #region IsEditing
 
         private bool isEditing = false;
+        /// <summary>
+        /// Is editing word now. 
+        /// It needs for more beauty in DeckPage view.
+        /// </summary>
         [JsonIgnore]
         public bool IsEditing
         {
@@ -118,6 +138,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region ShowInfoCommand
         private RelayCommand showInfoCommand;
+        /// <summary>
+        /// Show more info. Refer to <see cref="MoreVisibility"/>.
+        /// </summary>
         public RelayCommand ShowInfoCommand
         {
             get => showInfoCommand ?? (showInfoCommand = new RelayCommand(obj =>
@@ -129,6 +152,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region SpeakCommand
         private RelayCommand speakCommand;
+        /// <summary>
+        /// Play word's spelling by its source.
+        /// </summary>
         [JsonIgnore]
         public RelayCommand SpeakCommand
         {
@@ -142,6 +168,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region EditCommand
         private RelayCommand editCommand;
+        /// <summary>
+        /// Edit word content.
+        /// </summary>
         [JsonIgnore]
         public RelayCommand EditCommand
         {
@@ -204,6 +233,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region ChangeSoundFileCommand
 
         private RelayCommand changeSoundFileCommand;
+        /// <summary>
+        /// Open sound file on PC.
+        /// </summary>
         [JsonIgnore]
         public RelayCommand ChangeSoundFileCommand
         {
@@ -225,12 +257,14 @@ namespace typicalEnglish.Scripts.ViewModels
         #region InitializeValueCommand
 
         private RelayCommand initializeValueCommand;
+        /// <summary>
+        /// A piece of shit (needs for property changed event)
+        /// </summary>
         [JsonIgnore]
         public RelayCommand InitializeValueCommand
         {
             get => initializeValueCommand ?? (initializeValueCommand = new RelayCommand(obj =>
             {
-                //a piece of shit (needs for property changed event)
                 for (int i = 0; i < Examples.Count; i++)
                 {
                     Examples[i] = Examples[i] + " ";

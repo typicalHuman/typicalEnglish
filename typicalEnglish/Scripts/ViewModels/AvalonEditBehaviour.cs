@@ -6,7 +6,7 @@ using System.Windows.Interactivity;
 namespace typicalEnglish.Scripts.ViewModels
 {
     /// <summary>
-    /// Updated version of avalon editor for text binding.
+    /// Updated version of avalon editor behavior for text binding.
     /// </summary>
     public sealed class AvalonEditBehaviour : Behavior<TextEditor>
     {

@@ -4,6 +4,9 @@ using System.Windows.Controls;
 
 namespace typicalEnglish.Scripts.Views
 {
+    /// <summary>
+    /// Wrap panel with auto centralized items.
+    /// </summary>
     public class AlignableWrapPanel : Panel
     {
         public HorizontalAlignment HorizontalContentAlignment
