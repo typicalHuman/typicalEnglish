@@ -1,20 +1,28 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
+    /// <summary>
+    /// Model for deck abstraction.
+    /// </summary>
     public class Deck: TestValue, INotifyPropertyChanged
     {
         #region Properties
+        /// <summary>
+        /// Words that belong to this deck.
+        /// </summary>
         public ObservableCollection<Word> Words { get; set; } = new ObservableCollection<Word>();
 
         #region ImageSource
 
         private string imageSource = @"pack://application:,,,/Resources/Images/typography.png";
+        /// <summary>
+        /// Title image source.
+        /// </summary>
         public string ImageSource
         {
             get => imageSource;
@@ -58,7 +66,7 @@ namespace typicalEnglish.Scripts.Models
 
         #endregion
 
-        #region Bacground
+        #region Background
 
         private Color background = Colors.White;
         public Color Background
@@ -103,6 +111,9 @@ namespace typicalEnglish.Scripts.Models
 
         #region UnderlineColor
         private Color underlineColor = (Color)new ColorConverter().ConvertFrom("#03a9f4");
+        /// <summary>
+        /// Underline color of textbox.
+        /// </summary>
         public Color UnderlineColor
         {
             get => underlineColor;

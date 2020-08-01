@@ -1,11 +1,16 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using typicalEnglish.Scripts.ViewModels;
+﻿using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
-    public class Question: INotifyPropertyChanged
+    /// <summary>
+    /// Class for checking answers on exam event.
+    /// </summary>
+    public class Question: BaseViewModel
     {
+        #region Constants
+        private const string EMPTY_TRANSLATIONS = "isn't specified";
+        #endregion
+
         #region Methods
 
         private void SetCorrectAnswer()
@@ -13,7 +18,7 @@ namespace typicalEnglish.Scripts.Models
             if (Word.Translations.Count > 0)
                 CorrectAnswer = Word.Translations[0];
             else
-                CorrectAnswer = "isn't specified";
+                CorrectAnswer = EMPTY_TRANSLATIONS;
         }
 
         #endregion
@@ -37,6 +42,9 @@ namespace typicalEnglish.Scripts.Models
         #region Answer
 
         private string answer = "";
+        /// <summary>
+        /// User's answer.
+        /// </summary>
         public string Answer
         {
             get => answer;
@@ -50,6 +58,9 @@ namespace typicalEnglish.Scripts.Models
 
         #region Word
         private Word word;
+        /// <summary>
+        /// Word to test.
+        /// </summary>
         public Word Word
         {
             get => word;
@@ -64,6 +75,9 @@ namespace typicalEnglish.Scripts.Models
 
         #region CorrectAnswer
         private string correctAnswer;
+        /// <summary>
+        /// First translation to show, when user answers wrong.
+        /// </summary>
         public string CorrectAnswer
         {
             get => correctAnswer;
@@ -89,14 +103,6 @@ namespace typicalEnglish.Scripts.Models
             return new Question() { Word = word };
         }
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

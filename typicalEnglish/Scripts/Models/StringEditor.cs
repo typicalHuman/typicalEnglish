@@ -2,10 +2,15 @@
 
 namespace typicalEnglish.Scripts.Models
 {
+    /// <summary>
+    /// Class for removing garbage from string.
+    /// </summary>
     class StringEditor
     {
         private static string Str { get; set; }
 
+        /// <param name="str">String which needs to remove garbage.</param>
+        /// <returns>String with low letters and without excess spaces</returns>
         public static string RemoveExcessSymbols(string str)
         {
             if (str != null && str.Length > 0)

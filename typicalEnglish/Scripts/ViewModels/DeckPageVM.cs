@@ -1,13 +1,14 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
-    public class DeckPageVM: INotifyPropertyChanged
+    /// <summary>
+    /// View model for words editing.
+    /// </summary>
+    public class DeckPageVM: BaseViewModel
     {
         #region Constructor
-
+        /// <param name="words">Words which will edit.</param>
         public DeckPageVM(ObservableCollection<Word> words)
         {
             Words = words;
@@ -25,6 +26,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region BackCommand
         private RelayCommand backCommand;
+        /// <summary>
+        /// Back to decks choosing page.
+        /// </summary>
         public RelayCommand BackCommand
         {
             get => backCommand ?? (backCommand = new RelayCommand(obj =>
@@ -64,14 +68,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         public ObservableCollection<Word> Words { get; set; }
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

@@ -1,14 +1,19 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
-    public class ImageSource : INotifyPropertyChanged
+    /// <summary>
+    /// Class for tracking selected images.
+    /// </summary>
+    public class ImageSource : BaseViewModel
     {
         #region Properties
 
         #region Source
         private string source;
+        /// <summary>
+        /// Source of image.
+        /// </summary>
         public string Source
         {
             get => source;
@@ -23,6 +28,9 @@ namespace typicalEnglish.Scripts.Models
         #region IsSelected
 
         private bool isSelected;
+        /// <summary>
+        /// Is already selected image.
+        /// </summary>
         public bool IsSelected
         {
             get => isSelected;
@@ -39,7 +47,6 @@ namespace typicalEnglish.Scripts.Models
 
         #region Operators
 
-
         public static implicit operator ImageSource(string str)
         {
             return new ImageSource() { Source = str };
@@ -49,15 +56,6 @@ namespace typicalEnglish.Scripts.Models
             return imSource.Source;
         }
 
-
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

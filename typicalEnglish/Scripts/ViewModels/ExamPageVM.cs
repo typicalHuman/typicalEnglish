@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
-    public class ExamPageVM: INotifyPropertyChanged
+    /// <summary>
+    /// ViewModel for exam.
+    /// </summary>
+    public class ExamPageVM: BaseViewModel
     {
         #region Extensions
 
         private static Random rng = new Random();
-
+        /// <summary>
+        /// Shuffle elements of collection.
+        /// </summary>
+        /// <typeparam name="T">Question.</typeparam>
+        /// <param name="list">Collection to shuffle.</param>
         public void Shuffle<T>(IList<T> list)
         {
             int n = list.Count;
@@ -31,9 +36,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region Constructor
         /// <summary>
-        /// Initialize exam
+        /// Initialize exam.
         /// </summary>
-        /// <param name="selectedWords">words that will be in the test</param>
+        /// <param name="selectedWords">Words which will be in the test.</param>
         public ExamPageVM(ObservableCollection<Word> selectedWords)
         {
             foreach (Word w in selectedWords)
@@ -50,6 +55,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region CurrentQuestion
         private Question currentQuestion;
+        /// <summary>
+        /// Question which see user.
+        /// </summary>
         public Question CurrentQuestion
         {
             get => currentQuestion;
@@ -64,6 +72,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region IsChecked
 
         private bool isChecked;
+        /// <summary>
+        /// Is answer panel visible.
+        /// </summary>
         public bool IsChecked
         {
             get => isChecked;
@@ -79,6 +90,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region QuestionNumber
 
         private int questionNumber = 1;
+        /// <summary>
+        /// Current question number.
+        /// </summary>
         public int QuestionNumber
         {
             get => questionNumber;
@@ -93,6 +107,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region IsLastWord
 
         private bool isLastWord;
+        /// <summary>
+        /// Is last word and end of the test.
+        /// </summary>
         public bool IsLastWord
         {
             get => isLastWord;
@@ -179,6 +196,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region CloseTestCommand
 
         private RelayCommand closeTestCommand;
+        /// <summary>
+        /// Return to test page.
+        /// </summary>
         public RelayCommand CloseTestCommand
         {
             get => closeTestCommand ?? (closeTestCommand = new RelayCommand(obj =>
@@ -220,6 +240,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region NextWordCommand
 
         private RelayCommand nextWordCommand;
+        /// <summary>
+        /// Change current question.
+        /// </summary>
         public RelayCommand NextWordCommand
         {
             get => nextWordCommand ?? (nextWordCommand = new RelayCommand(obj =>
@@ -230,14 +253,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

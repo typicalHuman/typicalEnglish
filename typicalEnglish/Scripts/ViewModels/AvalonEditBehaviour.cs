@@ -5,12 +5,21 @@ using System.Windows.Interactivity;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// Updated version of avalon editor for text binding.
+    /// </summary>
     public sealed class AvalonEditBehaviour : Behavior<TextEditor>
     {
+        /// <summary>
+        /// Dependency property of bound text. 
+        /// </summary>
         public static readonly DependencyProperty GiveMeTheTextProperty =
             DependencyProperty.Register("GiveMeTheText", typeof(string), typeof(AvalonEditBehaviour),
             new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, PropertyChangedCallback));
 
+        /// <summary>
+        /// Property of bound text.
+        /// </summary>
         public string GiveMeTheText
         {
             get { return (string)GetValue(GiveMeTheTextProperty); }

@@ -1,13 +1,14 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
-    public class MainWindowVM: INotifyPropertyChanged
+    /// <summary>
+    /// View model for window.
+    /// </summary>
+    public class MainWindowVM: BaseViewModel
     {
         #region Properties
 
@@ -64,8 +65,14 @@ namespace typicalEnglish.Scripts.ViewModels
         #region Commands
 
         #region CloseCommand
+        /// <summary>
+        /// Action that should close main window.
+        /// </summary>
         public Action CloseAction { get; set; }
         private RelayCommand closeCommand;
+        /// <summary>
+        /// Close window and save decks.
+        /// </summary>
         public RelayCommand CloseCommand
         {
             get => closeCommand ?? (closeCommand = new RelayCommand(obj =>
@@ -108,6 +115,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region NavigateCommands
         private string lastPage { get; set; }
 
+        /// <summary>
+        /// Naviage to page with <paramref name="url"/>
+        /// </summary>
         public void Navigate(string url)
         {
             if (url != lastPage)
@@ -130,14 +140,6 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop="")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

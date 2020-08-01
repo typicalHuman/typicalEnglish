@@ -4,6 +4,9 @@ using System.Windows.Media;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// Converter from color to brush.
+    /// </summary>
     [ValueConversion(typeof(Brush), typeof(Color))]
     public class ColorBrushConverter : IValueConverter
     {

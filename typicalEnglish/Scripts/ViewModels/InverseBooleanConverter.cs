@@ -3,6 +3,9 @@ using System.Windows.Data;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
+    /// <summary>
+    /// Converter for changing bool value to opposite.
+    /// </summary>
     [ValueConversion(typeof(bool), typeof(bool))]
     public class InverseBooleanConverter : IValueConverter
     {

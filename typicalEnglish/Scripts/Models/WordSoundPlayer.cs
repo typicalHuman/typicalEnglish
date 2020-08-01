@@ -6,9 +6,11 @@ using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
+    /// <summary>
+    /// Class for playing sounds in application.
+    /// </summary>
     class WordSoundPlayer
     {
-
         #region Constuctor
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace typicalEnglish.Scripts.Models
         #endregion
 
         #region Methods
-
+        /// <param name="word">Word which spelling will speak synthesizer.</param>
         public static void PlayWordSpelling(Word word)
         {
             string source = word.PronunciationSource;
@@ -52,6 +54,10 @@ namespace typicalEnglish.Scripts.Models
             else
                 PlayAudio(source);
         }
+        /// <summary>
+        /// Play audio by url.
+        /// </summary>
+        /// <param name="url">Url must contains file with extension.</param>
         public async static void PlayAudio(string url)
         {
             await Task.Run(() =>
@@ -60,7 +66,10 @@ namespace typicalEnglish.Scripts.Models
                 Play(reader);
             });
         }
-
+        /// <summary>
+        /// Play audio from application resources.
+        /// </summary>
+        /// <param name="str">Stream of audio.</param>
         public async static void PlayAudio(Stream str)
         {
             await Task.Run(() =>

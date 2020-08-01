@@ -1,10 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
-    public class SelectWordsPageVM: INotifyPropertyChanged
+    public class SelectWordsPageVM: BaseViewModel
     {
         #region Constructor
 
@@ -50,14 +48,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

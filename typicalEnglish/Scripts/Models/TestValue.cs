@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
-    public abstract class TestValue: INotifyPropertyChanged
+    /// <summary>
+    /// Class for define is item selected or not.
+    /// </summary>
+    public abstract class TestValue: BaseViewModel
     {
         #region IsSelected
         private bool isSelected = false;
@@ -17,14 +19,6 @@ namespace typicalEnglish.Scripts.Models
                 isSelected = value;
                 OnPropertyChanged("IsSelected");
             }
-        }
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         #endregion
     }

@@ -123,6 +123,7 @@
     <Compile Include="Scripts\Models\Question.cs" />
     <Compile Include="Scripts\Models\StringEditor.cs" />
     <Compile Include="Scripts\Models\TestValue.cs" />
+    <Compile Include="Scripts\ViewModels\BaseViewModel.cs" />
     <Compile Include="Scripts\ViewModels\ColorBrushConverter.cs" />
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
     <Compile Include="Scripts\ViewModels\ExamPageVM.cs" />

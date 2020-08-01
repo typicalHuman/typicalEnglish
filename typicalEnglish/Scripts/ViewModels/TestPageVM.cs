@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
-    public class TestPageVM : INotifyPropertyChanged
+    public class TestPageVM : BaseViewModel
     {
         #region Constructor
         public TestPageVM()
@@ -295,14 +295,6 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

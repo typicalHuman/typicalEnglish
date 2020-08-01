@@ -1,11 +1,16 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
-    public class MutableString: INotifyPropertyChanged
+    /// <summary>
+    /// Class for update string value in binding.
+    /// </summary>
+    public class MutableString: BaseViewModel
     {
         private string value;
+        /// <summary>
+        /// Value for updating.
+        /// </summary>
         public string Value
         {
             get => value;
@@ -24,14 +29,6 @@ namespace typicalEnglish.Scripts.Models
         public static implicit operator string(MutableString mutStr)
         {
             return mutStr.Value;
-        }
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         #endregion
 

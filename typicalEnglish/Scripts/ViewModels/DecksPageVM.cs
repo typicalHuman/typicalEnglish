@@ -1,14 +1,18 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
-    public class DecksPageVM: INotifyPropertyChanged
+    /// <summary>
+    /// Decks choosing view model.
+    /// </summary>
+    public class DecksPageVM: BaseViewModel
     {
         #region Constructor
+        /// <summary>
+        /// Set decks to choose from json data.
+        /// </summary>
         public DecksPageVM()
         {
             Decks = JSONData.GetSavedDecks();
@@ -30,7 +34,7 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region Commands
 
-        #region AddCommand
+        #region AddDeckCommand
         private RelayCommand addCommand;
         public RelayCommand AddCommand
         {
@@ -41,7 +45,7 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-        #region DeleteCommand
+        #region DeleteDeckCommand
 
         private RelayCommand deleteCommand;
         public RelayCommand DeleteCommand
@@ -63,6 +67,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region OpenDeckCommand
         private RelayCommand openDeckCommand;
+        /// <summary>
+        /// Open words editing page.
+        /// </summary>
         public RelayCommand OpenDeckCommand
         {
             get => openDeckCommand ?? (openDeckCommand = new RelayCommand(obj =>
@@ -93,14 +100,6 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

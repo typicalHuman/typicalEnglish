@@ -1,15 +1,19 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using typicalEnglish.Scripts.Models;
 using ImageSource = typicalEnglish.Scripts.Models.ImageSource;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
-    public class DeckCustomPageVM: INotifyPropertyChanged
+    /// <summary>
+    /// Deck customization view model.
+    /// </summary>
+    public class DeckCustomPageVM: BaseViewModel
     {
         #region Constructor
-
+        /// <summary>
+        /// Initialize deck color and title image.
+        /// </summary>
+        /// <param name="deck">Deck to customize.</param>
         public DeckCustomPageVM(Deck deck)
         {
             this.Deck = deck;
@@ -61,6 +65,9 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
+        /// <summary>
+        /// Images from application resources.
+        /// </summary>
         public ObservableCollection<ImageSource> ImageSources { get; set; } = new ObservableCollection<ImageSource>()
         {
             "pack://application:,,,/Resources/Images/typography.png",
@@ -109,6 +116,9 @@ namespace typicalEnglish.Scripts.ViewModels
         #region OpenImageCommand
 
         private RelayCommand openImageCommand;
+        /// <summary>
+        /// Open file on PC.
+        /// </summary>
         public RelayCommand OpenImageCommand
         {
             get => openImageCommand ?? (openImageCommand = new RelayCommand(obj =>
@@ -130,6 +140,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region BackCommand
         private RelayCommand backCommand;
+        /// <summary>
+        /// Back to decks choosing page.
+        /// </summary>
         public RelayCommand BackCommand
         {
             get => backCommand ?? (backCommand = new RelayCommand(obj =>
@@ -139,14 +152,6 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
         #endregion
     }
 }

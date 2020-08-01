@@ -5,7 +5,6 @@ namespace typicalEnglish.Scripts.ViewModels
 {
     public static class MultiSelectionBehavior
     {
-
         public static readonly DependencyProperty ClickSelectionProperty =
             DependencyProperty.RegisterAttached("ClickSelection",
                                                 typeof(bool),
