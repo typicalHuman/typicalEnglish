@@ -128,6 +128,7 @@
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
     <Compile Include="Scripts\ViewModels\ExamPageVM.cs" />
     <Compile Include="Scripts\ViewModels\MultiSelectionBehavior.cs" />
+    <Compile Include="Scripts\ViewModels\OptionsVM.cs" />
     <Compile Include="Scripts\ViewModels\ResultPageVM.cs" />
     <Compile Include="Scripts\ViewModels\SelectWordsPageVM.cs" />
     <Compile Include="Scripts\ViewModels\TestPageVM.cs" />

@@ -17,11 +17,13 @@ namespace typicalEnglish
         public static SelectWordsPageVM SelectWordVM { get; set; }
         public static ExamPageVM ExamPageVM { get; set; }
         public static ResultPageVM ResultPageVM { get; set; }
+        public static OptionsVM OptionsVM { get; set; }
         public App()
         {
             MainVM = new MainWindowVM();
             DecksVM = new DecksPageVM();
             TestPageVM = new TestPageVM();
+            OptionsVM = new OptionsVM();
         }
 
     }
