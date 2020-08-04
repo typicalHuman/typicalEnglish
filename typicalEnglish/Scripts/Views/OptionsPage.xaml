@@ -9,9 +9,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OptionsPage" FontFamily="Candara Light" FontSize="50"
-      DataContext="{x:Static local:App.OptionsVM}">
+      DataContext="{x:Static local:App.OptionsVM}" Foreground="{DynamicResource Foreground}">
 
-    <Grid>
+    <Grid Background="{DynamicResource PanelBackground}">
         <StackPanel Orientation="Vertical" Margin="20" HorizontalAlignment="Center">
             <!--#region Theme selector-->
             <StackPanel Orientation="Horizontal">
@@ -19,7 +19,8 @@
                 <ToggleButton VerticalAlignment="Center" Margin="50 0"
                               Height="50" Width="50" 
                               Content="{md:PackIcon Kind=Close,Size=30}"
-                              Style="{StaticResource MaterialDesignActionAccentToggleButton}">
+                              Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+                              IsChecked="{Binding IsDarkMode, UpdateSourceTrigger=PropertyChanged}">
                 </ToggleButton>
             </StackPanel>
             <!--#endregion-->
@@ -30,14 +31,21 @@
                 <ToggleButton VerticalAlignment="Center" Margin="25 0"
                               Height="50" Width="50" 
                               Content="{md:PackIcon Kind=Close,Size=30}"
-                              Style="{StaticResource MaterialDesignActionAccentToggleButton}">
+                              Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+                              IsChecked="{Binding IsGameModeEnable, UpdateSourceTrigger=PropertyChanged}">
                 </ToggleButton>
             </StackPanel>
             <!--#endregion-->
             <Separator Margin="0 10"/>
             <!--#region Delete all data-->
             <Button Height="50" Background="#f35f5d" Style="{StaticResource InvisButton}"
-                    Content="Delete all data" FontSize="30"/>
+                    Content="Delete all data" FontSize="30" Foreground="{DynamicResource Foreground}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding DeleteAllDataCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
             <!--#endregion-->
         </StackPanel>
         <!--#region About-->

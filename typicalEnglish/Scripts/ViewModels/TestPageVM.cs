@@ -31,6 +31,7 @@ namespace typicalEnglish.Scripts.ViewModels
         private const string EXAM_PAGE_PATH = "Scripts/Views/ExamPage.xaml";
 
         private const string SELECT_WORDS_SOURCE = "SelectWordsPage.xaml";
+        private const string SELECT_DECKS_SOURCE = "SelectDecksPage.xaml";
 
         #endregion
 
@@ -296,7 +297,7 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region Source
 
-        private string source = "SelectDecksPage.xaml";
+        private string source = SELECT_DECKS_SOURCE;
         /// <summary>
         /// Source of frame which consists of: SelectDecksPage and SelectWordsPage.
         /// </summary>

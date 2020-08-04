@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\App.xaml
-17-1023911835
+20-252077202
 
-47217713621
+50388107478
 87492764387
-Resources\ButtonStyle.xaml;Resources\ConfirmBoxStyle.xaml;Resources\InvisibleButtonBorderStyle.xaml;Resources\ListViewStyle.xaml;Resources\MenuStyle.xaml;Resources\OneColorToolTipStyle.xaml;Scripts\Views\DeckCustomizationPage.xaml;Scripts\Views\DeckPage.xaml;Scripts\Views\DecksPage.xaml;Scripts\Views\ExamPage.xaml;Scripts\Views\MainWindow.xaml;Resources\CircularButtonTemplate.xaml;Scripts\Views\OptionsPage.xaml;Scripts\Views\ResultPage.xaml;Scripts\Views\SelectDecksPage.xaml;Scripts\Views\SelectWordsPage.xaml;Scripts\Views\TestPage.xaml;
+Resources\ButtonStyle.xaml;Resources\ConfirmBoxStyle.xaml;Resources\InvisibleButtonBorderStyle.xaml;Resources\ListViewStyle.xaml;Resources\MenuStyle.xaml;Resources\OneColorToolTipStyle.xaml;Resources\Themes\DarkTheme.xaml;Resources\Themes\LightTheme.xaml;Scripts\Views\DeckCustomizationPage.xaml;Scripts\Views\DeckPage.xaml;Scripts\Views\DecksPage.xaml;Scripts\Views\ExamPage.xaml;Scripts\Views\GamePage.xaml;Scripts\Views\MainWindow.xaml;Resources\CircularButtonTemplate.xaml;Scripts\Views\OptionsPage.xaml;Scripts\Views\ResultPage.xaml;Scripts\Views\SelectDecksPage.xaml;Scripts\Views\SelectWordsPage.xaml;Scripts\Views\TestPage.xaml;
 
 True
 

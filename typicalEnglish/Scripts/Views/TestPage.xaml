@@ -62,10 +62,7 @@
 
         <Button Height="40" Width="50" HorizontalAlignment="Right" Margin="5 0"
                 Style="{StaticResource InvisButton}" Background="Transparent" 
-                Content="{md:PackIcon Kind=SelectAll,Size=20}">
-            <Button.ToolTip>
-                <ToolTip Content="Select All" Style="{StaticResource OneColorTT}" />
-            </Button.ToolTip>
+                Content="{md:PackIcon Kind=SelectAll,Size=20}" ToolTip="Select All">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding SelectAllCommand}"/>

@@ -39,7 +39,7 @@
         </StackPanel>
         <Image HorizontalAlignment="Right" VerticalAlignment="Bottom"
                gif:ImageBehavior.AnimatedSource="{Binding GifSource, UpdateSourceTrigger=PropertyChanged}"
-               RenderOptions.BitmapScalingMode="HighQuality" Height="150" 
+               RenderOptions.BitmapScalingMode="Fant" Height="150" 
                Margin="20"/>
     </Grid>
 </Page>

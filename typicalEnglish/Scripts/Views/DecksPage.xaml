@@ -14,13 +14,13 @@
     <Page.Resources>
         <vm:ColorBrushConverter x:Key="ColorBrush"></vm:ColorBrushConverter>
     </Page.Resources>
-    <Grid>
-        <Grid  Margin="0 10 0 0">
+    <Grid Background="{DynamicResource PanelBackground}">
+        <Grid  Margin="0 10 0 0" Background="{DynamicResource PanelBackground}">
             <!--#region Add Deck Button-->
             <Button HorizontalAlignment="Center" VerticalAlignment="Top"
                 Height="70" Width="150" Background="Transparent"
-                Content="New Deck" FontSize="25"
-                  BorderBrush="Black" Style="{StaticResource InvisButton}">
+                Content="New Deck" FontSize="25" Foreground="{DynamicResource Foreground}"
+                Style="{StaticResource InvisButton}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding AddCommand}"/>
@@ -49,12 +49,12 @@
                             Converter={StaticResource ColorBrush}}" FontWeight="Bold" FontFamily="Candara">
                             <!--#region Context Menu-->
                             <Button.ContextMenu>
-                                <ContextMenu Height="Auto">
-                                    <MenuItem Background="White">
+                                <ContextMenu Height="Auto" >
+                                    <MenuItem Background="{DynamicResource PanelBackground}">
                                         <MenuItem.Header>
-                                            <StackPanel Orientation="Horizontal">
-                                                <md:PackIcon Kind="Paintbrush"/>
-                                                <TextBlock Text="Customization" Margin="4 0 0 0"/>
+                                            <StackPanel Orientation="Horizontal" Background="Transparent">
+                                                <md:PackIcon Kind="Paintbrush" Foreground="{DynamicResource Foreground}"/>
+                                                <TextBlock Text="Customization" Margin="4 0 0 0" Foreground="{DynamicResource Foreground}"/>
                                             </StackPanel>
                                         </MenuItem.Header>
                                         <i:Interaction.Triggers>
@@ -68,8 +68,8 @@
                                     <MenuItem Background="#f35f5d">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal">
-                                                <md:PackIcon Kind="Delete"/>
-                                                <TextBlock Text="Delete" Margin="4 0 0 0"/>
+                                                <md:PackIcon Kind="Delete" Foreground="{DynamicResource Foreground}"/>
+                                                <TextBlock Text="Delete" Margin="4 0 0 0" Foreground="{DynamicResource Foreground}"/>
                                             </StackPanel>
                                         </MenuItem.Header>
                                         <i:Interaction.Triggers>
@@ -86,7 +86,7 @@
                             <StackPanel VerticalAlignment="Top">
                                 <Ellipse Width="50" Height="50" VerticalAlignment="Top" Margin="0 10">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="{Binding ImageSource}" />
+                                        <ImageBrush ImageSource="{Binding ImageSource}" RenderOptions.BitmapScalingMode="Fant" />
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <TextBlock Text="{Binding StringFormat=Words: {0}, Path=WordsCount}"

@@ -25,13 +25,14 @@
                     <Setter Property="ShowRecentColors" Value="True"/>
                     <Setter Property="FontSize" Value="15"/>
                     <Setter Property="ShowStandardColors" Value="False"/>
+                    <Setter Property="Background" Value="{DynamicResource PanelBackground}"/>
                 </Style>
             </StackPanel.Resources>
             <Grid>
                 <!--#region Back Button-->
-                <Button Background="Transparent" Style="{StaticResource InvisButton}" Height="45" Width="65" BorderBrush="Transparent"
+                <Button Background="Transparent" Style="{StaticResource InvisButton}" Height="45" Width="65"
                 Content="{md:PackIcon Kind=ArrowBack,Size=30}" HorizontalAlignment="Left"
-                VerticalAlignment="Top" Margin="5">
+                VerticalAlignment="Top" Margin="5" Foreground="{DynamicResource Foreground}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding BackCommand}"/>
@@ -42,8 +43,8 @@
 
                 <!--#region Image Customization-->
                 <StackPanel>
-                    <TextBlock Text="Image" HorizontalAlignment="Center"/>
-                    <Image Source="{Binding Deck.ImageSource}" Height="65" Width="65" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <TextBlock Text="Image" HorizontalAlignment="Center" Foreground="{DynamicResource Foreground}"/>
+                    <Image Source="{Binding Deck.ImageSource}" Height="65" Width="65" RenderOptions.BitmapScalingMode="Fant"/>
                     <ItemsControl ItemsSource="{Binding ImageSources}" Margin="0 5" HorizontalAlignment="Center">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -109,7 +110,7 @@
                         <!--#endregion-->
                     </ItemsControl>
                     <Button Content="Open" Style="{StaticResource InvisButton}"
-                    Background="Transparent" Margin="0 5" Width="200">
+                    Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="0 5" Width="200">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction
@@ -124,6 +125,11 @@
             <Separator/>
             <!--#region Colors-->
             <Grid  Margin="0 10">
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+                    </Style>
+                </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>

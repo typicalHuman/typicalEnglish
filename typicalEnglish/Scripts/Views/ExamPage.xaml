@@ -21,12 +21,9 @@
         <Button Height="50" Width="80" HorizontalAlignment="Left" Margin="5" 
                 Style="{StaticResource InvisButton}" Background="Transparent"
                 Content="{md:PackIcon Kind=Close,Size=45}" Foreground="#ec4c45"
-             
+             ToolTip="Close test"
                 HorizontalContentAlignment="Center">
-            <Button.ToolTip>
-                <ToolTip Style="{StaticResource OneColorTT}" Content="Close test"/>
-            </Button.ToolTip>
-            <i:Interaction.Triggers>
+                <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding CloseTestCommand}"/>
                 </i:EventTrigger>
@@ -123,7 +120,7 @@
             <DockPanel Margin="100 0 100 0">
                 <!--#region Title-->
                 <!--#region Correctness Image-->
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Fill"
+                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill"
                        Height="80" Width="80">
                     <Image.Style>
                         <Style TargetType="Image">

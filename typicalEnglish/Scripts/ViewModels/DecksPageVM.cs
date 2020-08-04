@@ -52,12 +52,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => deleteCommand ?? (deleteCommand = new RelayCommand(obj =>
             {
-                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show(
-                          "Are you sure?",
-                          "Confirm dialog",
-                          MessageBoxButton.YesNo,
-                          (Style)Application.Current.FindResource("ConfirmBoxStyle")
-                      );
+                string result = ConfirmWindow.OpenConfirmWindow();
                 if(result.ToString() == "Yes")
                    Decks.Remove(obj as Deck);
             }));

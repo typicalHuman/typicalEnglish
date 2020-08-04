@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ControlTemplate TargetType="{x:Type Button}" x:Key="CircularButton">
-        <Grid>
+        <Grid Background="Transparent">
             <Ellipse Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"
                          Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2"/>
             <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>

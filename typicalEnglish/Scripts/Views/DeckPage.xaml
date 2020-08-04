@@ -12,7 +12,7 @@
       xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DeckPage" DataContext="{x:Static local:App.DeckVM}"
-      FontFamily="Candara Light">
+      FontFamily="Candara Light" Foreground="{DynamicResource Foreground}">
     <Page.Resources>
         <vm:InverseBooleanConverter x:Key="BooleanInverse"></vm:InverseBooleanConverter>
     </Page.Resources>
@@ -27,9 +27,9 @@
         <!--#endregion-->    
         
         <!--#region Back Button-->
-        <Button Background="Transparent" Style="{StaticResource InvisButton}" Height="45" Width="65" BorderBrush="Transparent"
+        <Button Background="Transparent" Style="{StaticResource InvisButton}" Height="45" Width="65"
                 Content="{md:PackIcon Kind=ArrowBack,Size=30}" HorizontalAlignment="Left"
-                VerticalAlignment="Top" Margin="5">
+                VerticalAlignment="Top" Margin="5" Foreground="{DynamicResource Foreground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding BackCommand}"/>
@@ -41,8 +41,8 @@
         <!--#region Add Deck Button-->
         <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
                 Height="70" Width="150" FontSize="25"
-                Content="New word"
-                BorderBrush="Black" Style="{StaticResource InvisButton}">
+                Content="New word" Foreground="{DynamicResource Foreground}"
+                Style="{StaticResource InvisButton}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding AddWordCommand}"/>
@@ -107,8 +107,8 @@
                                         <MenuItem Background="#f35f5d">
                                             <MenuItem.Header>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <md:PackIcon Kind="Delete"/>
-                                                    <TextBlock Text="Delete word" Margin="4 0 0 0"/>
+                                                    <md:PackIcon Kind="Delete" Foreground="{DynamicResource Foreground}"/>
+                                                    <TextBlock Text="Delete word" Margin="4 0 0 0" Foreground="{DynamicResource Foreground}"/>
                                                 </StackPanel>
                                             </MenuItem.Header>
                                             <i:Interaction.Triggers>
@@ -134,7 +134,7 @@
                                 </StackPanel>
                                 <!--#endregion-->
                                 <!--#region Edit Button-->
-                                <Button HorizontalAlignment="Right"
+                                <Button HorizontalAlignment="Right" Foreground="{DynamicResource Foreground}"
                                 BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
@@ -158,7 +158,8 @@
                                 <!--#endregion-->
                                 <!--#region More Information Button-->
                                 <Button Content="{md:PackIcon Kind=More}" HorizontalAlignment="Left"
-                                BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                BorderBrush="Transparent" BorderThickness="0" Background="Transparent"
+                                        Foreground="{DynamicResource Foreground}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
                                             <i:InvokeCommandAction
@@ -175,6 +176,9 @@
                                     <!--#region addButton Style-->
                                     <Style TargetType="Button" BasedOn="{StaticResource InvisButton}"
                                        x:Key="addButton">
+                                        <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+                                        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}"/>
+                                        <Setter Property="Margin" Value="7 0"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.IsEditing}" Value="True">
                                                 <Setter Property="Visibility" Value="Visible"/>
@@ -191,9 +195,9 @@
                                     <!--#region Pronunciation-->
                                     <Button HorizontalAlignment="Center" Style="{StaticResource InvisButton}"
                                         Background="Transparent" Content="{md:PackIcon Kind=Speakerphone,Size=23}"
-                                        x:Name="speakBtn">
+                                        x:Name="speakBtn" Foreground="{DynamicResource Foreground}" Margin="0 10">
                                         <Button.ToolTip>
-                                            <ToolTip Background="White" Foreground="Black" Content="Pronunciation" FontSize="14"
+                                            <ToolTip Background="{DynamicResource PanelBackground}" Foreground="{DynamicResource Foreground}" Content="Pronunciation" FontSize="14"
                                                  FontFamily="Candara"/>
                                         </Button.ToolTip>
                                         <i:Interaction.Triggers>
@@ -204,11 +208,11 @@
                                         </i:Interaction.Triggers>
                                         <Button.ContextMenu>
                                             <ContextMenu Height="Auto" >
-                                                <MenuItem>
+                                                <MenuItem Background="{DynamicResource PanelBackground}">
                                                     <MenuItem.Header>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <md:PackIcon Kind="FileEdit"/>
-                                                            <TextBlock Text="Change sound" Margin="4 0 0 0"/>
+                                                            <md:PackIcon Kind="FileEdit" Foreground="{DynamicResource Foreground}"/>
+                                                            <TextBlock Text="Change sound" Margin="4 0 0 0" Foreground="{DynamicResource Foreground}"/>
                                                         </StackPanel>
                                                     </MenuItem.Header>
                                                     <i:Interaction.Triggers>
@@ -249,8 +253,8 @@
                                                             <MenuItem Background="#f35f5d">
                                                                 <MenuItem.Header>
                                                                     <StackPanel Orientation="Horizontal">
-                                                                        <md:PackIcon Kind="Delete"/>
-                                                                        <TextBlock Text="Delete" Margin="4 0 0 0"/>
+                                                                        <md:PackIcon Kind="Delete" Foreground="{DynamicResource Foreground}"/>
+                                                                        <TextBlock Text="Delete" Margin="4 0 0 0" Foreground="{DynamicResource Foreground}"/>
                                                                     </StackPanel>
                                                                 </MenuItem.Header>
                                                                 <i:Interaction.Triggers>
@@ -277,7 +281,8 @@
                                     <!--#region Examples-->
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text=" Examples:" FontSize="25"/>
-                                        <Button Content="Add Example" Background="Transparent" Style="{StaticResource addButton}">
+                                        <Button Content="Add Example" Background="Transparent" Style="{StaticResource addButton}"
+>
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
                                                     <i:InvokeCommandAction
@@ -300,7 +305,7 @@
                                                             </i:EventTrigger>
                                                         </i:Interaction.Triggers>
                                                     </TextBox>
-                                                    <vm:MvvmTextEditor Margin="5 0" MaxWidth="600" HorizontalAlignment="Left"
+                                                    <vm:MvvmTextEditor Margin="5 0" MaxWidth="600" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}"
                                                                   Text="{Binding ElementName=tBox,  Path=Text, UpdateSourceTrigger=PropertyChanged}"
                                                                    Colorizing="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}},
                                                             Path=DataContext.Colorizing}" FontSize="23"
@@ -331,8 +336,8 @@
                                                                 <MenuItem Background="#f35f5d">
                                                                     <MenuItem.Header>
                                                                         <StackPanel Orientation="Horizontal">
-                                                                            <md:PackIcon Kind="Delete"/>
-                                                                            <TextBlock Text="Delete" Margin="4 0 0 0"/>
+                                                                            <md:PackIcon Kind="Delete" Foreground="{DynamicResource Foreground}"/>
+                                                                            <TextBlock Text="Delete" Margin="4 0 0 0" Foreground="{DynamicResource Foreground}"/>
                                                                         </StackPanel>
                                                                     </MenuItem.Header>
                                                                     <i:Interaction.Triggers>

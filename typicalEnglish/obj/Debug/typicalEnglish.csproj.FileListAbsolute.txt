@@ -95,3 +95,7 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Vi
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\WpfAnimatedGif.dll
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\WpfAnimatedGif.pdb
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\bin\Debug\WpfAnimatedGif.xml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\GamePage.g.cs
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\GamePage.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\Themes\DarkTheme.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\Themes\LightTheme.baml

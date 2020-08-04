@@ -11,11 +11,24 @@ namespace typicalEnglish.Scripts.Models
     /// </summary>
     public class Deck: TestValue, INotifyPropertyChanged
     {
+        #region Constructor
+        public Deck()
+        {
+            Foreground = BLUE_COLOR;
+            BorderColor = BLUE_COLOR;
+            UnderlineColor = BLUE_COLOR;
+            Background = WHITE_COLOR;
+        }
+                #endregion
+
         #region Properties
         /// <summary>
         /// Words that belong to this deck.
         /// </summary>
         public ObservableCollection<Word> Words { get; set; } = new ObservableCollection<Word>();
+
+        private readonly Color BLUE_COLOR = (Color)new ColorConverter().ConvertFrom("#03a9f4");
+        private readonly Color WHITE_COLOR = (Color)new ColorConverter().ConvertFrom("#f2f2f3");
 
         #region ImageSource
 
@@ -68,7 +81,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region Background
 
-        private Color background = Colors.White;
+        private Color background;
         public Color Background
         {
             get => background;
@@ -82,7 +95,7 @@ namespace typicalEnglish.Scripts.Models
 
         #region Foreground
 
-        private Color foreground = Colors.Black;
+        private Color foreground;
         public Color Foreground
         {
             get => foreground;
@@ -96,7 +109,7 @@ namespace typicalEnglish.Scripts.Models
         #endregion
 
         #region BorderColor
-        private Color borderColor = (Color)new ColorConverter().ConvertFrom("#03a9f4");
+        private Color borderColor;
         public Color BorderColor
         {
             get => borderColor;
@@ -110,7 +123,7 @@ namespace typicalEnglish.Scripts.Models
         #endregion
 
         #region UnderlineColor
-        private Color underlineColor = (Color)new ColorConverter().ConvertFrom("#03a9f4");
+        private Color underlineColor;
         /// <summary>
         /// Underline color of textbox.
         /// </summary>

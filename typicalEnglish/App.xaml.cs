@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish
