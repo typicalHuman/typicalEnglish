@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
+using typicalEnglish.Scripts.Models;
 using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish
@@ -13,12 +14,26 @@ namespace typicalEnglish
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// 525b56
+        /// be9063
+        /// a4978e
+        /// 
+        /// 525b56
+        /// ffd3b6
+        /// ffaaa5
+        /// 
+        /// #594346
+        /// #212026
+        /// #f52d0b
+        /// </summary>
         public MainWindow()
         {
             SetCulturalInfo();
             InitializeComponent();
             NavigationSetup();
             App.MainVM.CloseAction = Close;
+            App.OptionsVM.IsDarkMode = JSONData.GetConfig();
         }
 
         #region Methods

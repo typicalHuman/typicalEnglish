@@ -10,6 +10,7 @@ namespace typicalEnglish.Scripts.Models
     class JSONData
     {
         private const string FILE_NAME = "decks.json";
+        private const string CONFIG_FILE_NAME = "options.json";
 
         /// <summary>
         /// Save to json file.
@@ -38,6 +39,33 @@ namespace typicalEnglish.Scripts.Models
                 return JsonConvert.DeserializeObject<ObservableCollection<Deck>>(jsonString);
             }
             return new ObservableCollection<Deck>();
+        }
+
+        /// <summary>
+        /// Save dark mode option.
+        /// </summary>
+        public static void SaveConfig(bool isDarkMode)
+        {
+            File.WriteAllText(FILE_NAME, JsonConvert.SerializeObject(isDarkMode));
+
+            using (StreamWriter file = File.CreateText(CONFIG_FILE_NAME))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, isDarkMode);
+            }
+        }
+
+        /// Deserialize options data.
+        /// </summary>
+        /// <returns>Is dark mode.</returns>
+        public static bool GetConfig()
+        {
+            if (File.Exists(CONFIG_FILE_NAME))
+            {
+                string jsonString = File.ReadAllText(CONFIG_FILE_NAME);
+                return JsonConvert.DeserializeObject<bool>(jsonString);
+            }
+            return false;
         }
     }
 }

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Windows;
 using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
@@ -11,7 +10,7 @@ namespace typicalEnglish.Scripts.ViewModels
     public class OptionsVM: BaseViewModel
     {
         #region Commands
-
+        
         #region GotoRepositoryCommand
         private RelayCommand gotoRepositoryCommand;
         public RelayCommand GotoRepositoryCommand
@@ -60,22 +59,9 @@ namespace typicalEnglish.Scripts.ViewModels
                 else
                     ThemeSelector.SelectTheme(ThemeSelector.Theme.Light);
                 isDarkMode = value;
+                JSONData.SaveConfig(isDarkMode);
+                var a = JSONData.GetConfig();
                 OnPropertyChanged("IsDarkMode");
-            }
-        }
-
-        #endregion
-
-        #region IsGameModeEnable
-
-        private bool isGameModeEnable;
-        public bool IsGameModeEnable
-        {
-            get => isGameModeEnable;
-            set
-            {
-                isGameModeEnable = value;
-                OnPropertyChanged("IsGameModeEnable");
             }
         }
 

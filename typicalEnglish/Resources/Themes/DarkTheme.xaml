@@ -10,4 +10,8 @@
     <Color x:Key="ListViewSelectedColor" R="255" G="255" B="255"/>
 
     <Color x:Key="CheckBoxBorderColor" R="255" G="255" B="255"/>
+
+    <SolidColorBrush x:Key="DecksBrush" Color="#594346"/>
+    <SolidColorBrush x:Key="TestBrush" Color="#212026"/>
+    <SolidColorBrush x:Key="OptionsBrush" Color="#f52d0b"/>
 </ResourceDictionary>

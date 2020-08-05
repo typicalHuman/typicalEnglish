@@ -32,7 +32,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
@@ -102,10 +101,10 @@
         
         <!--#region Page Buttons-->
 
-        <!--#region Deck Button-->
-        <Button Content="Decks" FontWeight="Bold" Background="#a8e6cf" Grid.Row="1" VerticalAlignment="Top"
+        <!--#region Decks Button-->
+        <Button Content="Decks" FontWeight="Bold" Background="{DynamicResource DecksBrush}" Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17" HorizontalAlignment="Stretch"  Height="40" BorderBrush="Transparent" 
-                BorderThickness="0">
+                BorderThickness="0" Foreground="{DynamicResource Foreground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
@@ -116,9 +115,9 @@
         <!--#endregion-->
 
         <!--#region Test Button-->
-        <Button  Content="Test" FontWeight="Bold" Grid.Column="1" Background="#ffd3b6 "  Grid.Row="1" VerticalAlignment="Top"
+        <Button  Content="Test" FontWeight="Bold" Grid.Column="1" Background="{DynamicResource TestBrush}"  Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17" HorizontalAlignment="Stretch"  Height="40" BorderBrush="Transparent" 
-                BorderThickness="0">
+                BorderThickness="0" Foreground="{DynamicResource Foreground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
@@ -129,23 +128,10 @@
         <!--#endregion-->
 
 
-        <!--#region Game Button-->
-        <Button  Content="Game" FontWeight="Bold" Grid.Column="2" Background="#dcedc1" Grid.Row="1" VerticalAlignment="Top"
-                 FontSize="17"  HorizontalAlignment="Stretch" Height="40" BorderBrush="Transparent" 
-                BorderThickness="0">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
-                                                       CommandParameter="Scripts/Views/GamePage.xaml"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-        <!--#endregion-->
-
         <!--#region Options Button-->
-        <Button Content="Options" FontWeight="Bold" Grid.Column="3" Background="#ffaaa5" Grid.Row="1" VerticalAlignment="Top"
+        <Button Content="Options" FontWeight="Bold" Grid.Column="3" Background="{DynamicResource OptionsBrush}" Grid.Row="1" VerticalAlignment="Top"
                  FontSize="17" HorizontalAlignment="Stretch" Height="40" BorderBrush="Transparent" 
-                BorderThickness="0">
+                BorderThickness="0" Foreground="{DynamicResource Foreground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding PageNavigateCommand}"
