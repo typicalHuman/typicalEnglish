@@ -41,7 +41,7 @@
                 <!--#region Template-->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Button Height="150" Width="110" Background="{Binding Background, UpdateSourceTrigger=PropertyChanged,
+                        <Button Height="200" Width="150" Background="{Binding Background, UpdateSourceTrigger=PropertyChanged,
                             Converter={StaticResource ColorBrush}}" 
                             BorderBrush="{Binding BorderColor, UpdateSourceTrigger=PropertyChanged,
                             Converter={StaticResource ColorBrush}}" 
@@ -84,18 +84,18 @@
                             </Button.ContextMenu>
                             <!--#endregion-->
                             <StackPanel VerticalAlignment="Top">
-                                <Ellipse Width="50" Height="50" VerticalAlignment="Top" Margin="0 10">
+                                <Ellipse Width="75" Height="75" VerticalAlignment="Top" Margin="0 10">
                                     <Ellipse.Fill>
                                         <ImageBrush ImageSource="{Binding ImageSource}" RenderOptions.BitmapScalingMode="Fant" />
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <TextBlock Text="{Binding StringFormat=Words: {0}, Path=WordsCount}"
                                            Margin="0 10" HorizontalAlignment="Center"/>
-                                <TextBox Text="{Binding Name}" MinWidth="20" FontSize="15"
+                                <TextBox Text="{Binding Name}" MinWidth="20" FontSize="15" TextWrapping="Wrap"
                                         CaretBrush="#03a9f4" VerticalAlignment="Bottom" md:HintAssist.Hint="Name"
                                           BorderBrush="{Binding BorderColor, UpdateSourceTrigger=PropertyChanged,
                             Converter={StaticResource ColorBrush}}" md:TextFieldAssist.UnderlineBrush="{Binding UnderlineColor, UpdateSourceTrigger=PropertyChanged,
-                            Converter={StaticResource ColorBrush}}" />
+                            Converter={StaticResource ColorBrush}}" TextAlignment="Center" MaxLength="35"/>
                             </StackPanel>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseDoubleClick">

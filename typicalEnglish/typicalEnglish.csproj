@@ -297,9 +297,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="imgonline_com_ua_transparent_backgr_qqo3sk8q0agtnh1_ree_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\bolt.png" />
     <Resource Include="Resources\Images\star.png" />
     <Resource Include="Resources\Images\typography.png" />
@@ -348,12 +345,6 @@
   <ItemGroup>
     <Resource Include="Resources\Gifs\fun.gif" />
     <Resource Include="Resources\Gifs\sad.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="31_311825_transparent_languages_icon_png_multi_language_support_icon_sUJ_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="31_311873_transparent_languages_icon_png_multiple_language_logo_png_ked_icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="language_wWW_icon.ico" />
