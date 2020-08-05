@@ -70,7 +70,13 @@
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="BorderBrush" Value="Black"/>
                 <Setter Property="BorderThickness" Value="0.2"/>
+                <Setter Property="Foreground" Value="Black"/>
             </Trigger>
+
+            <Trigger Property="IsSelected" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+            </Trigger>
+            
             
         </Style.Triggers>
         <Setter Property="VerticalContentAlignment" Value="Center"/>

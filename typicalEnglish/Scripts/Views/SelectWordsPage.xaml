@@ -27,7 +27,7 @@
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Margin="0 7"
+                                    <TextBlock  Margin="0 7" 
                                   Text="{Binding Spelling}"
                                  HorizontalAlignment="Center" FontSize="23"/>
                                 </DataTemplate>

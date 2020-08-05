@@ -97,6 +97,11 @@ namespace typicalEnglish.Scripts.ViewModels
                     ResizeMode = ResizeMode.NoResize;
                     WindowBorderThickness = new Thickness(0);
                 }
+                else
+                {
+                    ResizeMode = ResizeMode.CanResizeWithGrip;
+                    WindowBorderThickness = new Thickness(1);
+                }
             }));
         }
         #endregion

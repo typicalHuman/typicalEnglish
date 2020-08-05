@@ -6,4 +6,8 @@
     <SolidColorBrush x:Key="Foreground" Color="White"/>
 
     <SolidColorBrush x:Key="ButtonBorderBrush" Color="#f2f2f3"/>
+
+    <Color x:Key="ListViewSelectedColor" R="255" G="255" B="255"/>
+
+    <Color x:Key="CheckBoxBorderColor" R="255" G="255" B="255"/>
 </ResourceDictionary>

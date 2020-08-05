@@ -9,7 +9,7 @@
       xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TestPage" FontFamily="Candara Light" FontSize="20">
+      Title="TestPage" FontFamily="Candara Light" FontSize="20" Foreground="{DynamicResource Foreground}">
 
     <Grid Margin="0 10 0 0" DataContext="{x:Static local:App.TestPageVM}">
         <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
         <!--#region Start Button-->
         <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
                 Height="70" Width="150" FontSize="25"
-                BorderBrush="Black">
+                BorderBrush="{DynamicResource ButtonBorderBrush}" Foreground="{DynamicResource Foreground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding StartTestCommand}"/>
@@ -62,7 +62,8 @@
 
         <Button Height="40" Width="50" HorizontalAlignment="Right" Margin="5 0"
                 Style="{StaticResource InvisButton}" Background="Transparent" 
-                Content="{md:PackIcon Kind=SelectAll,Size=20}" ToolTip="Select All">
+                Content="{md:PackIcon Kind=SelectAll,Size=20}" ToolTip="Select All"
+                Foreground="{DynamicResource Foreground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding SelectAllCommand}"/>
@@ -74,11 +75,10 @@
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"
                     Orientation="Horizontal" Margin="5 0">
-
             <!--#region Back Button-->
-            <Button Background="Transparent" Height="45" Width="65" BorderBrush="Black"
+            <Button Background="Transparent" Height="45" Width="65" BorderBrush="{DynamicResource ButtonBorderBrush}"
                 Content="{md:PackIcon Kind=ArrowBack,Size=30}" HorizontalAlignment="Left"
-                VerticalAlignment="Top" Margin="5">
+                VerticalAlignment="Top" Margin="5" Foreground="{DynamicResource Foreground}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding BackCommand}"/>
@@ -99,8 +99,9 @@
 
             <!--#region Select First-->
             <!--#region MoreOption Button-->
-            <Button Height="40" Width="50" HorizontalAlignment="Right"
-                Style="{StaticResource InvisButton}" Background="Transparent"
+            <Button Height="40" Width="50" HorizontalAlignment="Right" 
+                Style="{StaticResource InvisButton}" Background="Transparent" Foreground="{DynamicResource Foreground}"
+                    BorderBrush="{DynamicResource ButtonBorderBrush}"
                 Content="{md:PackIcon Kind=MoreVert,Size=20}" ToolTip="More option">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
@@ -111,7 +112,8 @@
             <!--#endregion-->
             <StackPanel Orientation="Horizontal" Visibility="{Binding MoreVisibility, UpdateSourceTrigger=PropertyChanged}"
                         Margin="10 0">
-                <Button Height="40" FontSize="20"
+                <Button Height="40" FontSize="20" Foreground="{DynamicResource Foreground}"
+                        BorderBrush="{DynamicResource ButtonBorderBrush}"
                 Style="{StaticResource InvisButton}" Background="Transparent"
                 Content="Select first" >
                     <i:Interaction.Triggers>
@@ -122,8 +124,9 @@
                     </i:Interaction.Triggers>
                 </Button>
                 <TextBox MinWidth="30" Margin="10 0" PreviewTextInput="NumberValidationTextBox"
-                         MaxLength="7" Name="wordsNumber" Height="Auto" VerticalAlignment="Center"/>
-                <TextBlock VerticalAlignment="Center" Margin="5 0">
+                         MaxLength="7" Name="wordsNumber" Height="Auto" VerticalAlignment="Center"
+                         Foreground="{DynamicResource Foreground}" BorderBrush="{DynamicResource Foreground}"/>
+                <TextBlock VerticalAlignment="Center" Margin="5 0" Foreground="{DynamicResource Foreground}">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
