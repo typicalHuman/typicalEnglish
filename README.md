@@ -3,7 +3,7 @@
 
 
  ![Screenshot_2](https://github.com/typicalHuman/typicalEnglish/Screenshots/Screenshot_2.png)
- ![Screenshot_1](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_1.png)
+ ![Screenshot_1](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_1.png?row=true)
 
 # Add information for each word
 
