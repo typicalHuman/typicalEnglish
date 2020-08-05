@@ -7,7 +7,7 @@
 
 # Add information for each word
 
-![Screenshot_3](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_3.png?row=true)
+![Screenshot_3](./Screenshots/Screenshot_3.png?row=true)
 
 # Test your knowledge
 
