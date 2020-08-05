@@ -2,24 +2,25 @@
 
 
 
- ![Screenshot_2](C:\Users\HP\Desktop\Screenshot_2.png)![Screenshot_1](C:\Users\HP\Desktop\Screenshot_1.png)
+ ![Screenshot_2](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_2.png)
+ ![Screenshot_1](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_1.png)
 
 # Add information for each word
 
-![Screenshot_3](C:\Users\HP\Desktop\Screenshot_3.png)
+![Screenshot_3](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_3.png)
 
 # Test your knowledge
 
-![Screenshot_4](C:\Users\HP\Desktop\Screenshot_4.png)
+![Screenshot_4](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_4.png)
 
 # Dark mode
 
-![Screenshot_5](C:\Users\HP\Desktop\Screenshot_5.png)
+![Screenshot_5](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_5.png)
 
 # Deck customization
 
-![Screenshot_6](C:\Users\HP\Desktop\Screenshot_6.png)
+![Screenshot_6](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_6.png)
 
 **Deck context menu**
 
-![Screenshot_7](C:\Users\HP\Desktop\Screenshot_7.png)
+![Screenshot_7](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_7.png)
