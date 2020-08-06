@@ -123,6 +123,7 @@
     <Compile Include="Scripts\Models\ImageSource.cs" />
     <Compile Include="Scripts\Models\JSONData.cs" />
     <Compile Include="Scripts\Models\MutableString.cs" />
+    <Compile Include="Scripts\Models\Paths.cs" />
     <Compile Include="Scripts\Models\Question.cs" />
     <Compile Include="Scripts\Models\StringEditor.cs" />
     <Compile Include="Scripts\Models\TestValue.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Scripts\ViewModels\ColorBrushConverter.cs" />
     <Compile Include="Scripts\ViewModels\ConfirmWindow.cs" />
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
+    <Compile Include="Scripts\ViewModels\DecksCombineVM.cs" />
     <Compile Include="Scripts\ViewModels\ExamPageVM.cs" />
     <Compile Include="Scripts\ViewModels\MultiSelectionBehavior.cs" />
     <Compile Include="Scripts\ViewModels\OptionsVM.cs" />
@@ -145,12 +147,15 @@
     <Compile Include="Scripts\ViewModels\DecksPageVM.cs" />
     <Compile Include="Scripts\ViewModels\InverseBooleanConverter.cs" />
     <Compile Include="Scripts\ViewModels\MvvmTextEditor.cs" />
-    <Compile Include="Scripts\Views\AlignableWrapPanel.cs" />
+    <Compile Include="Scripts\Views\Controls\AlignableWrapPanel.cs" />
     <Compile Include="Scripts\Views\DeckCustomizationPage.xaml.cs">
       <DependentUpon>DeckCustomizationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Views\DeckPage.xaml.cs">
       <DependentUpon>DeckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\Views\DecksCombinePage.xaml.cs">
+      <DependentUpon>DecksCombinePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Views\ExamPage.xaml.cs">
       <DependentUpon>ExamPage.xaml</DependentUpon>
@@ -163,6 +168,9 @@
     </Compile>
     <Compile Include="Scripts\Views\ResultPage.xaml.cs">
       <DependentUpon>ResultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\Views\Controls\SelectDecksControl.xaml.cs">
+      <DependentUpon>SelectDecksControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Views\SelectDecksPage.xaml.cs">
       <DependentUpon>SelectDecksPage.xaml</DependentUpon>
@@ -213,6 +221,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Scripts\Views\DecksCombinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Scripts\Views\DecksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -253,6 +265,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scripts\Views\ResultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scripts\Views\Controls\SelectDecksControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

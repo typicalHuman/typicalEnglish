@@ -30,8 +30,6 @@ namespace typicalEnglish.Scripts.ViewModels
         private const string SAD_GIF_PATH = "pack://application:,,,/Resources/Gifs/sad.gif";
         private const string FUN_GIF_PATH = "pack://application:,,,/Resources/Gifs/fun.gif";
 
-        private const string SELECT_DECKS_PAGE_PATH = "Scripts/Views/TestPage.xaml";
-
         #endregion
 
         #region Methods
@@ -108,7 +106,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => finishExamCommand ?? (finishExamCommand = new RelayCommand(obj =>
             {
-                App.MainVM.Navigate(SELECT_DECKS_PAGE_PATH);
+                App.MainVM.Navigate(Paths.TEST_PAGE);
             }));
         }
 

@@ -76,16 +76,14 @@
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"
                     Orientation="Horizontal" Margin="5 0">
             <!--#region Back Button-->
-            <Button Background="Transparent" Height="45" Width="65" BorderBrush="{DynamicResource ButtonBorderBrush}"
-                Content="{md:PackIcon Kind=ArrowBack,Size=30}" HorizontalAlignment="Left"
-                VerticalAlignment="Top" Margin="5" Foreground="{DynamicResource Foreground}">
+            <Button>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding BackCommand}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource InvisButton}">
+                    <Style TargetType="Button" BasedOn="{StaticResource BackButton}">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Source, UpdateSourceTrigger=PropertyChanged}"
                                          Value="SelectDecksPage.xaml">

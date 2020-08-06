@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="typicalEnglish.Scripts.Views.Controls.SelectDecksControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:typicalEnglish"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <vm:ColorBrushConverter x:Key="ColorBrush"></vm:ColorBrushConverter>
+    </UserControl.Resources>
+    <Grid>
+        <!--#region Decks-->
+        <ItemsControl   DataContext="{x:Static local:App.DecksVM}"
+        VerticalAlignment="Top" ItemsSource="{Binding Decks}" Grid.Row="1"
+                     x:Name="decks">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" IsItemsHost="True">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <!--#region Template-->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel  Margin="10 10">
+                        <CheckBox HorizontalAlignment="Center"
+                                  md:CheckBoxAssist.CheckBoxSize="40" IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+                                  >
+                            <CheckBox.Resources>
+                                <!--Unchecked state-->
+                                <SolidColorBrush x:Key="MaterialDesignCheckBoxOff" Color="#03a9f4"/>
+                            </CheckBox.Resources>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Checked">
+                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=Page},
+                                        Path=DataContext.CheckedChangeCommand}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="Unchecked">
+                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, 
+                                        Path=DataContext.CheckedChangeCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+                        <Button Height="220" Width="150"
+                                Background="{Binding Background, UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource ColorBrush}}" 
+                            BorderBrush="{Binding BorderColor, UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource ColorBrush}}" 
+                                Foreground="{Binding Foreground, UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource ColorBrush}}" FontWeight="Bold" FontFamily="Candara">
+                            <StackPanel VerticalAlignment="Top">
+                                <!--#region Image-->
+                                <Ellipse Width="75" Height="75" VerticalAlignment="Top" Margin="0 10">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding ImageSource}" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <!--#endregion-->
+                                <!--#region Words count-->
+                                <TextBlock Text="{Binding StringFormat=Words: {0}, Path=WordsCount}"
+                                           Margin="0 10" HorizontalAlignment="Center" FontSize="20"/>
+                                <!--#endregion-->
+                                <!--#region Name-->
+                                <TextBox Text="{Binding Name}" MinWidth="20" FontSize="17" IsReadOnly="True"
+                                        CaretBrush="#03a9f4" VerticalAlignment="Bottom" md:HintAssist.Hint="Name"
+                                         TextWrapping="Wrap" TextAlignment="Center"
+                                         BorderBrush="{Binding BorderColor, UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource ColorBrush}}" md:TextFieldAssist.UnderlineBrush="{Binding UnderlineColor, UpdateSourceTrigger=PropertyChanged,
+                            Converter={StaticResource ColorBrush}}" />
+                                <!--#endregion-->
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <!--#endregion-->
+        </ItemsControl>
+        <!--#endregion-->
+    </Grid>
+</UserControl>

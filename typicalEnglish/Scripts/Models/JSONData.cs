@@ -46,7 +46,7 @@ namespace typicalEnglish.Scripts.Models
         /// </summary>
         public static void SaveConfig(bool isDarkMode)
         {
-            File.WriteAllText(FILE_NAME, JsonConvert.SerializeObject(isDarkMode));
+            File.WriteAllText(CONFIG_FILE_NAME, JsonConvert.SerializeObject(isDarkMode));
 
             using (StreamWriter file = File.CreateText(CONFIG_FILE_NAME))
             {

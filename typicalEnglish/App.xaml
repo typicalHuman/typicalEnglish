@@ -11,10 +11,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.LightBlue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="Resources/InvisibleButtonBorderStyle.xaml"/>
                 <ResourceDictionary Source="Resources/CircularButtonTemplate.xaml"/>
                 <ResourceDictionary Source="Resources/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="Resources/OneColorToolTipStyle.xaml"/>
-                <ResourceDictionary Source="Resources/InvisibleButtonBorderStyle.xaml"/>
                 <ResourceDictionary Source="Resources/MenuStyle.xaml"/>
                 <ResourceDictionary Source="Resources/ConfirmBoxStyle.xaml"/>
                 <ResourceDictionary Source="Resources/ListViewStyle.xaml"/>

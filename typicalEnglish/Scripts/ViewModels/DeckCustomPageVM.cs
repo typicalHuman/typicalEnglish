@@ -46,7 +46,7 @@ namespace typicalEnglish.Scripts.ViewModels
 
         private const string IMAGE_FILTER = "Image files (*.png,*.jpg,*jpeg)|*.png;*.jpg;*jpeg";
 
-        private const string DECK_PAGE_PATH = "Scripts/Views/DecksPage.xaml";
+
 
         #endregion
 
@@ -147,7 +147,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => backCommand ?? (backCommand = new RelayCommand(obj =>
             {
-                App.MainVM.Navigate(DECK_PAGE_PATH);
+                App.MainVM.Navigate(Paths.DECKS_PAGE);
             }));
         }
         #endregion

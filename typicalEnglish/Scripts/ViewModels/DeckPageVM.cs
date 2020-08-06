@@ -16,12 +16,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
-        #region Constants
-
-        private const string DECK_PAGE_PATH = "Scripts/Views/DecksPage.xaml";
-
-        #endregion
-
         #region Commands
 
         #region BackCommand
@@ -33,7 +27,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => backCommand ?? (backCommand = new RelayCommand(obj =>
             {
-                App.MainVM.Navigate(DECK_PAGE_PATH);
+                App.MainVM.Navigate(Paths.DECKS_PAGE);
             }));
         }
         #endregion

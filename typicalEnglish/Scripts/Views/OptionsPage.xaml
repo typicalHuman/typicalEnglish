@@ -27,6 +27,17 @@
             </StackPanel>
             <!--#endregion-->
             <Separator Margin="0 10"/>
+            <!--#region Combine decks-->
+            <Button Height="50" Background="#febf34" Style="{StaticResource InvisButton}"
+                    Content="Combine decks" FontSize="30" Foreground="{DynamicResource Foreground}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding OpenCombinePageCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <!--#endregion-->
+            <Separator Margin="0 10"/>
             <!--#region Delete all data-->
             <Button Height="50" Background="#f35f5d" Style="{StaticResource InvisButton}"
                     Content="Delete all data" FontSize="30" Foreground="{DynamicResource Foreground}">

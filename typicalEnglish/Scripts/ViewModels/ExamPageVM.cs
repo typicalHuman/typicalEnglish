@@ -129,8 +129,8 @@ namespace typicalEnglish.Scripts.ViewModels
         private readonly Stream CORRECT_SOUND_STREAM = new MemoryStream(Properties.Resources.correct);
         private readonly Stream WRONG_SOUND_STREAM = new MemoryStream(Properties.Resources.wrong);
 
-        private const string RESULT_PAGE_PATH = "Scripts/Views/ResultPage.xaml";
-        private const string SELECT_DECKS_PAGE_PATH = "SelectDecksPage.xaml";
+        
+        private const string SELECT_DECKS_SOURCE = "SelectDecksPage.xaml";
 
         #endregion
 
@@ -168,7 +168,7 @@ namespace typicalEnglish.Scripts.ViewModels
         private void UpdateTestPage()
         {
             App.TestPageVM.IsDeckPage = true;
-            App.TestPageVM.Source = SELECT_DECKS_PAGE_PATH;
+            App.TestPageVM.Source = SELECT_DECKS_SOURCE;
         }
 
         private void SelectNextWord()
@@ -183,7 +183,7 @@ namespace typicalEnglish.Scripts.ViewModels
             {
                 UpdateTestPage();
                 App.ResultPageVM = new ResultPageVM(Questions);
-                App.MainVM.Navigate(RESULT_PAGE_PATH);
+                App.MainVM.Navigate(Paths.RESULT_PAGE);
             }
             if(QuestionNumber == Questions.Count)
                 IsLastWord = true;
@@ -203,7 +203,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => closeTestCommand ?? (closeTestCommand = new RelayCommand(obj =>
             {
-                App.MainVM.Navigate("Scripts/Views/TestPage.xaml");
+                App.MainVM.Navigate(Paths.TEST_PAGE);
             }));
         }
 

@@ -27,9 +27,7 @@
         <!--#endregion-->    
         
         <!--#region Back Button-->
-        <Button Background="Transparent" Style="{StaticResource InvisButton}" Height="45" Width="65"
-                Content="{md:PackIcon Kind=ArrowBack,Size=30}" HorizontalAlignment="Left"
-                VerticalAlignment="Top" Margin="5" Foreground="{DynamicResource Foreground}">
+        <Button Style="{StaticResource BackButton}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding BackCommand}"/>

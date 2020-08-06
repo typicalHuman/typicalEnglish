@@ -18,7 +18,7 @@
     <WindowChrome.WindowChrome>
         <WindowChrome 
         CaptionHeight="0"
-        ResizeBorderThickness="5" />
+        ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
     <Grid Background="{DynamicResource PanelBackground}">
         <!--#region Definitions-->

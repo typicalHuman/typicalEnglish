@@ -10,7 +10,7 @@ namespace typicalEnglish.Scripts.ViewModels
     public class OptionsVM: BaseViewModel
     {
         #region Commands
-        
+
         #region GotoRepositoryCommand
         private RelayCommand gotoRepositoryCommand;
         public RelayCommand GotoRepositoryCommand
@@ -37,6 +37,19 @@ namespace typicalEnglish.Scripts.ViewModels
                     App.TestPageVM = new TestPageVM();
                     JSONData.Save(App.DecksVM.Decks);
                 }
+            }));
+        }
+
+        #endregion
+
+        #region OpenCombinePageCommand
+
+        private RelayCommand openCombinePageCommand;
+        public RelayCommand OpenCombinePageCommand
+        {
+            get => openCombinePageCommand ?? (openCombinePageCommand = new RelayCommand(obj =>
+            {
+                App.MainVM.Navigate(Paths.DECKS_COMBINE_PAGE);
             }));
         }
 

@@ -27,9 +27,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         private readonly Action EMPTY_ACT = () => { };
 
-        private const string SELECT_WORDS_PAGE_PATH = "Scripts/Views/SelectWordsPage.xaml";
-        private const string EXAM_PAGE_PATH = "Scripts/Views/ExamPage.xaml";
-
         private const string SELECT_WORDS_SOURCE = "SelectWordsPage.xaml";
         private const string SELECT_DECKS_SOURCE = "SelectDecksPage.xaml";
 
@@ -72,13 +69,13 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             App.SelectWordVM = new SelectWordsPageVM(GetWordsFromDecks());
             IsDeckPage = false;
-            Navigate(SELECT_WORDS_PAGE_PATH);
+            Navigate(Paths.SELECT_WORDS_PAGE);
         }
 
         private void StartTest()
         {
             App.ExamPageVM = new ExamPageVM(App.SelectWordVM.GetSelectedWords());
-            App.MainVM.Navigate(EXAM_PAGE_PATH);
+            App.MainVM.Navigate(Paths.EXAM_PAGE);
         }
 
 

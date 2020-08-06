@@ -1,0 +1,47 @@
+﻿<Page x:Class="typicalEnglish.Scripts.Views.DecksCombinePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:typicalEnglish"
+      xmlns:controls="clr-namespace:typicalEnglish.Scripts.Views.Controls"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" FontFamily="Candara Light" FontSize="25"
+      Title="DecksCombinePage" DataContext="{x:Static local:App.DecksCombineVM}">
+
+    <Grid>
+        <!--#region Row definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        
+        <!--#region Back button-->
+        <Button Style="{StaticResource BackButton}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding BackCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <!--#endregion-->
+
+        <!--#region Combine button-->
+        <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
+                Height="70" Width="150" FontSize="25" Content="Combine" Style="{StaticResource InvisButton}"
+                BorderBrush="{DynamicResource ButtonBorderBrush}" Foreground="{DynamicResource Foreground}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding CombineDecksCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <!--#endregion-->
+        
+        <!--#region Decks-->
+        <controls:SelectDecksControl Grid.Row="1"/>
+        <!--#endregion-->
+    </Grid>
+</Page>

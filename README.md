@@ -2,7 +2,9 @@
 
 
 
- ![Screenshot_2](C:\Users\HP\Desktop\Screenshot_2.png)![Screenshot_1](C:\Users\HP\Desktop\Screenshot_1.png)
+ ![Screenshot_2](C:\Users\HP\Desktop\Screenshot_2.png)
+
+![Screenshot_1](https://github.com/typicalHuman/typicalEnglish/tree/master/Screenshots/Screenshot_1.png)
 
 # Add information for each word
 

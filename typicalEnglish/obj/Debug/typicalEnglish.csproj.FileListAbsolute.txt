@@ -99,3 +99,7 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Vi
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\GamePage.baml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\Themes\DarkTheme.baml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Resources\Themes\LightTheme.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DecksCombinePage.g.cs
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DecksCombinePage.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\Controls\SelectDecksControl.g.cs
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\Controls\SelectDecksControl.baml

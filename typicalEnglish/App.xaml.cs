@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish
@@ -21,12 +18,14 @@ namespace typicalEnglish
         public static ExamPageVM ExamPageVM { get; set; }
         public static ResultPageVM ResultPageVM { get; set; }
         public static OptionsVM OptionsVM { get; set; }
+        public static DecksCombineVM DecksCombineVM { get; set; }
         public App()
         {
             MainVM = new MainWindowVM();
             DecksVM = new DecksPageVM();
             TestPageVM = new TestPageVM();
             OptionsVM = new OptionsVM();
+            DecksCombineVM = new DecksCombineVM();
         }
 
     }

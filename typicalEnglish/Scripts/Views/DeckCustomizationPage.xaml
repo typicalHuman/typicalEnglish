@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:typicalEnglish"
-      xmlns:views="clr-namespace:typicalEnglish.Scripts.Views"
+  xmlns:controls="clr-namespace:typicalEnglish.Scripts.Views.Controls"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -30,9 +30,7 @@
             </StackPanel.Resources>
             <Grid>
                 <!--#region Back Button-->
-                <Button Background="Transparent" Style="{StaticResource InvisButton}" Height="45" Width="65"
-                Content="{md:PackIcon Kind=ArrowBack,Size=30}" HorizontalAlignment="Left"
-                VerticalAlignment="Top" Margin="5" Foreground="{DynamicResource Foreground}">
+                <Button Style="{StaticResource BackButton}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding BackCommand}"/>
@@ -98,8 +96,8 @@
                         <!--#region ItemsPanel-->
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <views:AlignableWrapPanel IsItemsHost="True" HorizontalContentAlignment="Center">
-                                </views:AlignableWrapPanel>
+                                <controls:AlignableWrapPanel IsItemsHost="True" HorizontalContentAlignment="Center">
+                                </controls:AlignableWrapPanel>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemContainerStyle>

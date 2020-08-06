@@ -25,13 +25,6 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
-        #region Constants
-
-        private const string DECK_PAGE_PATH = "Scripts/Views/DeckPage.xaml";
-        private const string DECK_CUSTOMIZATION_PATH = "Scripts/Views/DeckCustomizationPage.xaml";
-
-        #endregion
-
         #region Commands
 
         #region AddDeckCommand
@@ -73,7 +66,7 @@ namespace typicalEnglish.Scripts.ViewModels
                 if (deck != null)
                 {
                     App.DeckVM = new DeckPageVM(deck.Words);
-                    App.MainVM.Navigate(DECK_PAGE_PATH);
+                    App.MainVM.Navigate(Paths.DECKS_PAGE);
                 }
             }));
         }
@@ -89,7 +82,7 @@ namespace typicalEnglish.Scripts.ViewModels
                 if (deck != null)
                 {
                     App.DeckCustomVM = new DeckCustomPageVM(deck);
-                    App.MainVM.Navigate(DECK_CUSTOMIZATION_PATH);
+                    App.MainVM.Navigate(Paths.DECKS_CUSTOMIZATION);
                 }
             }));
         }

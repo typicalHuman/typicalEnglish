@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace typicalEnglish.Scripts.Views
+namespace typicalEnglish.Scripts.Views.Controls
 {
     /// <summary>
     /// Wrap panel with auto centralized items.
