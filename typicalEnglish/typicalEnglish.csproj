@@ -120,6 +120,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Scripts\Models\Deck.cs" />
+    <Compile Include="Scripts\Models\DeckHelper.cs" />
     <Compile Include="Scripts\Models\ImageSource.cs" />
     <Compile Include="Scripts\Models\JSONData.cs" />
     <Compile Include="Scripts\Models\MutableString.cs" />

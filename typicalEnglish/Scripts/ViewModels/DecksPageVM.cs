@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows;
 using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
@@ -66,7 +65,7 @@ namespace typicalEnglish.Scripts.ViewModels
                 if (deck != null)
                 {
                     App.DeckVM = new DeckPageVM(deck.Words);
-                    App.MainVM.Navigate(Paths.DECKS_PAGE);
+                    App.MainVM.Navigate(Paths.DECK_PAGE);
                 }
             }));
         }

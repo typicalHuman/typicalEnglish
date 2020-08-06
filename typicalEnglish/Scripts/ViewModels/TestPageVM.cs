@@ -23,6 +23,16 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
+
+        #region SetDecksSelections
+
+        private void SetDecksSelections()
+        {
+            DeckHelper.SetDecksSelections(Decks);
+        }
+
+        #endregion
+
         #region Constants
 
         private readonly Action EMPTY_ACT = () => { };
@@ -33,21 +43,6 @@ namespace typicalEnglish.Scripts.ViewModels
         #endregion
 
         #region Methods
-
-        #region SetSelections
-
-        private void SetDecksSelections()
-        {
-            foreach (Deck d in App.DecksVM.Decks)
-            {
-                if (!Decks.Contains(d) && d.IsSelected)
-                    Decks.Add(d);
-                else if (Decks.Contains(d) && !d.IsSelected)
-                    Decks.Remove(d);
-            }
-        }
-
-        #endregion
 
         private ObservableCollection<Word> GetWordsFromDecks()
         {

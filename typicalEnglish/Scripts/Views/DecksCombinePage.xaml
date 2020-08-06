@@ -30,8 +30,9 @@
 
         <!--#region Combine button-->
         <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
-                Height="70" Width="150" FontSize="25" Content="Combine" Style="{StaticResource InvisButton}"
-                BorderBrush="{DynamicResource ButtonBorderBrush}" Foreground="{DynamicResource Foreground}">
+                Height="70" Width="150" FontSize="25" Content="Combine"
+                BorderBrush="{DynamicResource ButtonBorderBrush}" Foreground="{DynamicResource Foreground}"
+                IsEnabled="{Binding IsCombineEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource InvisButton}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
                     <i:InvokeCommandAction Command="{Binding CombineDecksCommand}"/>

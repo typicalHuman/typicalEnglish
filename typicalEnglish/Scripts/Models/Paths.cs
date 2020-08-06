@@ -4,6 +4,7 @@
     {
         public const string OPTIONS_PAGE= "Scripts/Views/OptionsPage.xaml";
         public const string DECKS_PAGE= "Scripts/Views/DecksPage.xaml";
+        public const string DECK_PAGE= "Scripts/Views/DeckPage.xaml";
         public const string DECKS_CUSTOMIZATION = "Scripts/Views/DeckCustomizationPage.xaml";
         public const string RESULT_PAGE = "Scripts/Views/ResultPage.xaml";
         public const string TEST_PAGE = "Scripts/Views/TestPage.xaml";

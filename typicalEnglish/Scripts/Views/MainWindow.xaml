@@ -54,7 +54,7 @@
             </DockPanel.Resources>
             <!--#region Close Button-->
             <Button Background="#f35f5d" Template="{StaticResource CircularButton}"
-                    BorderBrush="#ec4c45" ToolTip="Close">
+                    BorderBrush="#ec4c45" ToolTip="Close" Foreground="{DynamicResource Foreground}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding CloseCommand}"/>
@@ -64,7 +64,7 @@
             <!--#endregion-->
             <!--#region Minimize Button-->
             <Button Background="#febf34" Template="{StaticResource CircularButton}" BorderBrush="#e8a61c"
-                    ToolTip="Hide">
+                    ToolTip="Hide" Foreground="{DynamicResource Foreground}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding MinimizeCommand}"/>
@@ -74,7 +74,7 @@
             <!--#endregion-->
             <!--#region Maximize Button-->
             <Button Background="#01c74c" Template="{StaticResource CircularButton}" BorderBrush="#15b329" 
-                    HorizontalAlignment="Right" ToolTip="Maximize">
+                    HorizontalAlignment="Right" ToolTip="Maximize" Foreground="{DynamicResource Foreground}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding MaximizeCommand}"/>

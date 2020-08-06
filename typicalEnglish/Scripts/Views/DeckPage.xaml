@@ -125,10 +125,11 @@
                                 <StackPanel HorizontalAlignment="Center">
                                     <TextBox Text="{Binding Spelling}" FontStyle="Italic"
                                        FontSize="30" Style="{StaticResource NoneBorder}" HorizontalAlignment="Center"
-                                             MinWidth="20" MaxLength="60"/>
+                                             MinWidth="20" MaxLength="60" TextAlignment="Center"/>
 
                                     <TextBox Text="{Binding  StringFormat=[{0}], Path=Transcription}"
-                                           FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}" MaxLength="90"/>
+                                           FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}" MaxLength="90"
+                                             TextAlignment="Center"/>
                                 </StackPanel>
                                 <!--#endregion-->
                                 <!--#region Edit Button-->
