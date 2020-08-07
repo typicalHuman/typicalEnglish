@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("language_www_icon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/gifs/fun.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/gifs/sad.gif")]
 
 
