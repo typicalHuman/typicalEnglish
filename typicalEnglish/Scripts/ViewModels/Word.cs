@@ -132,6 +132,24 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
+        #region IsAlreadyExists
+
+        private bool isAlreadyExists = false;
+        /// <summary>
+        /// Is word already exists in decks.
+        /// </summary>
+        public bool IsAlreadyExists
+        {
+            get => isAlreadyExists;
+            set
+            {
+                isAlreadyExists = value;
+                OnPropertyChanged("IsAlreadyExists");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -178,6 +196,10 @@ namespace typicalEnglish.Scripts.ViewModels
             {
                 IsEditing = !IsEditing;
                 JSONData.Save(App.DecksVM.Decks);
+                if(!IsEditing)
+                {
+                    IsAlreadyExists = WordHelper.IsWordExists(this);
+                }
             }));
         }
         #endregion

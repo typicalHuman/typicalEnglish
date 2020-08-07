@@ -11,19 +11,6 @@ namespace typicalEnglish.Scripts.ViewModels
     {
         #region Methods
 
-        private List<Word> GetWordsInDecks()
-        {
-            List<Word> words = new List<Word>();
-            foreach(Deck d in decks)
-            {
-                foreach(Word w in d.Words)
-                {
-                    words.Add(w);
-                }
-            }
-            return words;
-        }
-
         private void RemoveCombinedDecks()
         {
             for(int i = 0; i < decks.Count; i++)
@@ -82,7 +69,7 @@ namespace typicalEnglish.Scripts.ViewModels
         {
             get => combineDecksCommand ?? (combineDecksCommand = new RelayCommand(obj =>
             {
-                List<Word> words = GetWordsInDecks();
+                List<Word> words = DeckHelper.GetWordsInDecks(decks);
                 RemoveCombinedDecks();
                 Deck newDeck = GetNewDeck(words);
                 App.DecksVM.Decks.Add(newDeck);

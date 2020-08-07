@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using typicalEnglish.Scripts.ViewModels;
 
 namespace typicalEnglish.Scripts.Models
 {
@@ -19,6 +21,23 @@ namespace typicalEnglish.Scripts.Models
                 else if (decks.Contains(d) && !d.IsSelected)
                     decks.Remove(d);
             }
+        }
+
+        /// <summary>
+        /// Get all words in <paramref name="decks"/>.
+        /// </summary>
+        /// <returns>List of words.</returns>
+        public static List<Word> GetWordsInDecks(ObservableCollection<Deck> decks)
+        {
+            List<Word> words = new List<Word>();
+            foreach (Deck d in decks)
+            {
+                foreach (Word w in d.Words)
+                {
+                    words.Add(w);
+                }
+            }
+            return words;
         }
     }
 }

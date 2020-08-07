@@ -123,37 +123,32 @@
                                 <!--#endregion-->
                                 <!--#region Title-->
                                 <StackPanel HorizontalAlignment="Center">
+                                    <!--#region Existence status-->
+                                    <TextBlock Text="already exists" VerticalAlignment="Center"
+                                               Foreground="#f52d0b" HorizontalAlignment="Center" FontSize="15">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsAlreadyExists, UpdateSourceTrigger=PropertyChanged}"
+                                                                 Value="False">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <!--#endregion-->
+                                    <!--#region Spelling-->
                                     <TextBox Text="{Binding Spelling}" FontStyle="Italic"
                                        FontSize="30" Style="{StaticResource NoneBorder}" HorizontalAlignment="Center"
                                              MinWidth="20" MaxLength="60" TextAlignment="Center"/>
-
-                                    <TextBox Text="{Binding  StringFormat=[{0}], Path=Transcription}"
+                                    <!--#endregion-->
+                                    <!--#region Transcription-->
+                                        <TextBox Text="{Binding  StringFormat=[{0}], Path=Transcription}"
                                            FontSize="15" HorizontalAlignment="Center" Style="{StaticResource NoneBorder}" MaxLength="90"
                                              TextAlignment="Center"/>
+                                    <!--#endregion-->
                                 </StackPanel>
-                                <!--#endregion-->
-                                <!--#region Edit Button-->
-                                <Button HorizontalAlignment="Right" Foreground="{DynamicResource Foreground}"
-                                BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction
-                                            Command="{Binding EditCommand}" />
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                    <Button.Style>
-                                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding IsEditing, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                    <Setter Property="Content" Value="{md:PackIcon Kind=Close}"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding IsEditing, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                    <Setter Property="Content" Value="{md:PackIcon Kind=Edit}"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
                                 <!--#endregion-->
                                 <!--#region More Information Button-->
                                 <Button Content="{md:PackIcon Kind=More}" HorizontalAlignment="Left"
@@ -167,6 +162,31 @@
                                     </i:Interaction.Triggers>
                                 </Button>
                                 <!--#endregion-->
+                                <!--#region Edit Button-->
+                                    <Button Foreground="{DynamicResource Foreground}"  HorizontalAlignment="Right"
+                                BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction
+                                            Command="{Binding EditCommand}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <Button.Style>
+                                            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsEditing, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                        <Setter Property="Content" Value="{md:PackIcon Kind=Close}"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding IsEditing, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                                        <Setter Property="Content" Value="{md:PackIcon Kind=Edit}"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <!--#endregion-->
+                                
+                             
                             </Grid>
                             <!--#endregion-->
                             <!--#region MoreInformation-->
