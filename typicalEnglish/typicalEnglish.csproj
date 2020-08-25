@@ -130,8 +130,9 @@
     <Compile Include="Scripts\Models\TestValue.cs" />
     <Compile Include="Scripts\Models\WordHelper.cs" />
     <Compile Include="Scripts\ViewModels\BaseViewModel.cs" />
-    <Compile Include="Scripts\ViewModels\ColorBrushConverter.cs" />
+    <Compile Include="Scripts\ViewModels\Converters\ColorBrushConverter.cs" />
     <Compile Include="Scripts\ViewModels\ConfirmWindow.cs" />
+    <Compile Include="Scripts\ViewModels\Converters\WordDisplayConverter.cs" />
     <Compile Include="Scripts\ViewModels\DeckCustomPageVM.cs" />
     <Compile Include="Scripts\ViewModels\DecksCombineVM.cs" />
     <Compile Include="Scripts\ViewModels\ExamPageVM.cs" />
@@ -147,7 +148,7 @@
     <Compile Include="Scripts\ViewModels\AvalonEditBehaviour.cs" />
     <Compile Include="Scripts\ViewModels\DeckPageVM.cs" />
     <Compile Include="Scripts\ViewModels\DecksPageVM.cs" />
-    <Compile Include="Scripts\ViewModels\InverseBooleanConverter.cs" />
+    <Compile Include="Scripts\ViewModels\Converters\InverseBooleanConverter.cs" />
     <Compile Include="Scripts\ViewModels\MvvmTextEditor.cs" />
     <Compile Include="Scripts\Views\Controls\AlignableWrapPanel.cs" />
     <Compile Include="Scripts\Views\DeckCustomizationPage.xaml.cs">

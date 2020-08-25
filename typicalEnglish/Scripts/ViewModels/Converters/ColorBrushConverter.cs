@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace typicalEnglish.Scripts.ViewModels
+namespace typicalEnglish.Scripts.ViewModels.Converters
 {
     /// <summary>
     /// Converter from color to brush.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace typicalEnglish.Scripts.ViewModels
+namespace typicalEnglish.Scripts.ViewModels.Converters
 {
     /// <summary>
     /// Converter for changing bool value to opposite.

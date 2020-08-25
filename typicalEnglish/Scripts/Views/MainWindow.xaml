@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        Title="typicalEnglish" MinHeight="450" MinWidth="450"
+        Title="typicalEnglish" MinHeight="450" MinWidth="900"
         DataContext="{x:Static local:App.MainVM}"
         WindowState="{Binding WindowState}"
         ResizeMode="{Binding ResizeMode, UpdateSourceTrigger=PropertyChanged}" WindowStyle="None" 

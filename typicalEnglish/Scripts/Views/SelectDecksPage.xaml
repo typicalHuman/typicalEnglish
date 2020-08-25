@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:typicalEnglish"
       xmlns:controls="clr-namespace:typicalEnglish.Scripts.Views.Controls"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
+      xmlns:cv="clr-namespace:typicalEnglish.Scripts.ViewModels.Converters"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SelectDecksPage" FontFamily="Candara Light" FontSize="20"
       DataContext="{x:Static local:App.TestPageVM}">
     <Page.Resources>
-        <vm:ColorBrushConverter x:Key="ColorBrush"></vm:ColorBrushConverter>
+        <cv:ColorBrushConverter x:Key="ColorBrush"></cv:ColorBrushConverter>
     </Page.Resources>
     <Grid>
         <controls:SelectDecksControl/>

@@ -19,7 +19,7 @@
 
         <!--#region Start Button-->
         <Button HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"
-                Height="70" Width="150" FontSize="25"
+                Height="70" Width="150" FontSize="25" 
                 BorderBrush="{DynamicResource ButtonBorderBrush}" Foreground="{DynamicResource Foreground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
@@ -58,19 +58,46 @@
 
         <!--#region Selection Options-->
 
-        <!--#region Select All-->
+        <StackPanel HorizontalAlignment="Right" Margin="5 0" Orientation="Horizontal">
 
-        <Button Height="40" Width="50" HorizontalAlignment="Right" Margin="5 0"
+            
+            <!--#region Change language-->
+            <Button Height="40" Width="50" Margin="5 0"
+                Background="Transparent" 
+                Content="{md:PackIcon Kind=Language,Size=20}" ToolTip="Change language"
+                Foreground="{DynamicResource Foreground}">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource InvisButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsDeckPage, UpdateSourceTrigger=PropertyChanged}"
+                                         Value="True">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding ChangeLanguageCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <!--#endregion-->
+            <!--#region Select All-->
+            <Button Height="40" Width="50" Margin="5 0"
                 Style="{StaticResource InvisButton}" Background="Transparent" 
                 Content="{md:PackIcon Kind=SelectAll,Size=20}" ToolTip="Select All"
                 Foreground="{DynamicResource Foreground}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <i:InvokeCommandAction Command="{Binding SelectAllCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-        <!--#endregion-->
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SelectAllCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <!--#endregion-->
+        </StackPanel>
+        
+     
 
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"

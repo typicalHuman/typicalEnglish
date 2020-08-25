@@ -23,7 +23,6 @@ namespace typicalEnglish.Scripts.ViewModels
         }
         #endregion
 
-
         #region SetDecksSelections
 
         private void SetDecksSelections()
@@ -226,6 +225,18 @@ namespace typicalEnglish.Scripts.ViewModels
                 Source = "SelectDecksPage.xaml";
                 IsDeckPage = true;
                 Navigate("Scripts/Views/SelectDecksPage.xaml");
+            }));
+        }
+        #endregion
+
+
+        #region ChangeLanguageCommand
+        private RelayCommand changeLanguageCommand;
+        public RelayCommand ChangeLanguageCommand
+        {
+            get => changeLanguageCommand ?? (changeLanguageCommand = new RelayCommand(obj =>
+            {
+                App.SelectWordVM.IsEnglish = !App.SelectWordVM.IsEnglish;
             }));
         }
         #endregion

@@ -8,7 +8,7 @@ namespace typicalEnglish.Scripts.Models
     public class Question: BaseViewModel
     {
         #region Constants
-        private const string EMPTY_TRANSLATIONS = "isn't specified";
+        public const string EMPTY_TRANSLATIONS = "isn't specified";
         #endregion
 
         #region Methods

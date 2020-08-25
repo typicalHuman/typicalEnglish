@@ -7,10 +7,11 @@
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
+             xmlns:cv="clr-namespace:typicalEnglish.Scripts.ViewModels.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <vm:ColorBrushConverter x:Key="ColorBrush"></vm:ColorBrushConverter>
+        <cv:ColorBrushConverter x:Key="ColorBrush"></cv:ColorBrushConverter>
     </UserControl.Resources>
     <Grid>
         <!--#region Decks-->

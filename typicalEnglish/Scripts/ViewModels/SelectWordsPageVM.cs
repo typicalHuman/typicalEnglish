@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using typicalEnglish.Scripts.Models;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -36,6 +37,23 @@ namespace typicalEnglish.Scripts.ViewModels
         #region Properties
 
         public ObservableCollection<Word> Words { get; set; }
+
+        #region IsEnglish
+        private bool isEnglish = false;
+        /// <summary>
+        /// Indicator of test language.
+        /// </summary>
+        public bool IsEnglish
+        {
+            get => isEnglish;
+            set
+            {
+                isEnglish = value;
+                OnPropertyChanged("IsEnglish");
+            }
+        }
+
+        #endregion
 
         #endregion
 

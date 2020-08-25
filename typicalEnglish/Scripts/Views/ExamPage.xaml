@@ -32,8 +32,21 @@
         <!--#endregion-->
         
         <!--#region Word-->
-        <TextBlock Text="{Binding CurrentQuestion.Word.Spelling}" HorizontalAlignment="Center"
-                   FontSize="30" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center"
+                   FontSize="30" VerticalAlignment="Center">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsEnglish}" Value="False">
+                            <Setter Property="Text" Value="{Binding CurrentQuestion.CorrectAnswer}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsEnglish}" Value="True">
+                            <Setter Property="Text" Value="{Binding CurrentQuestion.Word.Spelling}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <!--#endregion-->
         
         <!--#region Counter-->

@@ -6,13 +6,18 @@
       xmlns:local="clr-namespace:typicalEnglish"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:vm="clr-namespace:typicalEnglish.Scripts.ViewModels"
+      xmlns:cv="clr-namespace:typicalEnglish.Scripts.ViewModels.Converters"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:cnt="clr-namespace:typicalEnglish.Scripts.Views.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SelectWordPage" FontFamily="Candara Light" FontSize="20"
       DataContext="{x:Static local:App.SelectWordVM}">
+    <Page.Resources>
+        <cv:WordDisplayConverter x:Key="WordDisplay"></cv:WordDisplayConverter>
+    </Page.Resources>
     <Grid>
-            <ListView ItemsSource="{Binding Words}" 
+        <ListView ItemsSource="{Binding Words}" x:Name="wordsList"
                    HorizontalAlignment="Center" 
                       SelectionMode="Multiple"
                      Style="{StaticResource ListViewStyle}" 
@@ -23,28 +28,39 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ListView.View>
-                    <GridView>
-                        <GridViewColumn>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock  Margin="0 7" 
-                                  Text="{Binding Spelling}"
-                                 HorizontalAlignment="Center" FontSize="23"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-                <ListView.Template>
-                    <ControlTemplate>
-                        <ScrollViewer>
-                            <ItemsPresenter></ItemsPresenter>
-                        </ScrollViewer>
-                    </ControlTemplate>
-                </ListView.Template>
-            </ListView>
-       
-
-      
+                <GridView>
+                    <GridViewColumn Width="800">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Margin="0 7" 
+                                 HorizontalAlignment="Center" FontSize="23">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=wordsList,
+                                                    Path=DataContext.IsEnglish, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                    <Setter Property="Text" Value="{Binding Spelling}"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=wordsList,
+                                                    Path=DataContext.IsEnglish, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                                    <Setter Property="Text" Value="{Binding Converter={StaticResource WordDisplay}}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.Template>
+                <ControlTemplate>
+                    <ScrollViewer>
+                        <ItemsPresenter></ItemsPresenter>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ListView.Template>
+        </ListView>
     </Grid>
 </Page>

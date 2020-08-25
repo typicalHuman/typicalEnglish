@@ -122,6 +122,13 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
+
+        #region IsEnglish
+
+        public bool IsEnglish { get; set; } = App.SelectWordVM.IsEnglish;
+
+        #endregion
+
         #endregion
 
         #region Constants
