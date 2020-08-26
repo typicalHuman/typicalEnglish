@@ -17,6 +17,7 @@ namespace typicalEnglish.Scripts.ViewModels
         public SelectWordsPageVM(ObservableCollection<Word> words)
         {
             Words = words;
+            App.TestPageVM.IsEmpty = GetSelectedWords().Count == 0;
         }
 
         #endregion

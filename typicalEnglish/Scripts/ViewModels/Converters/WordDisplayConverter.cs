@@ -20,7 +20,7 @@ namespace typicalEnglish.Scripts.ViewModels.Converters
         /// Get first translation of <paramref name="w"/>.
         /// </summary>
         /// <param name="w">Word to get translation.</param>
-        private string GetTranslation(Word w)
+        public static string GetTranslation(Word w)
         {
             if (w.Translations.Count > 0)
                 return w.Translations[0];

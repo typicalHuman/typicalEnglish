@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using typicalEnglish.Scripts.Models;
+using typicalEnglish.Scripts.ViewModels.Converters;
 
 namespace typicalEnglish.Scripts.ViewModels
 {
@@ -41,11 +42,16 @@ namespace typicalEnglish.Scripts.ViewModels
         /// <param name="selectedWords">Words which will be in the test.</param>
         public ExamPageVM(ObservableCollection<Word> selectedWords)
         {
-            foreach (Word w in selectedWords)
-                Questions.Add(w);
-            Shuffle(Questions);
-            CurrentQuestion = Questions[0];
-            IsLastWord = Questions.Count == 1;
+            if (selectedWords.Count > 0)
+            {
+                foreach (Word w in selectedWords)
+                    Questions.Add(w);
+                Shuffle(Questions);
+                CurrentQuestion = Questions[0];
+                IsLastWord = Questions.Count == 1;
+                if (!IsEnglish)
+                    SetSpellings();
+            }
         }
 
         #endregion
@@ -122,10 +128,18 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #endregion
 
-
         #region IsEnglish
 
         public bool IsEnglish { get; set; } = App.SelectWordVM.IsEnglish;
+
+        #endregion
+
+        #region AllTranslations
+
+        /// <summary>
+        /// All translations of all words.
+        /// </summary>
+        private List<string> spellings { get; set; } = new List<string>();
 
         #endregion
 
@@ -171,13 +185,58 @@ namespace typicalEnglish.Scripts.ViewModels
             }
         }
 
-        
+        private void CorrectnessTranslationCheck()
+        {
+            string answer = StringEditor.RemoveExcessSymbols(CurrentQuestion.Answer);
+            string spelling = StringEditor.RemoveExcessSymbols(currentQuestion.Word.Spelling);
+            if (answer == spelling)
+            {
+                CurrentQuestion.IsCorrect = true;
+            }
+            else
+            {
+                string firstTranslation = WordDisplayConverter.GetTranslation(CurrentQuestion.Word);
+                foreach(Question q in Questions)
+                {
+                    spelling = StringEditor.RemoveExcessSymbols(q.Word.Spelling);
+                    if(answer == spelling)
+                    {
+                        foreach(string tr in CurrentQuestion.Word.Translations)
+                        {
+                            if (IsInCollection(q.Word.Translations, tr))
+                            {
+                                CurrentQuestion.IsCorrect = true;
+                                break;
+                            }
+                        }
+                    }
+                   
+                }
+            }
+        }
+
+        /// <summary>
+        /// Check is all translations contains first translation.
+        /// </summary>
+        /// <param name="translations"></param>
+        /// <param name="first"></param>
+        /// <returns></returns>
+        private bool IsInCollection(ObservableCollection<MutableString> translations, string first)
+        {
+            foreach (string tr in translations)
+                if (first == tr)
+                    return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Return options to deck page.
+        /// </summary>
         private void UpdateTestPage()
         {
             App.TestPageVM.IsDeckPage = true;
             App.TestPageVM.Source = SELECT_DECKS_SOURCE;
         }
-
         private void SelectNextWord()
         {
             if (QuestionNumber < Questions.Count)
@@ -194,6 +253,22 @@ namespace typicalEnglish.Scripts.ViewModels
             }
             if(QuestionNumber == Questions.Count)
                 IsLastWord = true;
+        }
+        private void AnswerCheckedAction()
+        {
+            if (CurrentQuestion.IsCorrect)
+                CorrectAnswerAction();
+            else
+                WrongAnswerAction();
+            IsChecked = true;
+        }
+        /// <summary>
+        /// Initializing all words spelling to check words with the same meanings.
+        /// </summary>
+        private void SetSpellings()
+        {
+            foreach (Question q in Questions)
+                spellings.Add(q.Word.Spelling);
         }
 
         #endregion
@@ -227,12 +302,11 @@ namespace typicalEnglish.Scripts.ViewModels
                 {
                     if (!IsChecked)
                     {
-                        CorrectnessCheck();
-                        if (CurrentQuestion.IsCorrect)
-                            CorrectAnswerAction();
+                        if (IsEnglish)
+                            CorrectnessCheck();
                         else
-                            WrongAnswerAction();
-                        IsChecked = true;
+                            CorrectnessTranslationCheck();
+                        AnswerCheckedAction();
                     }
                     else
                     {

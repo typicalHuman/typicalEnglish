@@ -33,12 +33,12 @@ namespace typicalEnglish.Scripts.Models
         #region Properties
 
         /// <summary>
-        /// Auto speaker
+        /// Auto speaker.
         /// </summary>
         private static SpeechSynthesizer synthesizer { get; set; } = new SpeechSynthesizer();
 
         /// <summary>
-        /// Audio player 
+        /// Audio player. 
         /// </summary>
         private static WaveOut waveOut { get; set; } = new WaveOut();
 

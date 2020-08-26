@@ -33,7 +33,8 @@
         
         <!--#region Word-->
         <TextBlock HorizontalAlignment="Center"
-                   FontSize="30" VerticalAlignment="Center">
+                   FontSize="30" VerticalAlignment="Center" MaxWidth="700" TextWrapping="Wrap"
+                   TextAlignment="Center">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Style.Triggers>
