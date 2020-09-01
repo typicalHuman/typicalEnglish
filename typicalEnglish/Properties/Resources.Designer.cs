@@ -61,22 +61,20 @@ namespace typicalEnglish.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static byte[] correct {
+        internal static System.IO.UnmanagedMemoryStream correct {
             get {
-                object obj = ResourceManager.GetObject("correct", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetStream("correct", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static byte[] wrong {
+        internal static System.IO.UnmanagedMemoryStream wrong {
             get {
-                object obj = ResourceManager.GetObject("wrong", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetStream("wrong", resourceCulture);
             }
         }
     }

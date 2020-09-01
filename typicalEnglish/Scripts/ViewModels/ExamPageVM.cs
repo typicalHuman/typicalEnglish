@@ -1,7 +1,10 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
+using System.Media;
 using typicalEnglish.Scripts.Models;
 using typicalEnglish.Scripts.ViewModels.Converters;
 
@@ -147,10 +150,9 @@ namespace typicalEnglish.Scripts.ViewModels
 
         #region Constants
 
-        private readonly Stream CORRECT_SOUND_STREAM = new MemoryStream(Properties.Resources.correct);
-        private readonly Stream WRONG_SOUND_STREAM = new MemoryStream(Properties.Resources.wrong);
+        private readonly Stream CORRECT_SOUND_STREAM = Properties.Resources.correct;
+        private readonly Stream WRONG_SOUND_STREAM = Properties.Resources.wrong;
 
-        
         private const string SELECT_DECKS_SOURCE = "SelectDecksPage.xaml";
 
         #endregion

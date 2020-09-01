@@ -1,5 +1,7 @@
 ﻿using NAudio.Wave;
+using System.ComponentModel;
 using System.IO;
+using System.Media;
 using System.Speech.Synthesis;
 using System.Threading.Tasks;
 using typicalEnglish.Scripts.ViewModels;
@@ -19,6 +21,15 @@ namespace typicalEnglish.Scripts.Models
         static WordSoundPlayer()
         {
             synthesizer.SelectVoice(ZIRA_VOICE);
+            //Cancel rest calls of synthesizer.
+            synthesizer.SpeakCompleted += (obj, e) =>
+            {
+                synthesizer.SpeakAsyncCancelAll();
+            };
+            player.LoadCompleted += delegate (object sender, AsyncCompletedEventArgs e)
+            {
+                player.Play();
+            };
         }
 
         #endregion
@@ -38,9 +49,14 @@ namespace typicalEnglish.Scripts.Models
         private static SpeechSynthesizer synthesizer { get; set; } = new SpeechSynthesizer();
 
         /// <summary>
-        /// Audio player. 
+        /// Sound player.
         /// </summary>
-        private static WaveOut waveOut { get; set; } = new WaveOut();
+        private static SoundPlayer player { get; set; } = new SoundPlayer();
+
+        /// <summary>
+        /// Word which spelling will speak synthesizer.
+        /// </summary>
+        private static Word wordToSpeak { get; set; }
 
         #endregion
 
@@ -48,45 +64,47 @@ namespace typicalEnglish.Scripts.Models
         /// <param name="word">Word which spelling will speak synthesizer.</param>
         public static void PlayWordSpelling(Word word)
         {
+            wordToSpeak = word;
             string source = word.PronunciationSource;
             if (source == AUTO)
                 synthesizer.SpeakAsync(word.Spelling);
             else
                 PlayAudio(source);
         }
+
         /// <summary>
         /// Play audio by url.
         /// </summary>
         /// <param name="url">Url must contains file with extension.</param>
-        public async static void PlayAudio(string url)
+        public static void PlayAudio(string url)
         {
-            await Task.Run(() =>
-            {
-                AudioFileReader reader = new AudioFileReader(url);
-                Play(reader);
-            });
+            player.SoundLocation = url;
+            player.Stream = null;
+            Play();
         }
+
         /// <summary>
         /// Play audio from application resources.
         /// </summary>
         /// <param name="str">Stream of audio.</param>
-        public async static void PlayAudio(Stream str)
+        public static void PlayAudio(Stream str)
         {
-            await Task.Run(() =>
-            {
-                str.Position = 0;
-                Mp3FileReader reader = new Mp3FileReader(str);
-                Play(reader);
-            });
+            player.SoundLocation = null;
+            player.Stream = str;
+            Play();
+            str.Position = 0;
         }
 
-        private async static void Play(IWaveProvider reader)
+        private static void Play()
         {
-            await Task.Run(() =>
+            try
             {
-                waveOut.Init(reader);
-                waveOut.Play();
-            });
+                player.LoadAsync();
+            }
+            catch(FileNotFoundException){
+                wordToSpeak.PronunciationSource = AUTO;
+            }
+
         }
         #endregion
     }

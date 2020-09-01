@@ -264,7 +264,7 @@ namespace typicalEnglish.Scripts.ViewModels
             get => changeSoundFileCommand ?? (changeSoundFileCommand = new RelayCommand(obj =>
             {
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-                dlg.Filter = "Audio files (*.mp3,*.wav)|*.mp3;*.wav";
+                dlg.Filter = "Wav files (*.wav)|*.wav";
                 Nullable<bool> result = dlg.ShowDialog();
                 if (result == true)
                 {

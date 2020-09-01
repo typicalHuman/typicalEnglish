@@ -178,8 +178,7 @@
                     <!--#endregion-->
                     
                     <!--#region Correct answer-->
-                    <TextBlock Margin="10 0 0 10" Text="{Binding StringFormat=Correct answer - {0}, Path=CurrentQuestion.CorrectAnswer,
-                        UpdateSourceTrigger=PropertyChanged}"
+                    <TextBlock Margin="10 0 0 10" 
                                FontSize="20" Foreground="#fb3737"
                                FontFamily="Candara Light">
                         <TextBlock.Style>
@@ -188,6 +187,20 @@
                                     <DataTrigger Binding="{Binding CurrentQuestion.IsCorrect, UpdateSourceTrigger=PropertyChanged}" 
                                                  Value="True">
                                         <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding CurrentQuestion.IsCorrect, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsEnglish, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Value="True">
+                                        <Setter Property="Text" Value="{Binding StringFormat=Correct answer - {0}, Path=CurrentQuestion.CorrectAnswer,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsEnglish, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Value="False">
+                                        <Setter Property="Text" Value="{Binding StringFormat=Correct answer - {0}, Path=CurrentQuestion.Word.Spelling,
+                        UpdateSourceTrigger=PropertyChanged}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

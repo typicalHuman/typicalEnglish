@@ -17,9 +17,23 @@ namespace typicalEnglish.Scripts.Models
             Foreground = BLUE_COLOR;
             BorderColor = BLUE_COLOR;
             UnderlineColor = BLUE_COLOR;
-            Background = WHITE_COLOR;
+            SetBackgroundColor();
         }
-                #endregion
+        #endregion
+
+
+        #region Methods
+
+        private void SetBackgroundColor()
+        {
+            if (App.OptionsVM != null && App.OptionsVM.IsDarkMode)
+                Background = BLACK_COLOR;
+            else
+                Background = WHITE_COLOR;
+
+        }
+
+        #endregion
 
         #region Properties
         /// <summary>
@@ -29,6 +43,7 @@ namespace typicalEnglish.Scripts.Models
 
         private readonly Color BLUE_COLOR = (Color)new ColorConverter().ConvertFrom("#03a9f4");
         private readonly Color WHITE_COLOR = (Color)new ColorConverter().ConvertFrom("#f2f2f3");
+        private readonly Color BLACK_COLOR = (Color)new ColorConverter().ConvertFrom("#2d2d2d");
 
         #region ImageSource
 

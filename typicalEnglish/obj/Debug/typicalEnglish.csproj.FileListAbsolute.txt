@@ -103,3 +103,6 @@ C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Vi
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\DecksCombinePage.baml
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\Controls\SelectDecksControl.g.cs
 C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Scripts\Views\Controls\SelectDecksControl.baml
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\Interop.MediaPlayer.dll
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\typicalEnglish.csproj.ResolveComReference.cache
+C:\files\Programming\Projects\typicalEnglish\typicalEnglish\obj\Debug\typicalEnglish_Content.g.cs
